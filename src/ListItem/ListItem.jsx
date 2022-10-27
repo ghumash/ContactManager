@@ -1,4 +1,6 @@
 import "./ListItem.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faTrash, faEdit } from '@fortawesome/free-solid-svg-icons'
 
 export default function ListItem({
   id,
@@ -20,6 +22,8 @@ export default function ListItem({
       <div>{email}</div>
       <div>{phone}</div>
       <div>{profession}</div>
+      <FontAwesomeIcon icon={faTrash} />
+      <FontAwesomeIcon icon={faEdit} />
     </div>
   );
 }
