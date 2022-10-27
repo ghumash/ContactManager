@@ -1,4 +1,8 @@
 const data = {
-    name: "",
-    lastName: "",
-}
+  firstName: "",
+  lastName: "",
+  email: "",
+  phone: "",
+  profession: "",
+  avatar: "",
+};
