@@ -1,5 +1,5 @@
 import "./Header.css";
 
 export default function Header() {
-  return <div className="Header"></div>;
+  return <div className="Header">Contact Manager</div>;
 }
