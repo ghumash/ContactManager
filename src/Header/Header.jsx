@@ -1,7 +1,5 @@
 import "./Header.css";
 
 export default function Header() {
-    <div className="Header">
-        
-    </div>
+  return <div className="Header"></div>;
 }
