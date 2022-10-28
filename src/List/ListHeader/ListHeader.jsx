@@ -10,6 +10,7 @@ export default function ListHeader() {
       <th className="ListHeader-item">EMAIL</th>
       <th className="ListHeader-item">PHONE</th>
       <th className="ListHeader-item">PROFESSION</th>
+      <th className="ListHeader-item"></th>
     </tr>
   );
 }

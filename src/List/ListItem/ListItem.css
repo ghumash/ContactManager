@@ -1,7 +1,17 @@
 .ListItem-row {
-    border-bottom: 1px solid #000;
+
 }
 
 .ListItem-item {
-    padding: 5px 15px;
+  padding: 10px 15px;
+}
+
+.ListItem-icon-group {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.fa-trash {
+  margin-right: 10px;
 }
