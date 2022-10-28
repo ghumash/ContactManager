@@ -7,7 +7,7 @@ export const list = [
     lastName: "Smith",
     email: "joesmith@gmail.com",
     phone: "+1654565655656",
-    profession: "PsD",
+    profession: "PhD",
     avatar: "",
   },
   {

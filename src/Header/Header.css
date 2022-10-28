@@ -1,6 +1,8 @@
 .Header-container {
-    padding: 30px 0;
-    font-size: 20px;
-    text-align: center;
-    background-color: #e8e8e8;
+  padding: 30px 0;
+  margin-bottom: 20px;
+
+  font-size: 20px;
+  text-align: center;
+  background-color: #e8e8e8;
 }

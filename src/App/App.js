@@ -1,13 +1,15 @@
 import "./App.css";
 import { list } from "../const";
-import ListItem from "../ListItem/ListItem";
+import ListItem from "../List/ListItem/ListItem";
 import Header from "../Header/Header";
+import ListHeader from "../List/ListHeader/ListHeader";
 
 export default function App() {
   return (
     <div className="App">
       <Header />
-      <div>
+      <table>
+        <ListHeader />
         {list.map((item) => {
           return (
             <ListItem
@@ -21,7 +23,7 @@ export default function App() {
             />
           );
         })}
-      </div>
+      </table>
     </div>
   );
 }

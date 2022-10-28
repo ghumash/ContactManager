@@ -1,0 +1,10 @@
+.ListItem-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.ListItem-row-group {
+    display: flex;
+    justify-content: start;
+}
