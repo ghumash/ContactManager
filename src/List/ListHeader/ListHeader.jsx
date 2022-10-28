@@ -4,7 +4,10 @@ export default function ListHeader() {
   return (
     <tr className="ListHeader-row">
       <th className="ListHeader-item">
-        <input type="checkbox" />
+        <label className="checkbox">
+          <input type="checkbox" />
+          <span></span>
+        </label>
       </th>
       <th className="ListHeader-item">NAME</th>
       <th className="ListHeader-item">EMAIL</th>

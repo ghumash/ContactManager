@@ -20,3 +20,26 @@ ul {
 input {
   margin: 0;
 }
+
+.checkbox input {
+  display: none;
+}
+.checkbox span {
+  height: 5px;
+  width: 5px;
+  border: 1px solid rgb(84, 84, 84);
+  display: inline-block;
+  position: relative;
+  background-color: transparent;
+  border-radius: 2px;
+  padding: 3px;
+}
+
+[type="checkbox"]:checked + span:before {
+  content: "\2714";
+  position: absolute;
+  top: -13px;
+  left: -2px;
+  font-size: 22px;
+  color: rgb(255 188 0);
+}

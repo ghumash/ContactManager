@@ -10,11 +10,15 @@ export default function ListItem({
   email,
   phone,
   profession,
+  onDelete,
 }) {
   return (
     <tr className="ListItem-row">
       <td className="ListItem-item">
-        <input type="checkbox" />
+        <label className="checkbox">
+          <input type="checkbox" />
+          <span></span>
+        </label>
       </td>
       <td className="ListItem-item">
         {avatar}
@@ -26,7 +30,7 @@ export default function ListItem({
       <td className="ListItem-item">
         <div className="ListItem-icon-group">
           <FontAwesomeIcon icon={faUserPen} />
-          <FontAwesomeIcon icon={faMinus} />
+          <FontAwesomeIcon icon={faMinus} onClick={() => onDelete(id)} />
         </div>
       </td>
     </tr>

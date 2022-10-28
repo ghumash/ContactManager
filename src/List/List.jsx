@@ -4,7 +4,29 @@ import Caption from "../Caption/Caption";
 import ListHeader from "./ListHeader/ListHeader";
 import ListItem from "./ListItem/ListItem";
 
+import { useState, useEffect } from "react";
+
+import swal from "sweetalert";
+
 export default function List() {
+  const [contacts, setContacts] = useState([...list]);
+
+  const popup = (text) => {
+    swal({
+      title: text,
+      text: false,
+      icon: false,
+      button: false,
+    });
+    setTimeout(() => {
+      swal.close();
+    }, 400);
+  };
+
+  const onDelete = (id) => {
+    setContacts(contacts.filter((contact) => contact.id !== id));
+  };
+
   return (
     <table className="List-container">
       <Caption />
@@ -14,17 +36,18 @@ export default function List() {
       </thead>
 
       <tbody>
-        {list.map((item) => {
+        {contacts.map((contact) => {
           return (
             <ListItem
-              key={item.id}
-              id={item.id}
-              avatar={item.avatar}
-              firstName={item.firstName}
-              lastName={item.lastName}
-              email={item.email}
-              phone={item.phone}
-              profession={item.profession}
+              key={contact.id}
+              id={contact.id}
+              avatar={contact.avatar}
+              firstName={contact.firstName}
+              lastName={contact.lastName}
+              email={contact.email}
+              phone={contact.phone}
+              profession={contact.profession}
+              onDelete={onDelete}
             />
           );
         })}
