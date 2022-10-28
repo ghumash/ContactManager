@@ -22,6 +22,7 @@ export default function List() {
       swal.close();
     }, 400);
   };
+  console.log(contacts)
 
   const onDelete = (id) => {
     setContacts(contacts.filter((contact) => contact.id !== id));

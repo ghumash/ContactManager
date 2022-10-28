@@ -13,23 +13,7 @@ export default function ListItem({
   profession,
   onDelete,
 }) {
-  const areYouSure = (
-    <>
-      <FontAwesomeIcon
-        icon={faCheck}
-        onClick={() => {
-          onDelete(id);
-          console.log(id);
-        }}
-      />
-      <FontAwesomeIcon
-        icon={faMinus}
-        onClick={() => {
-          setIconSelector(iconMinus);
-        }}
-      />
-    </>
-  );
+  const [iconSelector, setIconSelector] = useState();
 
   const iconMinus = (
     <FontAwesomeIcon
@@ -40,7 +24,22 @@ export default function ListItem({
     />
   );
 
-  const [iconSelector, setIconSelector] = useState(iconMinus);
+  const areYouSure = (
+    <>
+      <FontAwesomeIcon
+        icon={faCheck}
+        onClick={() => {
+          onDelete(id);
+        }}
+      />
+      <FontAwesomeIcon
+        icon={faMinus}
+        onClick={() => {
+          setIconSelector();
+        }}
+      />
+    </>
+  );
 
   return (
     <tr className="ListItem-row">
@@ -60,7 +59,7 @@ export default function ListItem({
       <td className="ListItem-item">
         <div className="ListItem-icon-group">
           <FontAwesomeIcon icon={faUserPen} />
-          {iconSelector}
+          {!iconSelector ? iconMinus : iconSelector}
         </div>
       </td>
     </tr>
