@@ -1,6 +1,6 @@
 import "./ListItem.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash, faEdit } from "@fortawesome/free-solid-svg-icons";
+import { faMinus, faUserPen } from "@fortawesome/free-solid-svg-icons";
 
 export default function ListItem({
   id,
@@ -25,8 +25,8 @@ export default function ListItem({
       <td className="ListItem-item">{profession}</td>
       <td className="ListItem-item">
         <div className="ListItem-icon-group">
-          <FontAwesomeIcon icon={faTrash} />
-          <FontAwesomeIcon icon={faEdit} />
+          <FontAwesomeIcon icon={faUserPen} />
+          <FontAwesomeIcon icon={faMinus} />
         </div>
       </td>
     </tr>

@@ -1,8 +1,17 @@
 .ListHeader-row {
-  background-color: #e8e8e8;
+  background-color: #f8f8f8;
 }
 
 .ListHeader-item {
   padding: 10px 15px;
   text-align: left;
+  color: rgb(255 188 0);
+}
+
+.ListHeader-item:first-child {
+  border-radius: 10px 0 0 10px;
+}
+
+.ListHeader-item:last-child {
+  border-radius: 0 10px 10px 0;
 }
