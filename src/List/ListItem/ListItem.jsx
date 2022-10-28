@@ -1,6 +1,7 @@
 import "./ListItem.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMinus, faUserPen } from "@fortawesome/free-solid-svg-icons";
+import { faUserPen, faMinus, faCheck } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 export default function ListItem({
   id,
@@ -12,6 +13,35 @@ export default function ListItem({
   profession,
   onDelete,
 }) {
+  const areYouSure = (
+    <>
+      <FontAwesomeIcon
+        icon={faCheck}
+        onClick={() => {
+          onDelete(id);
+          console.log(id);
+        }}
+      />
+      <FontAwesomeIcon
+        icon={faMinus}
+        onClick={() => {
+          setIconSelector(iconMinus);
+        }}
+      />
+    </>
+  );
+
+  const iconMinus = (
+    <FontAwesomeIcon
+      icon={faMinus}
+      onClick={() => {
+        setIconSelector(areYouSure);
+      }}
+    />
+  );
+
+  const [iconSelector, setIconSelector] = useState(iconMinus);
+
   return (
     <tr className="ListItem-row">
       <td className="ListItem-item">
@@ -30,7 +60,7 @@ export default function ListItem({
       <td className="ListItem-item">
         <div className="ListItem-icon-group">
           <FontAwesomeIcon icon={faUserPen} />
-          <FontAwesomeIcon icon={faMinus} onClick={() => onDelete(id)} />
+          {iconSelector}
         </div>
       </td>
     </tr>

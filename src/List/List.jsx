@@ -1,6 +1,6 @@
 import "./List.css";
 import { list } from "../const";
-import Caption from "../Caption/Caption";
+import Caption from "./Caption/Caption";
 import ListHeader from "./ListHeader/ListHeader";
 import ListItem from "./ListItem/ListItem";
 
@@ -25,6 +25,7 @@ export default function List() {
 
   const onDelete = (id) => {
     setContacts(contacts.filter((contact) => contact.id !== id));
+    popup("Deleted!");
   };
 
   return (

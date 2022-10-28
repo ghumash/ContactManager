@@ -1,5 +1,6 @@
 .ListItem-item {
-  padding: 10px 15px;
+  padding: 15px;
+  border-bottom: 1px solid #ccc;
 }
 
 .ListItem-icon-group {
@@ -12,17 +13,27 @@
   margin-right: 10px;
   color: #757575;
   cursor: pointer;
-  opacity: .5;
-  transition: .2s ease-in-out
+  opacity: 0.5;
+  transition: 0.2s ease-in-out;
 }
 
 .fa-minus {
   color: #fd4e4e;
   cursor: pointer;
-  opacity: .5;
-  transition: .2s ease-in-out
+  opacity: 0.5;
+  transition: 0.2s ease-in-out;
 }
 
-.fa-user-pen:hover, .fa-minus:hover {
+.fa-check {
+  margin-right: 10px;
+  color: hsl(120, 100%, 66%);
+  cursor: pointer;
+  opacity: 0.5;
+  transition: 0.2s ease-in-out;
+}
+
+.fa-user-pen:hover,
+.fa-check:hover,
+.fa-minus:hover {
   opacity: 1;
 }
