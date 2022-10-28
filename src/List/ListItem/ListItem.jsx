@@ -12,21 +12,21 @@ export default function ListItem({
   profession,
 }) {
   return (
-    <tr className="ListItem-row">
-      <td>
-        <input type="checkbox" />
-      </td>
-      <td>{avatar}</td>
-      <td>
-        {firstName} {lastName}
-      </td>
-      <td>{email}</td>
-      <td>{phone}</td>
-      <td>{profession}</td>
-      <td className="ListItem-row-group">
-        <FontAwesomeIcon icon={faTrash} />
-        <FontAwesomeIcon icon={faEdit} />
-      </td>
-    </tr>
+      <tr className="ListItem-row">
+        <td className="ListItem-item">
+          <input type="checkbox" />
+        </td>
+        <td className="ListItem-item">
+          {avatar}
+          {firstName} {lastName}
+        </td>
+        <td className="ListItem-item">{email}</td>
+        <td className="ListItem-item">{phone}</td>
+        <td className="ListItem-item">{profession}</td>
+        <td className="ListItem-item">
+          <FontAwesomeIcon icon={faTrash} />
+          <FontAwesomeIcon icon={faEdit} />
+        </td>
+      </tr>
   );
 }
