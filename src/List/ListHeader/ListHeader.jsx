@@ -2,7 +2,7 @@ import "./ListHeader.css";
 
 export default function ListHeader() {
   return (
-    <tr className="">
+    <tr className="ListHeader-row">
       <th>
         <input type="checkbox" />
       </th>
