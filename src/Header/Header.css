@@ -1,3 +1,6 @@
-.Header {
-    
+.Header-container {
+    padding: 30px 0;
+    font-size: 20px;
+    text-align: center;
+    background-color: #e8e8e8;
 }
