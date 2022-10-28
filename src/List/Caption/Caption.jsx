@@ -1,5 +1,5 @@
 import "./Caption.css";
 
 export default function Caption() {
-  return <caption className="Caption">Contact Manager</caption>;
+  return <div className="Caption">Contact Manager</div>;
 }

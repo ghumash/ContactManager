@@ -15,13 +15,16 @@ export default function ListItem({
 }) {
   const [iconSelector, setIconSelector] = useState();
 
-  const iconMinus = (
-    <FontAwesomeIcon
-      icon={faMinus}
-      onClick={() => {
-        setIconSelector(areYouSure);
-      }}
-    />
+  const defaultIcons = (
+    <>
+      <FontAwesomeIcon icon={faUserPen} />
+      <FontAwesomeIcon
+        icon={faMinus}
+        onClick={() => {
+          setIconSelector(areYouSure);
+        }}
+      />
+    </>
   );
 
   const areYouSure = (
@@ -42,26 +45,25 @@ export default function ListItem({
   );
 
   return (
-    <tr className="ListItem-row">
-      <td className="ListItem-item">
+    <div className="ListItem-row">
+      <div className="ListItem-item">
         <label className="checkbox">
           <input type="checkbox" />
           <span></span>
         </label>
-      </td>
-      <td className="ListItem-item">
+      </div>
+      <div className="ListItem-item">
         {avatar}
         {firstName} {lastName}
-      </td>
-      <td className="ListItem-item">{email}</td>
-      <td className="ListItem-item">{phone}</td>
-      <td className="ListItem-item">{profession}</td>
-      <td className="ListItem-item">
+      </div>
+      <div className="ListItem-item">{email}</div>
+      <div className="ListItem-item">{phone}</div>
+      <div className="ListItem-item">{profession}</div>
+      <div className="ListItem-item">
         <div className="ListItem-icon-group">
-          <FontAwesomeIcon icon={faUserPen} />
-          {!iconSelector ? iconMinus : iconSelector}
+          {!iconSelector ? defaultIcons : iconSelector}
         </div>
-      </td>
-    </tr>
+      </div>
+    </div>
   );
 }

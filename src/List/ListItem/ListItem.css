@@ -1,6 +1,28 @@
-.ListItem-item {
-  padding: 15px;
+.ListItem-row {
+  display: flex;
+  align-items: center;
   border-bottom: 1px solid #ccc;
+}
+
+.ListItem-item {
+  padding: 1em;
+  word-break: break-all;
+}
+
+.ListItem-item:nth-child(2) {
+  width: 23%;
+}
+.ListItem-item:nth-child(3) {
+  width: 30%;
+}
+.ListItem-item:nth-child(4) {
+  width: 17%;
+}
+.ListItem-item:nth-child(5) {
+  width: 15%;
+}
+.ListItem-item:nth-child(6) {
+  width: 15%;
 }
 
 .ListItem-icon-group {

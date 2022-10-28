@@ -22,22 +22,23 @@ export default function List() {
       swal.close();
     }, 400);
   };
-  console.log(contacts)
 
   const onDelete = (id) => {
     setContacts(contacts.filter((contact) => contact.id !== id));
     popup("Deleted!");
   };
 
+  const onEdit = () => {};
+
   return (
-    <table className="List-container">
+    <div className="List-container">
       <Caption />
 
-      <thead>
+      <div className="ListHeader">
         <ListHeader />
-      </thead>
+      </div>
 
-      <tbody>
+      <div className="List">
         {contacts.map((contact) => {
           return (
             <ListItem
@@ -53,7 +54,7 @@ export default function List() {
             />
           );
         })}
-      </tbody>
-    </table>
+      </div>
+    </div>
   );
 }
