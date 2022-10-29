@@ -6,15 +6,15 @@ import ListItem from "./ListItem/ListItem";
 
 import Swal from "sweetalert2";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function List() {
   const [contacts, setContacts] = useState([...list]);
 
-  const onDelete = (id) => {
+  const onDelete = (id, firstName, lastName) => {
     Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
+      // title: `${firstName} ${lastName}`,
+      text: `Do you want delete "${firstName} ${lastName}" Contact?`,
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
@@ -24,6 +24,24 @@ export default function List() {
       if (result.isConfirmed) {
         setContacts(contacts.filter((contact) => contact.id !== id));
         Swal.fire("Deleted!", "Contact has been deleted.", "success");
+      }
+    });
+  };
+
+  const onEdit = (id, firstName, lastName) => {
+    Swal.fire({
+      title: `${firstName} ${lastName}`,
+      html: "<div><input type='text' /><input type='text' /><input type='text' /><input type='text'/></div>",
+      showCloseButton: true,
+      showCancelButton: true,
+      focusConfirm: false,
+      confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
+      confirmButtonAriaLabel: "Thumbs up, great!",
+      cancelButtonText: `<i class="fa fa-thumbs-down"></i>`,
+      cancelButtonAriaLabel: "Thumbs down",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log("armen");
       }
     });
   };
@@ -49,6 +67,7 @@ export default function List() {
               phone={contact.phone}
               profession={contact.profession}
               onDelete={onDelete}
+              onEdit={onEdit}
             />
           );
         })}

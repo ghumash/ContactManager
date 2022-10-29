@@ -13,6 +13,7 @@ export default function ListItem({
   phone,
   profession,
   onDelete,
+  onEdit,
 }) {
   return (
     <div className="ListItem-row">
@@ -31,11 +32,16 @@ export default function ListItem({
       <div className="ListItem-item">{profession}</div>
       <div className="ListItem-item">
         <div className="ListItem-icon-group">
-          <FontAwesomeIcon icon={faUserPen} />
+          <FontAwesomeIcon
+            icon={faUserPen}
+            onClick={() => {
+              onEdit(id, firstName, lastName);
+            }}
+          />
           <FontAwesomeIcon
             icon={faMinus}
             onClick={() => {
-              onDelete(id)
+              onDelete(id, firstName, lastName);
             }}
           />
         </div>
