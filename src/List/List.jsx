@@ -28,23 +28,7 @@ export default function List() {
     });
   };
 
-  const onEdit = (id, firstName, lastName) => {
-    Swal.fire({
-      title: `${firstName} ${lastName}`,
-      html: "<div><input type='text' /><input type='text' /><input type='text' /><input type='text'/></div>",
-      showCloseButton: true,
-      showCancelButton: true,
-      focusConfirm: false,
-      confirmButtonText: '<i class="fa fa-thumbs-up"></i> Great!',
-      confirmButtonAriaLabel: "Thumbs up, great!",
-      cancelButtonText: `<i class="fa fa-thumbs-down"></i>`,
-      cancelButtonAriaLabel: "Thumbs down",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        console.log("armen");
-      }
-    });
-  };
+  const onEdit = (id, firstName, lastName) => {};
 
   return (
     <div className="List-container">
