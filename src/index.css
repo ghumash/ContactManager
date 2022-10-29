@@ -8,6 +8,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+::selection {
+  color: rgb(255 188 0);
+  background-color: purple;
+}
+
 li {
   list-style-type: none;
 }
