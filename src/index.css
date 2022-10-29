@@ -24,6 +24,7 @@ input {
 .checkbox input {
   display: none;
 }
+
 .checkbox span {
   height: 5px;
   width: 5px;
