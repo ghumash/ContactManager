@@ -6,29 +6,12 @@ import ListItem from "./ListItem/ListItem";
 
 import { useState, useEffect } from "react";
 
-import swal from "sweetalert";
-
 export default function List() {
   const [contacts, setContacts] = useState([...list]);
 
-  const popup = (text) => {
-    swal({
-      title: text,
-      text: false,
-      icon: false,
-      button: false,
-    });
-    setTimeout(() => {
-      swal.close();
-    }, 400);
-  };
-
   const onDelete = (id) => {
     setContacts(contacts.filter((contact) => contact.id !== id));
-    popup("Deleted!");
   };
-
-  const onEdit = () => {};
 
   return (
     <div className="List-container">
