@@ -1,4 +1,5 @@
 import "./ListItem.css";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faUserPen, faMinus } from "@fortawesome/free-solid-svg-icons";
@@ -14,6 +15,7 @@ export default function ListItem({
   onDelete,
   onEdit,
 }) {
+
   return (
     <div className="ListItem-row">
       <div className="ListItem-item">

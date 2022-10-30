@@ -11,6 +11,14 @@ import EditPopup from "./EditPopup/EditPopup";
 
 export default function List() {
   const [contacts, setContacts] = useState([...list]);
+  const [editPopupStatus, setEditPopupStatus] = useState();
+
+  const EditPopupComponent = (
+    <EditPopup
+      EditPopupMask={EditPopupMask}
+      setEditPopupStatus={setEditPopupStatus}
+    />
+  );
 
   const onDelete = (id, firstName, lastName) => {
     Swal.fire({
@@ -28,11 +36,20 @@ export default function List() {
     });
   };
 
-  const onEdit = (id, firstName, lastName) => {};
+  const onEdit = (id, firstName, lastName) => {
+    setEditPopupStatus(EditPopupComponent);
+  };
+
+  function EditPopupMask(e) {
+    if (e.target.className === "EditPopup-mask") {
+      e.target.hidden = true;
+    }
+  }
 
   return (
     <div className="List-container">
-      <EditPopup />
+      {editPopupStatus ? editPopupStatus : null}
+
       <Caption />
 
       <div className="ListHeader">
@@ -53,6 +70,8 @@ export default function List() {
               profession={contact.profession}
               onDelete={onDelete}
               onEdit={onEdit}
+              editPopupStatus={editPopupStatus}
+              setEditPopupStatus={setEditPopupStatus}
             />
           );
         })}
