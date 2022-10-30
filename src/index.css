@@ -10,7 +10,23 @@ body {
 
 ::selection {
   color: rgb(255 188 0);
-  background-color: purple;
+  background-color: #888;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(255, 204, 66);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ccc;
 }
 
 p {

@@ -1,17 +1,16 @@
-.EditPopup-mask {
+.Popup-mask {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: auto;
   background-color: #00000032;
 
   z-index: 1000;
 }
 
-.EditPopup-container {
+.Popup-container {
   width: 300px;
   padding: 50px 70px;
-  margin: 0 auto;
-  margin-top: 10px;
+  margin: 50px auto;
 
   display: flex;
   flex-direction: column;
@@ -20,15 +19,15 @@
   border-radius: 15px;
 }
 
-.EditPopup-item {
+.Popup-item {
   margin-bottom: 20px;
 }
 
-.EditPopup-item > p {
+.Popup-item > p {
   margin-bottom: 5px;
 }
 
-.EditPopup-input {
+.Popup-input {
   width: 100%;
   border-radius: 10px;
   padding: 12px 10px;
@@ -36,33 +35,33 @@
   font-size: 17px;
 }
 
-.EditPopup-btn-group {
+.Popup-btn-group {
   margin-top: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.EditPopup-btn {
-  padding: 10px 45px;
+.Popup-btn {
+  padding: 10px 50px;
   border-radius: 10px;
 }
 
-.EditPopup-btn:first-child {
+.Popup-btn:first-child {
   background-color: rgb(255, 204, 66);
   transition: 0.2s ease-in-out;
 }
 
-.EditPopup-btn:first-child:hover {
+.Popup-btn:first-child:hover {
   background-color: rgb(255 188 0);
 }
 
-.EditPopup-btn:last-child {
+.Popup-btn:last-child {
   background-color: rgb(209 209 209);
   transition: 0.2s ease-in-out;
 }
 
-.EditPopup-btn:last-child:hover {
+.Popup-btn:last-child:hover {
   background-color: rgb(121, 121, 121);
   color: #fff;
 }

@@ -15,7 +15,6 @@ export default function ListItem({
   onDelete,
   onEdit,
 }) {
-
   return (
     <div className="ListItem-row">
       <div className="ListItem-item">
@@ -36,7 +35,7 @@ export default function ListItem({
           <FontAwesomeIcon
             icon={faUserPen}
             onClick={() => {
-              onEdit(id, firstName, lastName);
+              onEdit(firstName, lastName);
             }}
           />
           <FontAwesomeIcon

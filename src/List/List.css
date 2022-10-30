@@ -1,3 +1,7 @@
+.List {
+  padding: 0 100px;
+}
+
 /*sweet alert*/
 .btnCopy:hover,
 .btnPaste:hover,
@@ -22,7 +26,3 @@
   margin-top: 96px;
 }
 /*sweet alert end*/
-
-.List-container {
-  margin: 0 auto;
-}

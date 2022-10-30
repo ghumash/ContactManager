@@ -7,18 +7,11 @@ import ListItem from "./ListItem/ListItem";
 import Swal from "sweetalert2";
 
 import { useState } from "react";
-import EditPopup from "./EditPopup/EditPopup";
+import Popup from "./Popup/Popup";
 
 export default function List() {
   const [contacts, setContacts] = useState([...list]);
-  const [editPopupStatus, setEditPopupStatus] = useState();
-
-  const EditPopupComponent = (
-    <EditPopup
-      EditPopupMask={EditPopupMask}
-      setEditPopupStatus={setEditPopupStatus}
-    />
-  );
+  const [popupStatus, setPopupStatus] = useState();
 
   const onDelete = (id, firstName, lastName) => {
     Swal.fire({
@@ -36,19 +29,25 @@ export default function List() {
     });
   };
 
-  const onEdit = (id, firstName, lastName) => {
-    setEditPopupStatus(EditPopupComponent);
+  const onEdit = (firstName, lastName) => {
+    setPopupStatus(
+      <Popup
+        setPopupStatus={setPopupStatus}
+        firstName={firstName}
+        lastName={lastName}
+      />
+    );
   };
 
-  function EditPopupMask(e) {
-    if (e.target.className === "EditPopup-mask") {
+  function popupMask(e) {
+    if (e.target.className === "Popup-mask") {
       e.target.hidden = true;
     }
   }
 
   return (
     <div className="List-container">
-      {editPopupStatus ? editPopupStatus : null}
+      {popupStatus ? popupStatus : null}
 
       <Caption />
 
@@ -70,8 +69,6 @@ export default function List() {
               profession={contact.profession}
               onDelete={onDelete}
               onEdit={onEdit}
-              editPopupStatus={editPopupStatus}
-              setEditPopupStatus={setEditPopupStatus}
             />
           );
         })}

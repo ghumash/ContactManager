@@ -1,3 +1,7 @@
+.ListHeader {
+  padding: 0 100px;
+}
+
 .ListHeader-row {
   background-color: #f8f8f8;
   display: flex;
