@@ -1,0 +1,65 @@
+.EditPopup-mask {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #00000032;
+}
+
+.EditPopup-container {
+  display: flex;
+  flex-direction: column;
+  padding: 50px 70px;
+  position: absolute;
+  top: 10%;
+  left: 40%;
+  background-color: #e8e8e8;
+
+  border-radius: 15px;
+}
+
+.EditPopup-item {
+  margin-bottom: 20px;
+}
+
+.EditPopup-item > p {
+  margin-bottom: 5px;
+}
+
+.EditPopup-input {
+  width: 250px;
+  border-radius: 10px;
+  padding: 12px 10px;
+
+  font-size: 17px;
+}
+
+.EditPopup-btn-group {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.EditPopup-btn {
+  padding: 10px 40px;
+  border-radius: 10px;
+}
+
+.EditPopup-btn:first-child {
+  background-color: rgb(255, 204, 66);
+  transition: 0.2s ease-in-out;
+}
+
+.EditPopup-btn:first-child:hover {
+  background-color: rgb(255 188 0);
+}
+
+.EditPopup-btn:last-child {
+  background-color: rgb(209 209 209);
+  transition: 0.2s ease-in-out;
+}
+
+.EditPopup-btn:last-child:hover {
+  background-color: rgb(121, 121, 121);
+  color: #fff;
+}

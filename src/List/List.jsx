@@ -7,13 +7,13 @@ import ListItem from "./ListItem/ListItem";
 import Swal from "sweetalert2";
 
 import { useState } from "react";
+import EditPopup from "./EditPopup/EditPopup";
 
 export default function List() {
   const [contacts, setContacts] = useState([...list]);
 
   const onDelete = (id, firstName, lastName) => {
     Swal.fire({
-      // title: `${firstName} ${lastName}`,
       text: `Do you want delete "${firstName} ${lastName}" Contact?`,
       icon: "warning",
       showCancelButton: true,
@@ -32,6 +32,7 @@ export default function List() {
 
   return (
     <div className="List-container">
+      <EditPopup />
       <Caption />
 
       <div className="ListHeader">
