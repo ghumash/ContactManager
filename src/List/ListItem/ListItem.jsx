@@ -35,7 +35,7 @@ export default function ListItem({
           <FontAwesomeIcon
             icon={faUserPen}
             onClick={() => {
-              onEdit(firstName, lastName);
+              onEdit(id, firstName, lastName, phone, email, profession);
             }}
           />
           <FontAwesomeIcon

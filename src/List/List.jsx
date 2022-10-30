@@ -29,21 +29,21 @@ export default function List() {
     });
   };
 
-  const onEdit = (firstName, lastName) => {
+  const onEdit = (id, firstName, lastName, phone, email, profession) => {
     setPopupStatus(
       <Popup
-        setPopupStatus={setPopupStatus}
+        id={id}
         firstName={firstName}
         lastName={lastName}
+        phone={phone}
+        email={email}
+        profession={profession}
+        contacts={contacts}
+        setContacts={setContacts}
+        setPopupStatus={setPopupStatus}
       />
     );
   };
-
-  function popupMask(e) {
-    if (e.target.className === "Popup-mask") {
-      e.target.hidden = true;
-    }
-  }
 
   return (
     <div className="List-container">
