@@ -68,6 +68,8 @@ input:focus {
   background-color: transparent;
   border-radius: 2px;
   padding: 3px;
+
+  cursor: pointer;
 }
 
 [type="checkbox"]:checked + span:before {

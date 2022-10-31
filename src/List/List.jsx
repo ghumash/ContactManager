@@ -32,6 +32,24 @@ export default function List() {
   const onEdit = (id, firstName, lastName, phone, email, profession) => {
     setPopupStatus(
       <Popup
+        button={"Save"}
+        id={id}
+        firstName={firstName}
+        lastName={lastName}
+        phone={phone}
+        email={email}
+        profession={profession}
+        contacts={contacts}
+        setContacts={setContacts}
+        setPopupStatus={setPopupStatus}
+      />
+    );
+  };
+
+  const onAdd = (id, firstName, lastName, phone, email, profession) => {
+    setPopupStatus(
+      <Popup
+        button={"Add"}
         id={id}
         firstName={firstName}
         lastName={lastName}
@@ -52,7 +70,7 @@ export default function List() {
       <Caption />
 
       <div className="ListHeader">
-        <ListHeader />
+        <ListHeader onAdd={onAdd} />
       </div>
 
       <div className="List">

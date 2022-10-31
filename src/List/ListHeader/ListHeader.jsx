@@ -1,6 +1,6 @@
 import "./ListHeader.css";
 
-export default function ListHeader() {
+export default function ListHeader({ onAdd }) {
   return (
     <div className="ListHeader-row">
       <div className="ListHeader-item">
@@ -13,7 +13,16 @@ export default function ListHeader() {
       <div className="ListHeader-item">EMAIL</div>
       <div className="ListHeader-item">PHONE</div>
       <div className="ListHeader-item">PROFESSION</div>
-      <div className="ListHeader-item"></div>
+      <div className="ListHeader-item">
+        <button
+          className="ListHeader-add-button"
+          onClick={() => {
+            onAdd();
+          }}
+        >
+          Add
+        </button>
+      </div>
     </div>
   );
 }

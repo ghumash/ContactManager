@@ -4,6 +4,7 @@ import "./Popup.css";
 import { v4 as uuidv4 } from "uuid";
 
 export default function Popup({
+  button,
   id,
   firstName,
   lastName,
@@ -20,19 +21,52 @@ export default function Popup({
   const [emailInput, setEmailInput] = useState(email);
   const [professionInput, setProfessionInput] = useState(profession);
 
+  const newContact = {
+    id: uuidv4(),
+    firstName: firstNameInput,
+    lastName: lastNameInput,
+    email: emailInput,
+    phone: phoneInput,
+    profession: professionInput,
+  };
+
   const changedContacts = contacts.map((contact) => {
     if (contact.id !== id) {
       return contact;
     }
-    return {
-      id: uuidv4(),
-      firstName: firstNameInput,
-      lastName: lastNameInput,
-      email: emailInput,
-      phone: phoneInput,
-      profession: professionInput,
-    };
+    return newContact;
   });
+
+  const isEmpty = () => {
+    switch ("" || undefined) {
+      case firstNameInput:
+      case lastNameInput:
+      case phoneInput:
+      case emailInput:
+      case professionInput:
+        return false;
+      default:
+        return true;
+    }
+  };
+
+  const saveButtonHandle = () => {
+    if (isEmpty()) {
+      setContacts([...changedContacts]);
+      setPopupStatus(null);
+    } else {
+      alert("Please fill in all fields");
+    }
+  };
+
+  const addButtonHandle = () => {
+    if (isEmpty()) {
+      setContacts([...contacts, newContact]);
+      setPopupStatus(null);
+    } else {
+      alert("Please fill in all fields");
+    }
+  };
 
   return (
     <div
@@ -106,12 +140,18 @@ export default function Popup({
           <button
             className="Popup-btn"
             type="button"
-            onClick={(e) => {
-              setContacts([...changedContacts]);
-              setPopupStatus(null);
+            onClick={() => {
+              switch (button) {
+                case "Save":
+                  saveButtonHandle();
+                  break;
+                case "Add":
+                  addButtonHandle();
+                  break;
+              }
             }}
           >
-            Save
+            {button}
           </button>
           <button
             className="Popup-btn"
