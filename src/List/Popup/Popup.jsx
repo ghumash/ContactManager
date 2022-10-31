@@ -15,11 +15,11 @@ export default function Popup({
   setContacts,
   setPopupStatus,
 }) {
-  const [firstNameInput, setFirstNameInput] = useState(firstName);
-  const [lastNameInput, setLastNameInput] = useState(lastName);
-  const [phoneInput, setPhoneInput] = useState(phone);
-  const [emailInput, setEmailInput] = useState(email);
-  const [professionInput, setProfessionInput] = useState(profession);
+  const [firstNameInput, setFirstNameInput] = useState("");
+  const [lastNameInput, setLastNameInput] = useState("");
+  const [phoneInput, setPhoneInput] = useState("");
+  const [emailInput, setEmailInput] = useState("");
+  const [professionInput, setProfessionInput] = useState("");
 
   const newContact = {
     id: uuidv4(),
@@ -32,13 +32,13 @@ export default function Popup({
 
   const changedContacts = contacts.map((contact) => {
     if (contact.id !== id) {
-      return contact;
+      return contact
     }
-    return newContact;
+    // return newContact;
   });
 
   const isEmpty = () => {
-    switch ("" || undefined) {
+    switch ("") {
       case firstNameInput:
       case lastNameInput:
       case phoneInput:
@@ -51,12 +51,13 @@ export default function Popup({
   };
 
   const saveButtonHandle = () => {
-    if (isEmpty()) {
+    // if (isEmpty()) {
+      
       setContacts([...changedContacts]);
-      setPopupStatus(null);
-    } else {
-      alert("Please fill in all fields");
-    }
+      // setPopupStatus(null);
+    // } else {
+      // alert("Please fill in all fields");
+    // }
   };
 
   const addButtonHandle = () => {
