@@ -1,8 +1,11 @@
 .Caption {
   padding: 30px 0;
-  margin-bottom: 15px;
+  margin: 30px 100px;
+
+  background-color: #f8f8f8;
+  border-radius: 15px;
 
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
   color: rgb(255 188 0);
 }

@@ -40,7 +40,7 @@
   background-color: rgb(255, 204, 66);
   border-radius: 20px;
 
-  transition: .2s ease-in-out;
+  transition: 0.2s ease-in-out;
   cursor: pointer;
 }
 .ListHeader-add-button:hover {
