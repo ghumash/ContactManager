@@ -51,11 +51,11 @@ export default function List() {
       <Popup
         button={"Add"}
         id={id}
-        firstName={firstName}
-        lastName={lastName}
-        phone={phone}
-        email={email}
-        profession={profession}
+        firstName={""}
+        lastName={""}
+        phone={""}
+        email={""}
+        profession={""}
         contacts={contacts}
         setContacts={setContacts}
         setPopupStatus={setPopupStatus}
