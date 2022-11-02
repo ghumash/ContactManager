@@ -1,11 +1,16 @@
 import "./ListHeader.css";
 
-export default function ListHeader({ onAdd }) {
+export default function ListHeader({ onAdd, onCheckedAll }) {
   return (
     <div className="ListHeader-row">
       <div className="ListHeader-item">
         <label className="checkbox">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            onChange={() => {
+              onCheckedAll();
+            }}
+          />
           <span></span>
         </label>
       </div>

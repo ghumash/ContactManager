@@ -12,6 +12,34 @@ import Popup from "./Popup/Popup";
 export default function List() {
   const [contacts, setContacts] = useState([...list]);
   const [popupStatus, setPopupStatus] = useState();
+  const [checkedIdArr, setCheckedIdArr] = useState([]);
+  const [checkedInputArr, setCheckedInputArr] = useState([]);
+
+  const checkedIdCopy = [...checkedIdArr];
+
+  const onCheckedAll = () => {};
+
+  const onChecked = (e, id) => {
+    if (e.target.checked) {
+      checkedIdCopy.push(id);
+      checkedInputArr.push(e.target);
+      setCheckedIdArr(checkedIdCopy);
+      setCheckedInputArr(checkedInputArr);
+    } else {
+      setCheckedIdArr(checkedIdCopy.filter((checkedId) => checkedId !== id));
+      setCheckedInputArr(
+        checkedInputArr.filter((checkedInput) => checkedInput.checked)
+      );
+    }
+  };
+
+  const onDeleteChecked = () => {
+    setContacts(
+      contacts.filter((contact) => !checkedIdArr.includes(contact.id))
+    );
+    setCheckedIdArr([]);
+    setCheckedInputArr([]);
+  };
 
   const onDelete = (id, firstName, lastName) => {
     Swal.fire({
@@ -46,11 +74,10 @@ export default function List() {
     );
   };
 
-  const onAdd = (id, firstName, lastName, phone, email, profession) => {
+  const onAdd = () => {
     setPopupStatus(
       <Popup
         button={"Add"}
-        id={id}
         firstName={""}
         lastName={""}
         phone={""}
@@ -70,7 +97,7 @@ export default function List() {
       <Caption />
 
       <div className="ListHeader">
-        <ListHeader onAdd={onAdd} />
+        <ListHeader onAdd={onAdd} onCheckedAll={onCheckedAll} />
       </div>
 
       <div className="List">
@@ -87,10 +114,18 @@ export default function List() {
               profession={contact.profession}
               onDelete={onDelete}
               onEdit={onEdit}
+              onChecked={onChecked}
             />
           );
         })}
       </div>
+      <button
+        type="button"
+        className="delete-checked-btn"
+        onClick={onDeleteChecked}
+      >
+        Delete Checked
+      </button>
     </div>
   );
 }

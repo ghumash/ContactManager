@@ -3,6 +3,7 @@ import "./ListItem.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { faUserPen, faMinus } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 export default function ListItem({
   id,
@@ -14,12 +15,18 @@ export default function ListItem({
   profession,
   onDelete,
   onEdit,
+  onChecked,
 }) {
   return (
     <div className="ListItem-row">
       <div className="ListItem-item">
         <label className="checkbox">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            onChange={(e) => {
+              onChecked(e, id);
+            }}
+          />
           <span></span>
         </label>
       </div>
