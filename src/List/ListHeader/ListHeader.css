@@ -4,15 +4,16 @@
 }
 
 .ListHeader-row {
-  background-color: #f8f8f8;
+  height: 40px;
   display: flex;
   align-items: center;
 
-  border-radius: 10px;
+  background-color: #f8f8f8;
+  border-radius: 20px;
 }
 
 .ListHeader-item {
-  padding: 15px;
+  padding: 0 15px;
   color: rgb(255 188 0);
 }
 
@@ -30,13 +31,13 @@
 }
 .ListHeader-item:nth-child(6) {
   width: 15%;
-  padding: 0 15px;
+  height: 100%;
+  padding: 0 0 0 15px;
 }
 
 .ListHeader-add-button {
   width: 100%;
-  height: 30px;
-
+  height: 100%;
   background-color: rgb(255, 204, 66);
   border-radius: 20px;
 
