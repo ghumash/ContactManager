@@ -6,29 +6,41 @@ import ListItem from "./ListItem/ListItem";
 
 import Swal from "sweetalert2";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Popup from "./Popup/Popup";
 
 export default function List() {
   const [contacts, setContacts] = useState([...list]);
   const [popupStatus, setPopupStatus] = useState();
+
   const [checkedIdArr, setCheckedIdArr] = useState([]);
-  const [check, setCheck] = useState(false);
   const checkedIdCopy = [...checkedIdArr];
+
+  const [checkAll, setCheckAll] = useState(false);
 
   const onCheck = (e, id) => {
     const { name } = e.target;
 
     if (name === "checkAll") {
       if (e.target.checked) {
-        checkedIdCopy.push(id);
+        setCheckAll(true);
+        contacts.map((contact) => {
+          if (!checkedIdCopy.includes(contact.id)) {
+            checkedIdCopy.push(contact.id);
+          }
+        });
         setCheckedIdArr(checkedIdCopy);
       } else {
-        setCheckedIdArr(checkedIdCopy.filter((checkedId) => checkedId !== id));
+        setCheckAll(false);
+        setCheckedIdArr([]);
       }
-    }
-    
-    else if (name === "checkItem") {
+    } else if (name === "checkItem") {
+      if (contacts.length === checkedIdArr.length) {
+        setCheckAll(true);
+      }
+      if (checkAll) {
+        setCheckAll(false);
+      }
       if (e.target.checked) {
         checkedIdCopy.push(id);
         setCheckedIdArr(checkedIdCopy);
@@ -36,7 +48,6 @@ export default function List() {
         setCheckedIdArr(checkedIdCopy.filter((checkedId) => checkedId !== id));
       }
     }
-    console.log(name);
   };
 
   const onDeleteChecked = () => {
@@ -117,8 +128,8 @@ export default function List() {
               email={contact.email}
               phone={contact.phone}
               profession={contact.profession}
-              check={check}
-              setCheck={setCheck}
+              checkedIdArr={checkedIdArr}
+              checkAll={checkAll}
               onDelete={onDelete}
               onEdit={onEdit}
               onCheck={onCheck}
