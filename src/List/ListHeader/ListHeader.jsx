@@ -1,14 +1,15 @@
 import "./ListHeader.css";
 
-export default function ListHeader({ onAdd, onCheckedAll }) {
+export default function ListHeader({ onAdd, onCheck }) {
   return (
     <div className="ListHeader-row">
       <div className="ListHeader-item">
         <label className="checkbox">
           <input
+            name="checkAll"
             type="checkbox"
-            onChange={() => {
-              onCheckedAll();
+            onChange={(e) => {
+              onCheck(e);
             }}
           />
           <span></span>

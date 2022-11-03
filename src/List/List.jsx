@@ -6,31 +6,37 @@ import ListItem from "./ListItem/ListItem";
 
 import Swal from "sweetalert2";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Popup from "./Popup/Popup";
 
 export default function List() {
   const [contacts, setContacts] = useState([...list]);
   const [popupStatus, setPopupStatus] = useState();
   const [checkedIdArr, setCheckedIdArr] = useState([]);
-  const [checkedInputArr, setCheckedInputArr] = useState([]);
-
+  const [check, setCheck] = useState(false);
   const checkedIdCopy = [...checkedIdArr];
 
-  const onCheckedAll = () => {};
+  const onCheck = (e, id) => {
+    const { name } = e.target;
 
-  const onChecked = (e, id) => {
-    if (e.target.checked) {
-      checkedIdCopy.push(id);
-      checkedInputArr.push(e.target);
-      setCheckedIdArr(checkedIdCopy);
-      setCheckedInputArr(checkedInputArr);
-    } else {
-      setCheckedIdArr(checkedIdCopy.filter((checkedId) => checkedId !== id));
-      setCheckedInputArr(
-        checkedInputArr.filter((checkedInput) => checkedInput.checked)
-      );
+    if (name === "checkAll") {
+      if (e.target.checked) {
+        checkedIdCopy.push(id);
+        setCheckedIdArr(checkedIdCopy);
+      } else {
+        setCheckedIdArr(checkedIdCopy.filter((checkedId) => checkedId !== id));
+      }
     }
+    
+    else if (name === "checkItem") {
+      if (e.target.checked) {
+        checkedIdCopy.push(id);
+        setCheckedIdArr(checkedIdCopy);
+      } else {
+        setCheckedIdArr(checkedIdCopy.filter((checkedId) => checkedId !== id));
+      }
+    }
+    console.log(name);
   };
 
   const onDeleteChecked = () => {
@@ -38,7 +44,6 @@ export default function List() {
       contacts.filter((contact) => !checkedIdArr.includes(contact.id))
     );
     setCheckedIdArr([]);
-    setCheckedInputArr([]);
   };
 
   const onDelete = (id, firstName, lastName) => {
@@ -97,7 +102,7 @@ export default function List() {
       <Caption />
 
       <div className="ListHeader">
-        <ListHeader onAdd={onAdd} onCheckedAll={onCheckedAll} />
+        <ListHeader onAdd={onAdd} onCheck={onCheck} />
       </div>
 
       <div className="List">
@@ -112,9 +117,11 @@ export default function List() {
               email={contact.email}
               phone={contact.phone}
               profession={contact.profession}
+              check={check}
+              setCheck={setCheck}
               onDelete={onDelete}
               onEdit={onEdit}
-              onChecked={onChecked}
+              onCheck={onCheck}
             />
           );
         })}
