@@ -14,7 +14,6 @@ export default function ListItem({
   phone,
   profession,
   checkedIdArr,
-  checkAll,
   onDelete,
   onEdit,
   onCheck,

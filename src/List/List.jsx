@@ -17,14 +17,11 @@ export default function List() {
   const [checkedIdArr, setCheckedIdArr] = useState([]);
   const checkedIdCopy = [...checkedIdArr];
 
-  const [checkAll, setCheckAll] = useState(false);
-
   const onCheck = (e, id) => {
     const { name } = e.target;
 
     if (name === "checkAll") {
       if (e.target.checked) {
-        setCheckAll(true);
         contacts.map((contact) => {
           if (!checkedIdCopy.includes(contact.id)) {
             checkedIdCopy.push(contact.id);
@@ -32,16 +29,9 @@ export default function List() {
         });
         setCheckedIdArr(checkedIdCopy);
       } else {
-        setCheckAll(false);
         setCheckedIdArr([]);
       }
     } else if (name === "checkItem") {
-      if (contacts.length === checkedIdArr.length) {
-        setCheckAll(true);
-      }
-      if (checkAll) {
-        setCheckAll(false);
-      }
       if (e.target.checked) {
         checkedIdCopy.push(id);
         setCheckedIdArr(checkedIdCopy);
@@ -62,9 +52,10 @@ export default function List() {
     Swal.fire({
       text: `Do you want delete "${firstName} ${lastName}" Contact?`,
       icon: "warning",
+      iconColor: "rgb(255, 204, 66)",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
+      confirmButtonColor: "rgb(255, 204, 66)",
+      cancelButtonColor: "tomato",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
@@ -77,6 +68,7 @@ export default function List() {
   const onEdit = (id, firstName, lastName, phone, email, profession) => {
     setPopupStatus(
       <Popup
+        title={"Edit Contact"}
         button={"Save"}
         id={id}
         firstName={firstName}
@@ -94,6 +86,7 @@ export default function List() {
   const onAdd = () => {
     setPopupStatus(
       <Popup
+        title={"Add Contact"}
         button={"Add"}
         firstName={""}
         lastName={""}
@@ -140,7 +133,6 @@ export default function List() {
               phone={contact.phone}
               profession={contact.profession}
               checkedIdArr={checkedIdArr}
-              checkAll={checkAll}
               onDelete={onDelete}
               onEdit={onEdit}
               onCheck={onCheck}

@@ -4,6 +4,7 @@ import "./Popup.css";
 import { v4 as uuidv4 } from "uuid";
 
 export default function Popup({
+  title,
   button,
   id,
   firstName,
@@ -79,9 +80,7 @@ export default function Popup({
       }}
     >
       <form className="Popup-container">
-        <h1>
-          {firstName} {lastName}
-        </h1>
+        <h1 className="Popup-title">{title}</h1>
         <label className="Popup-item">
           <p>First Name</p>
           <input
