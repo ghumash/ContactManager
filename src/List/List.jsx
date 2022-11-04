@@ -48,10 +48,29 @@ export default function List() {
   };
 
   const onDeleteChecked = () => {
-    setContacts(
-      contacts.filter((contact) => !checkedIdArr.includes(contact.id))
-    );
-    setCheckedIdArr([]);
+    if (checkedIdArr.length !== 0) {
+      Swal.fire({
+        text: `Do you want to delete these contacts?`,
+        icon: "warning",
+        iconColor: "rgb(255, 204, 66)",
+        showCancelButton: true,
+        confirmButtonColor: "rgb(255, 204, 66)",
+        cancelButtonColor: "tomato",
+        confirmButtonText: "Yes, delete these contacts!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          setContacts(
+            contacts.filter((contact) => !checkedIdArr.includes(contact.id))
+          );
+          setCheckedIdArr([]);
+          Swal.fire({
+            icon: "success",
+            text: "Contacts has been deleted!",
+            confirmButtonColor: "rgb(255, 204, 66)",
+          });
+        }
+      });
+    }
   };
 
   const onDelete = (id, firstName, lastName) => {
