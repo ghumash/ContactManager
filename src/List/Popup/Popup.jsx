@@ -1,6 +1,7 @@
 import "./Popup.css";
 
 import { v4 as uuidv4 } from "uuid";
+import Swal from "sweetalert2";
 
 import { useState } from "react";
 
@@ -66,8 +67,17 @@ export default function Popup({
     if (isEmpty()) {
       setContacts([...contacts, newContact]);
       setPopupStatus(null);
+      Swal.fire({
+        text: `Contact Added!`,
+        icon: "success",
+        confirmButtonColor: "rgb(255, 204, 66)",
+      });
     } else {
-      alert("Please fill in all fields");
+      Swal.fire({
+        text: `Please fill in all fields`,
+        icon: "info",
+        confirmButtonColor: "rgb(255, 204, 66)",
+      });
     }
   };
 

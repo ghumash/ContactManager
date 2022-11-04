@@ -126,7 +126,7 @@ export default function List() {
         setContacts={setContacts}
         setPopupStatus={setPopupStatus}
       />
-    );
+    )
   };
 
   return (
