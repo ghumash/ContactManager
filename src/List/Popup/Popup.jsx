@@ -90,7 +90,7 @@ export default function Popup({
         }
       }}
     >
-      <form className="Popup-container">
+      <form className="Popup-container swal2-show">
         <h1 className="Popup-title">{title}</h1>
         <label className="Popup-item">
           <p>First Name</p>
