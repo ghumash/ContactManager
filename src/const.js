@@ -28,5 +28,4 @@ export const list = [
     profession: "PhD 3",
     avatar: "",
   },
-  
 ];

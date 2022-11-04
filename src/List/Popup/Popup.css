@@ -15,7 +15,7 @@
 }
 
 .Popup-container {
-  scale: .9;
+  scale: 0.9;
   padding: 50px 70px;
 
   display: flex;

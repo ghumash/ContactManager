@@ -1,9 +1,7 @@
 import "./ListItem.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-
 import { faUserPen, faMinus } from "@fortawesome/free-solid-svg-icons";
-import { useState } from "react";
 
 export default function ListItem({
   id,

@@ -1,14 +1,14 @@
 import "./List.css";
-import { list } from "../const";
 import Caption from "./Caption/Caption";
 import ListHeader from "./ListHeader/ListHeader";
 import ListItem from "./ListItem/ListItem";
+import Popup from "./Popup/Popup";
+import ListBtnSection from "./ListBtnSection/ListBtnSection";
 
 import Swal from "sweetalert2";
 
+import { list } from "../const";
 import { useState } from "react";
-import Popup from "./Popup/Popup";
-import ListBtnSection from "./ListBtnSection/ListBtnSection";
 
 export default function List() {
   const [contacts, setContacts] = useState([...list]);
@@ -66,7 +66,11 @@ export default function List() {
     }).then((result) => {
       if (result.isConfirmed) {
         setContacts(contacts.filter((contact) => contact.id !== id));
-        Swal.fire("Deleted!", "Contact has been deleted.", "success");
+        Swal.fire({
+          icon: "success",
+          text: `Contact "${firstName} ${lastName}" has been deleted.`,
+          confirmButtonColor: "rgb(255, 204, 66)",
+        });
       }
     });
   };
