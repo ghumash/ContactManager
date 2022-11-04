@@ -1,6 +1,6 @@
 import "./ListHeader.css";
 
-export default function ListHeader({ onCheck }) {
+export default function ListHeader({ onCheck, checkAll }) {
   return (
     <div className="ListHeader-row">
       <div className="ListHeader-item">
@@ -8,6 +8,7 @@ export default function ListHeader({ onCheck }) {
           <input
             name="checkAll"
             type="checkbox"
+            checked={checkAll}
             onChange={(e) => {
               onCheck(e);
             }}

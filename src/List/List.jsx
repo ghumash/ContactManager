@@ -13,7 +13,7 @@ import ListBtnSection from "./ListBtnSection/ListBtnSection";
 export default function List() {
   const [contacts, setContacts] = useState([...list]);
   const [popupStatus, setPopupStatus] = useState();
-
+  const [checkAll, setCheckAll] = useState(false);
   const [checkedIdArr, setCheckedIdArr] = useState([]);
   const checkedIdCopy = [...checkedIdArr];
 
@@ -22,6 +22,7 @@ export default function List() {
 
     if (name === "checkAll") {
       if (e.target.checked) {
+        setCheckAll(true);
         contacts.map((contact) => {
           if (!checkedIdCopy.includes(contact.id)) {
             checkedIdCopy.push(contact.id);
@@ -29,13 +30,18 @@ export default function List() {
         });
         setCheckedIdArr(checkedIdCopy);
       } else {
+        setCheckAll(false);
         setCheckedIdArr([]);
       }
     } else if (name === "checkItem") {
       if (e.target.checked) {
         checkedIdCopy.push(id);
         setCheckedIdArr(checkedIdCopy);
+        if (checkedIdCopy.length === contacts.length) {
+          setCheckAll(true);
+        }
       } else {
+        setCheckAll(false);
         setCheckedIdArr(checkedIdCopy.filter((checkedId) => checkedId !== id));
       }
     }
@@ -117,7 +123,7 @@ export default function List() {
       </div>
 
       <div className="ListHeader">
-        <ListHeader onCheck={onCheck} />
+        <ListHeader onCheck={onCheck} checkAll={checkAll} />
       </div>
 
       <div className="ListItem">
