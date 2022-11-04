@@ -8,6 +8,7 @@ import Swal from "sweetalert2";
 
 import { useState } from "react";
 import Popup from "./Popup/Popup";
+import ListBtnSection from "./ListBtnSection/ListBtnSection";
 
 export default function List() {
   const [contacts, setContacts] = useState([...list]);
@@ -107,16 +108,26 @@ export default function List() {
   };
 
   return (
-    <div className="List-container">
+    <div className="List">
       {popupStatus ? popupStatus : null}
 
-      <Caption />
-
-      <div className="ListHeader">
-        <ListHeader onAdd={onAdd} onCheck={onCheck} />
+      <div className="Caption">
+        <Caption />
       </div>
 
-      <div className="List">
+      <div className="ListBtnSection">
+        <ListBtnSection
+          onAdd={onAdd}
+          onDeleteChecked={onDeleteChecked}
+          checkedIdArr={checkedIdArr}
+        />
+      </div>
+
+      <div className="ListHeader">
+        <ListHeader onCheck={onCheck} />
+      </div>
+
+      <div className="ListItem">
         {contacts.map((contact) => {
           return (
             <ListItem
@@ -137,13 +148,6 @@ export default function List() {
           );
         })}
       </div>
-      <button
-        type="button"
-        className="delete-checked-btn"
-        onClick={onDeleteChecked}
-      >
-        Delete Checked
-      </button>
     </div>
   );
 }

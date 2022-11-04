@@ -1,4 +1,29 @@
 .List {
+  
+}
+
+.Caption {
+  padding: 30px 0 30px 16px;
+  margin: 50px 100px 15px 100px;
+
+  background-color: #f8f8f8;
+  border-radius: 15px;
+
+  text-align: left;
+  font-size: 30px;
+  color: rgb(255 188 0);
+}
+
+.ListBtnSection {
+  padding: 0 100px;
+}
+
+.ListHeader {
+  padding: 0 100px;
+  cursor: default;
+}
+
+.ListItem {
   padding: 0 100px;
 }
 
@@ -26,8 +51,3 @@
   margin-top: 96px;
 }
 /*sweet alert end*/
-
-.delete-checked-btn {
-  cursor: pointer;
-  padding: 15px;
-}

@@ -1,0 +1,43 @@
+.ListBtnSection-container {
+  height: 30px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f8f8;
+  border-radius: 20px;
+}
+
+.ListBtnSection-add-button,
+.ListBtnSection-delete-checked-button,
+.ListBtnSection-delete-checked-button-disable {
+  width: 15%;
+  height: 100%;
+  border-radius: 15px;
+
+  font-size: 13px;
+
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.ListBtnSection-delete-checked-button {
+  background-color: tomato;
+}
+
+.ListBtnSection-delete-checked-button:hover {
+  background-color: rgb(255, 80, 49);
+}
+
+.ListBtnSection-delete-checked-button-disable {
+  cursor: default;
+  background-color: rgb(255, 152, 134);
+}
+
+.ListBtnSection-add-button {
+  background-color: rgb(255, 204, 66);
+}
+
+.ListBtnSection-add-button:hover {
+  background-color: rgb(255 188 0);
+}
