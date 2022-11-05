@@ -16,6 +16,7 @@ export default function List() {
   const [checkAll, setCheckAll] = useState(false);
   const [checkedIdArr, setCheckedIdArr] = useState([]);
   const checkedIdCopy = [...checkedIdArr];
+  const [itemRowInlineStyle, setTtemRowInlineStyle] = useState(false);
 
   const onCheck = (e, id) => {
     const { name } = e.target;
@@ -23,6 +24,7 @@ export default function List() {
     if (name === "checkAll") {
       if (e.target.checked) {
         setCheckAll(true);
+        setTtemRowInlineStyle(false);
         contacts.map((contact) => {
           if (!checkedIdCopy.includes(contact.id)) {
             checkedIdCopy.push(contact.id);
@@ -32,15 +34,18 @@ export default function List() {
       } else {
         setCheckAll(false);
         setCheckedIdArr([]);
+        setTtemRowInlineStyle(false);
       }
     } else if (name === "checkItem") {
       if (e.target.checked) {
         checkedIdCopy.push(id);
         setCheckedIdArr(checkedIdCopy);
+        setTtemRowInlineStyle(true);
         if (checkedIdCopy.length === contacts.length) {
           setCheckAll(true);
         }
       } else {
+        setTtemRowInlineStyle(false);
         setCheckAll(false);
         setCheckedIdArr(checkedIdCopy.filter((checkedId) => checkedId !== id));
       }
@@ -52,10 +57,10 @@ export default function List() {
       Swal.fire({
         text: `Do you want to delete these contacts?`,
         icon: "warning",
-        iconColor: "rgb(255, 204, 66)",
+        iconColor: "rgb(126,231,135)",
         showCancelButton: true,
-        confirmButtonColor: "rgb(255, 204, 66)",
-        cancelButtonColor: "tomato",
+        confirmButtonColor: "#6e40c9",
+        cancelButtonColor: "#FA87AA",
         confirmButtonText: "Yes, delete these contacts!",
       }).then((result) => {
         if (result.isConfirmed) {
@@ -65,8 +70,9 @@ export default function List() {
           setCheckedIdArr([]);
           Swal.fire({
             icon: "success",
+            iconColor: "rgb(126,231,135)",
             text: "Contacts has been deleted!",
-            confirmButtonColor: "rgb(255, 204, 66)",
+            confirmButtonColor: "#6e40c9",
           });
         }
       });
@@ -77,18 +83,18 @@ export default function List() {
     Swal.fire({
       text: `Do you want delete "${firstName} ${lastName}" Contact?`,
       icon: "warning",
-      iconColor: "rgb(255, 204, 66)",
+      iconColor: "rgb(126,231,135)",
       showCancelButton: true,
-      confirmButtonColor: "rgb(255, 204, 66)",
-      cancelButtonColor: "tomato",
+      confirmButtonColor: "#6e40c9",
+      cancelButtonColor: "#FA87AA",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
         setContacts(contacts.filter((contact) => contact.id !== id));
         Swal.fire({
           icon: "success",
+          confirmButtonColor: "#6e40c9",
           text: `Contact "${firstName} ${lastName}" has been deleted.`,
-          confirmButtonColor: "rgb(255, 204, 66)",
         });
       }
     });
@@ -126,7 +132,7 @@ export default function List() {
         setContacts={setContacts}
         setPopupStatus={setPopupStatus}
       />
-    )
+    );
   };
 
   return (
@@ -162,6 +168,7 @@ export default function List() {
               phone={contact.phone}
               profession={contact.profession}
               checkedIdArr={checkedIdArr}
+              itemRowInlineStyle={itemRowInlineStyle}
               onDelete={onDelete}
               onEdit={onEdit}
               onCheck={onCheck}

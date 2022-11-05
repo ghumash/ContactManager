@@ -58,8 +58,19 @@ export default function Popup({
     if (isEmpty()) {
       setContacts([...changedContacts]);
       setPopupStatus(null);
+      Swal.fire({
+        text: `Contact Saved!`,
+        icon: "success",
+        iconColor: "rgb(126,231,135)",
+        confirmButtonColor: "#6e40c9",
+      });
     } else {
-      alert("Please fill in all fields");
+      Swal.fire({
+        text: `Please fill in all fields`,
+        icon: "warning",
+        iconColor: "rgb(126,231,135)",
+        confirmButtonColor: "#6e40c9",
+      });
     }
   };
 
@@ -70,13 +81,15 @@ export default function Popup({
       Swal.fire({
         text: `Contact Added!`,
         icon: "success",
-        confirmButtonColor: "rgb(255, 204, 66)",
+        iconColor: "rgb(126,231,135)",
+        confirmButtonColor: "#6e40c9",
       });
     } else {
       Swal.fire({
         text: `Please fill in all fields`,
-        icon: "info",
-        confirmButtonColor: "rgb(255, 204, 66)",
+        icon: "warning",
+        iconColor: "rgb(126,231,135)",
+        confirmButtonColor: "#6e40c9",
       });
     }
   };
@@ -93,7 +106,7 @@ export default function Popup({
       <form className="Popup-container swal2-show">
         <h1 className="Popup-title">{title}</h1>
         <label className="Popup-item">
-          <p>First Name</p>
+          <h3>First Name</h3>
           <input
             className="Popup-input"
             type="text"
@@ -104,7 +117,7 @@ export default function Popup({
           />
         </label>
         <label className="Popup-item">
-          <p>Last Name</p>
+          <h3>Last Name</h3>
           <input
             className="Popup-input"
             type="text"
@@ -115,7 +128,7 @@ export default function Popup({
           />
         </label>
         <label className="Popup-item">
-          <p>Email</p>
+          <h3>Email</h3>
           <input
             className="Popup-input"
             type="text"
@@ -126,7 +139,7 @@ export default function Popup({
           />
         </label>
         <label className="Popup-item">
-          <p>Phone</p>
+          <h3>Phone</h3>
           <input
             className="Popup-input"
             type="text"
@@ -137,7 +150,7 @@ export default function Popup({
           />
         </label>
         <label className="Popup-item">
-          <p>Profession</p>
+          <h3>Profession</h3>
           <input
             className="Popup-input"
             type="text"

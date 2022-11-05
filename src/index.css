@@ -2,6 +2,9 @@
 
 body {
   margin: 0;
+
+  background-color: #050D21;
+  color: #fff;
   font-family: "Montserrat", sans-serif;
   font-size: 15px;
   -webkit-font-smoothing: antialiased;
@@ -20,8 +23,7 @@ h6 {
 }
 
 ::selection {
-  color: rgb(255 188 0);
-  background-color: #888;
+  color: rgb(126,231,135);
 }
 
 ::-webkit-scrollbar {
@@ -29,15 +31,15 @@ h6 {
 }
 
 ::-webkit-scrollbar-track {
-  background: #888;
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(255, 204, 66);
+  background: rgb(126,231,135);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ccc;
+  background: rgb(126,231,135);
 }
 
 p {
@@ -64,30 +66,4 @@ button {
 
 input:focus {
   outline: none;
-}
-
-.checkbox input {
-  display: none;
-}
-
-.checkbox span {
-  height: 5px;
-  width: 5px;
-  border: 1px solid rgb(84, 84, 84);
-  display: inline-block;
-  position: relative;
-  background-color: transparent;
-  border-radius: 2px;
-  padding: 3px;
-
-  cursor: pointer;
-}
-
-[type="checkbox"]:checked + span:before {
-  content: "\2714";
-  position: absolute;
-  top: -13px;
-  left: -2px;
-  font-size: 22px;
-  color: rgb(255 188 0);
 }

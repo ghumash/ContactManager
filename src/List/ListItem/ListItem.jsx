@@ -2,6 +2,7 @@ import "./ListItem.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPen, faMinus } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 export default function ListItem({
   id,
@@ -12,12 +13,19 @@ export default function ListItem({
   phone,
   profession,
   checkedIdArr,
+  itemRowInlineStyle,
   onDelete,
   onEdit,
   onCheck,
 }) {
   return (
-    <div className="ListItem-row">
+    <div
+      className={
+        checkedIdArr.includes(id)
+          ? "ListItem-row itemRowInlineStyle"
+          : "ListItem-row"
+      }
+    >
       <div className="ListItem-item">
         <label className="checkbox">
           <input

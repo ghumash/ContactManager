@@ -1,15 +1,17 @@
 .ListHeader-row {
+  margin-bottom: 15px;
+
   height: 40px;
   display: flex;
   align-items: center;
 
-  background-color: #f8f8f8;
+  background-color: rgb(40, 24, 69);
   border-radius: 15px;
 }
 
 .ListHeader-item {
   padding: 0 16px;
-  color: rgb(255 188 0);
+  color: rgb(208, 162, 253);
   word-break: break-all;
 }
 

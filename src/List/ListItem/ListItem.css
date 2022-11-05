@@ -1,7 +1,45 @@
 .ListItem-row {
+  margin-bottom: 5px;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #ccc;
+  color: rgb(160, 208, 249);
+
+  border-radius: 15px;
+}
+
+.ListItem-row:last-child {
+  margin-bottom: 0;
+}
+
+.itemRowInlineStyle {
+  background-color: #8B949E;
+  color: #fff;
+}
+
+.checkbox input {
+  display: none;
+}
+
+.checkbox span {
+  height: 5px;
+  width: 5px;
+  border: 1px solid rgb(84, 84, 84);
+  display: inline-block;
+  position: relative;
+  background-color: transparent;
+  border-radius: 2px;
+  padding: 3px;
+
+  cursor: pointer;
+}
+
+[type="checkbox"]:checked + span:before {
+  content: "\2714";
+  position: absolute;
+  top: -13px;
+  left: -2px;
+  font-size: 22px;
+  color: rgb(208, 162, 253);
 }
 
 .ListItem-item {
@@ -33,29 +71,21 @@
 
 .fa-user-pen {
   margin-right: 10px;
-  color: #757575;
+  color: #ccc;
   cursor: pointer;
-  opacity: 0.5;
   transition: 0.2s ease-in-out;
 }
 
 .fa-minus {
-  color: #fd4e4e;
+  color: #fd6593;
   cursor: pointer;
-  opacity: 0.5;
   transition: 0.2s ease-in-out;
 }
 
-.fa-check {
-  margin-right: 10px;
-  color: hsl(120, 100%, 66%);
-  cursor: pointer;
-  opacity: 0.5;
-  transition: 0.2s ease-in-out;
+.fa-user-pen:hover {
+  color: #fff;
 }
 
-.fa-user-pen:hover,
-.fa-check:hover,
 .fa-minus:hover {
-  opacity: 1;
+  color: #fca7c0;
 }
