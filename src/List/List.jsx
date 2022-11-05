@@ -57,10 +57,10 @@ export default function List() {
       Swal.fire({
         text: `Do you want to delete these contacts?`,
         icon: "warning",
-        iconColor: "rgb(126,231,135)",
+        iconColor: "var(--color-4)",
         showCancelButton: true,
-        confirmButtonColor: "#6e40c9",
-        cancelButtonColor: "#FA87AA",
+        confirmButtonColor: "var(--color-12)",
+        cancelButtonColor: "var(--color-10)",
         confirmButtonText: "Yes, delete these contacts!",
       }).then((result) => {
         if (result.isConfirmed) {
@@ -70,9 +70,9 @@ export default function List() {
           setCheckedIdArr([]);
           Swal.fire({
             icon: "success",
-            iconColor: "rgb(126,231,135)",
+            iconColor: "var(--color-4)",
             text: "Contacts has been deleted!",
-            confirmButtonColor: "#6e40c9",
+            confirmButtonColor: "var(--color-12)",
           });
         }
       });
@@ -83,17 +83,18 @@ export default function List() {
     Swal.fire({
       text: `Do you want delete "${firstName} ${lastName}" Contact?`,
       icon: "warning",
-      iconColor: "rgb(126,231,135)",
+      iconColor: "var(--color-4)",
       showCancelButton: true,
-      confirmButtonColor: "#6e40c9",
-      cancelButtonColor: "#FA87AA",
+      confirmButtonColor: "var(--color-12)",
+      cancelButtonColor: "var(--color-10)",
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
         setContacts(contacts.filter((contact) => contact.id !== id));
         Swal.fire({
           icon: "success",
-          confirmButtonColor: "#6e40c9",
+          iconColor: "var(--color-4)",
+          confirmButtonColor: "var(--color-12)",
           text: `Contact "${firstName} ${lastName}" has been deleted.`,
         });
       }

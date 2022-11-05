@@ -61,15 +61,15 @@ export default function Popup({
       Swal.fire({
         text: `Contact Saved!`,
         icon: "success",
-        iconColor: "rgb(126,231,135)",
-        confirmButtonColor: "#6e40c9",
+        iconColor: "var(--color-4)",
+        confirmButtonColor: "var(--color-12)",
       });
     } else {
       Swal.fire({
         text: `Please fill in all fields`,
         icon: "warning",
-        iconColor: "rgb(126,231,135)",
-        confirmButtonColor: "#6e40c9",
+        iconColor: "var(--color-4)",
+        confirmButtonColor: "var(--color-12)",
       });
     }
   };
@@ -81,15 +81,15 @@ export default function Popup({
       Swal.fire({
         text: `Contact Added!`,
         icon: "success",
-        iconColor: "rgb(126,231,135)",
-        confirmButtonColor: "#6e40c9",
+        iconColor: "var(--color-4)",
+        confirmButtonColor: "var(--color-12)",
       });
     } else {
       Swal.fire({
         text: `Please fill in all fields`,
         icon: "warning",
-        iconColor: "rgb(126,231,135)",
-        confirmButtonColor: "#6e40c9",
+        iconColor: "var(--color-4)",
+        confirmButtonColor: "var(--color-12)",
       });
     }
   };
