@@ -10,7 +10,7 @@
   justify-content: center;
   align-items: center;
 
-  background-color: #00000032;
+  background-color: rgba(0, 0, 0, 0.4);
   z-index: 1000;
 }
 
@@ -21,13 +21,13 @@
   display: flex;
   flex-direction: column;
 
-  background-color: #fff;
+  background-color: var(--color-7);
   border-radius: 15px;
 }
 
 .Popup-title {
   margin-bottom: 30px;
-  color: rgb(126, 231, 135);
+  color: var(--color-4);
 }
 
 .Popup-item {
@@ -41,7 +41,7 @@
 .Popup-item > h3 {
   font-size: 18px;
   margin-bottom: 10px;
-  color: rgb(39, 39, 103);
+  color: var(--color-3);
 }
 
 .Popup-input {
@@ -49,12 +49,12 @@
   border-radius: 10px;
   padding: 12px 25px 12px 12px;
 
-  color: #000;
+  color: var(--color-11);
   font-size: 17px;
 }
 
 .Popup-input:focus {
-  box-shadow: 0px 9px 13px -10px rgb(38 38 102);
+  box-shadow: 0px 9px 13px -10px var(--color-3);
 }
 
 .Popup-btn-group {
@@ -71,20 +71,19 @@
 }
 
 .Popup-btn:first-child {
-  background-color: #6e40c9;
+  background-color: #825bcf;
   transition: 0.2s ease-in-out;
 }
 
 .Popup-btn:first-child:hover {
-  background-color: #825bcf;
+  background-color: var(--color-12);
 }
 
 .Popup-btn:last-child {
-  background-color: #fa87aa;
+  background-color: var(--color-13);
   transition: 0.2s ease-in-out;
 }
 
 .Popup-btn:last-child:hover {
-  background-color: #fd6593;
-  color: #fff;
+  background-color: var(--color-10);
 }

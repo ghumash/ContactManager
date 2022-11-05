@@ -2,7 +2,7 @@
   margin-bottom: 5px;
   display: flex;
   align-items: center;
-  color: rgb(160, 208, 249);
+  color: var(--color-5);
 
   border-radius: 15px;
 }
@@ -12,8 +12,8 @@
 }
 
 .itemRowInlineStyle {
-  background-color: #8B949E;
-  color: #fff;
+  background-color: var(--color-8);
+  color: var(--color-7);
 }
 
 .checkbox input {
@@ -23,7 +23,7 @@
 .checkbox span {
   height: 5px;
   width: 5px;
-  border: 1px solid rgb(84, 84, 84);
+  border: 1px solid var(--color-8);
   display: inline-block;
   position: relative;
   background-color: transparent;
@@ -39,7 +39,7 @@
   top: -13px;
   left: -2px;
   font-size: 22px;
-  color: rgb(208, 162, 253);
+  color: var(--color-6);
 }
 
 .ListItem-item {
@@ -71,21 +71,22 @@
 
 .fa-user-pen {
   margin-right: 10px;
-  color: #ccc;
+  color: var(--color-9);
+
   cursor: pointer;
   transition: 0.2s ease-in-out;
 }
 
 .fa-minus {
-  color: #fd6593;
+  color: var(--color-13);
   cursor: pointer;
   transition: 0.2s ease-in-out;
 }
 
 .fa-user-pen:hover {
-  color: #fff;
+  color: var(--color-7);
 }
 
 .fa-minus:hover {
-  color: #fca7c0;
+  color: var(--color-10);
 }

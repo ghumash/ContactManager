@@ -5,13 +5,13 @@
   display: flex;
   align-items: center;
 
-  background-color: rgb(40, 24, 69);
+  background-color: var(--color-2);
   border-radius: 15px;
 }
 
 .ListHeader-item {
   padding: 0 16px;
-  color: rgb(208, 162, 253);
+  color: var(--color-6);
   word-break: break-all;
 }
 

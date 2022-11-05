@@ -4,7 +4,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgb(39, 39, 103);
+  background-color: var(--color-3);
   border-radius: 20px;
 }
 
@@ -16,7 +16,7 @@
   border-radius: 15px;
 
   font-size: 13px;
-  color: #fff;
+  color: var(--color-7);
 
   transition: 0.2s ease-in-out;
   cursor: pointer;
@@ -30,24 +30,25 @@
     0 22px 18px rgba(255, 255, 255, 0.028),
     0 12px 10px rgba(255, 255, 255, 0.034), 0 7px 5px rgba(255, 255, 255, 0.04),
     0 3px 2px rgba(255, 255, 255, 0.07);
+  background-color: var(--color-12);
 }
 
 .ListBtnSection-add-button {
-  background-color: #6e40c9;
+  background-color: #825bcf;
 }
 
 .ListBtnSection-delete-checked-button {
-  background-color: #fa87aa;
+  background-color: var(--color-13);
 }
 
 .ListBtnSection-delete-checked-button-disable {
   cursor: default;
-  background-color: #ffa2be;
+  background-color: var(--color-14);
 }
 
 .ListBtnSection-delete-checked-button:hover {
-  background-color: #fd6593;
+  background-color: var(--color-10);
 }
 .ListBtnSection-add-button:hover {
-  background-color: #825bcf;
+  background-color: var(--color-12);
 }

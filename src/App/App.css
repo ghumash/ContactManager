@@ -1,21 +1,32 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 @import url("../nulled.css");
 
-body {
-  margin: 0;
-
-  background-color: #050d21;
-  color: #fff;
-  font-family: "Montserrat", sans-serif;
-  font-size: 15px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --color-1: #050d21;
+  --color-2: #281845;
+  --color-3: #272767;
+  --color-4: #7ee787;
+  --color-5: #a0d0f9;
+  --color-6: #d0a2fd;
+  --color-7: #fff;
+  --color-8: #8b949e;
+  --color-9: #ccc;
+  --color-10: #fd6593;
+  --color-11: #000;
+  --color-12: #6e40c9;
+  --color-13: #fa87aa;
+  --color-14: #ffa2be;
 }
 
+body {
+  background-color: var(--color-1);
 
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+}
 
 ::selection {
-  color: rgb(126, 231, 135);
+  color: var(--color-4);
 }
 
 ::-webkit-scrollbar {
@@ -27,14 +38,9 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgb(126, 231, 135);
+  background: var(--color-4);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgb(126, 231, 135);
+  background: var(--color-4);
 }
-
-
-
-
-
