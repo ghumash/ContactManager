@@ -1,0 +1,26 @@
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+p,
+input {
+  margin: 0;
+  padding: 0;
+}
+
+input,
+button {
+  border: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+input:focus {
+  outline: none;
+}
