@@ -1,0 +1,71 @@
+.Navbar-container {
+  position: relative;
+  transform: rotate(20deg) skew(20deg, -20deg);
+}
+
+.Navbar-link {
+  margin-bottom: -2px;
+  background: var(--color-15);
+  text-align: center;
+  height: 2.5em;
+  width: 4em;
+  line-height: 2.5em;
+  position: relative;
+  display: block;
+  text-decoration: none;
+  transition: all 0.25s linear;
+}
+
+.Navbar-link:hover {
+  transform: translate(0.9em, -0.9em);
+  background: var(--color-12);
+  transition: all 0.25s linear;
+}
+
+.Navbar-link:hover > * {
+  color: var(--color-7);
+}
+
+.Navbar-link:hover:before,
+.Navbar-link:hover:after {
+  transition: all 0.25s linear;
+}
+.Navbar-link:hover:before {
+  width: 1em;
+  top: 0.5em;
+  left: -1em;
+}
+.Navbar-link:hover:after {
+  width: 1em;
+  bottom: -2.5em;
+  left: 1em;
+  height: 4em;
+}
+.Navbar-link:before,
+.Navbar-link:after {
+  content: "";
+  position: absolute;
+  transition: all 0.25s linear;
+  width: 0.5em;
+}
+.Navbar-link:after {
+  height: 3.9em;
+  background: var(--color-4);
+  bottom: -33px;
+  left: 23px;
+  transform: rotate(90deg) skew(0, 45deg);
+}
+.Navbar-link:before {
+  height: 2.5em;
+  background: white;
+  top: 0.25em;
+  left: -0.5em;
+  transform: skewY(-45deg);
+}
+
+.fa-house,
+.fa-exclamation,
+.fa-gear {
+  color: var(--color-1);
+  transition: 0.2s ease-in-out;
+}

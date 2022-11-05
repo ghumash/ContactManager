@@ -137,7 +137,7 @@ export default function List() {
   };
 
   return (
-    <div className="List">
+    <div className="List-container">
       {popupStatus ? popupStatus : null}
 
       <div className="Caption">

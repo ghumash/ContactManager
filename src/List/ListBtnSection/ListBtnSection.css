@@ -34,7 +34,7 @@
 }
 
 .ListBtnSection-add-button {
-  background-color: #825bcf;
+  background-color: var(--color-15);
 }
 
 .ListBtnSection-delete-checked-button {

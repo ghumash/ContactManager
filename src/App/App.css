@@ -16,13 +16,7 @@
   --color-12: #6e40c9;
   --color-13: #fa87aa;
   --color-14: #ffa2be;
-}
-
-body {
-  background-color: var(--color-1);
-
-  font-family: "Montserrat", sans-serif;
-  font-size: 15px;
+  --color-15: #825bcf;
 }
 
 ::selection {
@@ -43,4 +37,27 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-4);
+}
+
+body {
+  background-color: var(--color-1);
+
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+}
+
+.App {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Navbar {
+  position: absolute;
+  left: 0;
+  top: 54px;
+}
+
+.Content {
+  width: 100%;
 }
