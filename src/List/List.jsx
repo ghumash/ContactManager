@@ -137,33 +137,35 @@ export default function List() {
   };
 
   return (
-    <div className="List-container">
-      {popupStatus ? popupStatus : null}
+    <div className="List">
       <Caption title={"Contacts"} />
-      <ListBtnSection
-        onAdd={onAdd}
-        onDeleteChecked={onDeleteChecked}
-        checkedIdArr={checkedIdArr}
-      />
-      <ListHeader onCheck={onCheck} checkAll={checkAll} />
-      {contacts.map((contact) => {
-        return (
-          <ListItem
-            key={contact.id}
-            id={contact.id}
-            avatar={contact.avatar}
-            firstName={contact.firstName}
-            lastName={contact.lastName}
-            email={contact.email}
-            phone={contact.phone}
-            profession={contact.profession}
-            checkedIdArr={checkedIdArr}
-            onDelete={onDelete}
-            onEdit={onEdit}
-            onCheck={onCheck}
-          />
-        );
-      })}
+      <div className="List-container">
+        {popupStatus ? popupStatus : null}
+        <ListBtnSection
+          onAdd={onAdd}
+          onDeleteChecked={onDeleteChecked}
+          checkedIdArr={checkedIdArr}
+        />
+        <ListHeader onCheck={onCheck} checkAll={checkAll} />
+        {contacts.map((contact) => {
+          return (
+            <ListItem
+              key={contact.id}
+              id={contact.id}
+              avatar={contact.avatar}
+              firstName={contact.firstName}
+              lastName={contact.lastName}
+              email={contact.email}
+              phone={contact.phone}
+              profession={contact.profession}
+              checkedIdArr={checkedIdArr}
+              onDelete={onDelete}
+              onEdit={onEdit}
+              onCheck={onCheck}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }

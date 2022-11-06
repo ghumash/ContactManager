@@ -10,5 +10,5 @@
 }
 
 .Caption-container {
-    color: rgb(126,231,135);
+  color: var(--color-4);
 }
