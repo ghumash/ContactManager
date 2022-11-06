@@ -1,5 +1,5 @@
 import "./List.css";
-import Caption from "./Caption/Caption";
+import Caption from "../Caption/Caption";
 import ListHeader from "./ListHeader/ListHeader";
 import ListItem from "./ListItem/ListItem";
 import Popup from "./Popup/Popup";
@@ -139,44 +139,31 @@ export default function List() {
   return (
     <div className="List-container">
       {popupStatus ? popupStatus : null}
-
-      <div className="Caption">
-        <Caption />
-      </div>
-
-      <div className="ListBtnSection">
-        <ListBtnSection
-          onAdd={onAdd}
-          onDeleteChecked={onDeleteChecked}
-          checkedIdArr={checkedIdArr}
-        />
-      </div>
-
-      <div className="ListHeader">
-        <ListHeader onCheck={onCheck} checkAll={checkAll} />
-      </div>
-
-      <div className="ListItem">
-        {contacts.map((contact) => {
-          return (
-            <ListItem
-              key={contact.id}
-              id={contact.id}
-              avatar={contact.avatar}
-              firstName={contact.firstName}
-              lastName={contact.lastName}
-              email={contact.email}
-              phone={contact.phone}
-              profession={contact.profession}
-              checkedIdArr={checkedIdArr}
-              itemRowInlineStyle={itemRowInlineStyle}
-              onDelete={onDelete}
-              onEdit={onEdit}
-              onCheck={onCheck}
-            />
-          );
-        })}
-      </div>
+      <Caption title={"Contacts"} />
+      <ListBtnSection
+        onAdd={onAdd}
+        onDeleteChecked={onDeleteChecked}
+        checkedIdArr={checkedIdArr}
+      />
+      <ListHeader onCheck={onCheck} checkAll={checkAll} />
+      {contacts.map((contact) => {
+        return (
+          <ListItem
+            key={contact.id}
+            id={contact.id}
+            avatar={contact.avatar}
+            firstName={contact.firstName}
+            lastName={contact.lastName}
+            email={contact.email}
+            phone={contact.phone}
+            profession={contact.profession}
+            checkedIdArr={checkedIdArr}
+            onDelete={onDelete}
+            onEdit={onEdit}
+            onCheck={onCheck}
+          />
+        );
+      })}
     </div>
   );
 }

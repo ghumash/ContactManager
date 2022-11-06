@@ -1,5 +1,6 @@
+import Caption from "../List/Caption/Caption";
 import "./About.css";
 
 export default function About() {
-  return <div>About</div>;
+  return <Caption title={"About"} />;
 }
