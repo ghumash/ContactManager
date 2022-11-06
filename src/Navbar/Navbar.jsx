@@ -1,5 +1,7 @@
 import "./Navbar.css";
 
+import { Link } from "react-router-dom";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faHouse,
@@ -9,22 +11,24 @@ import {
 
 export default function Navbar() {
   return (
-    <ul className="Navbar-container">
-      <li>
-        <a className="Navbar-link">
-          <FontAwesomeIcon icon={faHouse} />
-        </a>
-      </li>
-      <li>
-        <a className="Navbar-link">
-          <FontAwesomeIcon icon={faExclamation} />
-        </a>
-      </li>
-      <li>
-        <a className="Navbar-link">
-          <FontAwesomeIcon icon={faGear} />
-        </a>
-      </li>
-    </ul>
+    <>
+      <ul className="Navbar-container">
+        <li>
+          <Link to="/" className="Navbar-link">
+            <FontAwesomeIcon icon={faHouse} />
+          </Link>
+        </li>
+        <li>
+          <Link to="/about" className="Navbar-link">
+            <FontAwesomeIcon icon={faExclamation} />
+          </Link>
+        </li>
+        <li>
+          <Link to="/settings" className="Navbar-link">
+            <FontAwesomeIcon icon={faGear} />
+          </Link>
+        </li>
+      </ul>
+    </>
   );
 }

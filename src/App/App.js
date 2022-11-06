@@ -1,6 +1,9 @@
 import "./App.css";
 import List from "../List/List";
 import Navbar from "../Navbar/Navbar";
+import About from "../About/About";
+import Settings from "../Settings/Settings";
+import { Routes, Route } from "react-router-dom";
 
 export default function App() {
   return (
@@ -9,7 +12,12 @@ export default function App() {
         <Navbar />
       </div>
       <div className="Content">
-        <List />
+        <Routes>
+          <Route path="/" element={<List />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="*" element={<List />} />
+        </Routes>
       </div>
     </div>
   );
