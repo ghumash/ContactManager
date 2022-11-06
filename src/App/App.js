@@ -3,6 +3,7 @@ import List from "../List/List";
 import Navbar from "../Navbar/Navbar";
 import About from "../About/About";
 import Settings from "../Settings/Settings";
+
 import { Routes, Route } from "react-router-dom";
 
 export default function App() {
