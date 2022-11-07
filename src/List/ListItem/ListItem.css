@@ -1,18 +1,24 @@
-.ListItem {
-  padding: 0 100px;
-  margin-bottom: 10px;
-}
-
-.ListItem:last-child {
-  margin-bottom: 0;
-}
-
 .ListItem-row {
   display: flex;
   align-items: center;
   color: var(--color-5);
+  margin-bottom: 10px;
+  margin: 15px 100px;
 
   border-radius: 15px;
+}
+
+.ListItem-row:last-child {
+  margin-bottom: 0;
+}
+
+.ListItem-card {
+  width: 23%;
+  margin-bottom: 15px;
+
+  border-radius: 15px;
+  color: var(--color-5);
+  background-color: var(--color-8);
 }
 
 .itemRowInlineStyle {
@@ -52,7 +58,7 @@
 }
 
 .ListItem-item {
-  padding: 1em;
+  padding: 16px;
   word-break: break-all;
 }
 
@@ -70,6 +76,11 @@
 }
 .ListItem-item:nth-child(6) {
   width: 15%;
+}
+
+.ListItem-card-item {
+  padding: 16px;
+  word-break: break-all;
 }
 
 .ListItem-icon-group {

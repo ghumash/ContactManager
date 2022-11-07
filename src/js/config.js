@@ -1,1 +1,1 @@
-export const inlineEdit = false;
+export const cardView = true;

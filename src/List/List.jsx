@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 import { list } from "../js/const";
 import { useState } from "react";
 
-export default function List() {
+export default function List({ cardViewState }) {
   const [contacts, setContacts] = useState([...list]);
   const [popupStatus, setPopupStatus] = useState();
   const [checkAll, setCheckAll] = useState(false);
@@ -137,9 +137,9 @@ export default function List() {
   };
 
   return (
-    <div className="List">
+    <>
       <Caption title={"Contacts"} />
-      <div className="List-container">
+      <div className="List">
         {popupStatus ? popupStatus : null}
         <ListBtnSection
           onAdd={onAdd}
@@ -147,25 +147,30 @@ export default function List() {
           checkedIdArr={checkedIdArr}
         />
         <ListHeader onCheck={onCheck} checkAll={checkAll} />
-        {contacts.map((contact) => {
-          return (
-            <ListItem
-              key={contact.id}
-              id={contact.id}
-              avatar={contact.avatar}
-              firstName={contact.firstName}
-              lastName={contact.lastName}
-              email={contact.email}
-              phone={contact.phone}
-              profession={contact.profession}
-              checkedIdArr={checkedIdArr}
-              onDelete={onDelete}
-              onEdit={onEdit}
-              onCheck={onCheck}
-            />
-          );
-        })}
+        <div
+          className={cardViewState ? "ListItem-cardView" : "ListItem-rowView"}
+        >
+          {contacts.map((contact) => {
+            return (
+              <ListItem
+                key={contact.id}
+                id={contact.id}
+                avatar={contact.avatar}
+                firstName={contact.firstName}
+                lastName={contact.lastName}
+                email={contact.email}
+                phone={contact.phone}
+                profession={contact.profession}
+                cardViewState={cardViewState}
+                checkedIdArr={checkedIdArr}
+                onDelete={onDelete}
+                onEdit={onEdit}
+                onCheck={onCheck}
+              />
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

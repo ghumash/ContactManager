@@ -28,4 +28,13 @@ export const list = [
     profession: "PhD 3",
     avatar: "",
   },
+  {
+    id: uuidv4(),
+    firstName: "Joe 1",
+    lastName: "Smith 1",
+    email: "joesmith1@gmail.com",
+    phone: "+1",
+    profession: "PhD 1",
+    avatar: "",
+  },
 ];
