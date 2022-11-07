@@ -8,15 +8,15 @@ export default function Settings() {
       <div className="Settings-container">
         <div className="Settings-item">
           <div>Inline Edit</div>
-          <input type="checkbox" class="switch" />
+          <input type="checkbox" className="switch" />
         </div>
         <div className="Settings-item">
           <div>Inline Edit</div>
-          <input type="checkbox" class="switch" />
+          <input type="checkbox" className="switch" />
         </div>
         <div className="Settings-item">
           <div>Inline Edit</div>
-          <input type="checkbox" class="switch" />
+          <input type="checkbox" className="switch" />
         </div>
       </div>
     </div>
