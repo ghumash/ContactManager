@@ -7,7 +7,7 @@ import ListBtnSection from "./ListBtnSection/ListBtnSection";
 
 import Swal from "sweetalert2";
 
-import { list } from "../const";
+import { list } from "../js/const";
 import { useState } from "react";
 
 export default function List() {
