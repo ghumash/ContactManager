@@ -120,6 +120,10 @@
   display: flex;
 }
 
+.ListItem-carView-subtitle {
+  color: var(--color-9);
+}
+
 .ListItem-icon-group {
   display: flex;
   justify-content: end;
