@@ -43,7 +43,9 @@
 }
 
 .ListBtnSection-add-button {
+  font-size: 27px;
   background-color: var(--color-15);
+  width: 3.5%;
 }
 
 .ListBtnSection-delete-checked-button {

@@ -45,7 +45,7 @@ export default function ListBtnSection({
             onAdd();
           }}
         >
-          Add
+          +
         </button>
       </div>
     </div>
