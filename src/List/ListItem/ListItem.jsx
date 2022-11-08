@@ -49,15 +49,21 @@ export default function ListItem({
         {firstName} {lastName}
       </div>
       <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
-        {cardViewState ? <p className="ListItem-carView-subtitle">Email</p> : null}
-        {email}
+        {cardViewState ? (
+          <p className="ListItem-carView-subtitle">Email</p>
+        ) : null}
+        <a href={`mailto:${{ email }}`}>{email}</a>
       </div>
       <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
-      {cardViewState ? <p className="ListItem-carView-subtitle">Phone</p> : null}
-        {phone}
+        {cardViewState ? (
+          <p className="ListItem-carView-subtitle">Phone</p>
+        ) : null}
+        <a href={`tel:${{ phone }}`}>{phone}</a>
       </div>
       <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
-      {cardViewState ? <p className="ListItem-carView-subtitle">Profession</p> : null}
+        {cardViewState ? (
+          <p className="ListItem-carView-subtitle">Profession</p>
+        ) : null}
         {profession}
       </div>
       <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>

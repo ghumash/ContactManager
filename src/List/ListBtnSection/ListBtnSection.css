@@ -12,6 +12,11 @@
   border-radius: 20px;
 }
 
+.ListBtnSection-container > :nth-child(1) {
+  width: 100%;
+  height: 100%;
+}
+
 .ListBtnSection-add-button,
 .ListBtnSection-delete-checked-button,
 .ListBtnSection-delete-checked-button-disable {
@@ -43,6 +48,10 @@
 
 .ListBtnSection-delete-checked-button {
   background-color: var(--color-13);
+}
+
+.ListBtnSection-checkAll {
+  padding: 0 16px;
 }
 
 .ListBtnSection-delete-checked-button-disable {

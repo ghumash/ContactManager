@@ -143,8 +143,11 @@ export default function List({ cardViewState }) {
         {popupStatus ? popupStatus : null}
         <ListBtnSection
           onAdd={onAdd}
+          onCheck={onCheck}
           onDeleteChecked={onDeleteChecked}
           checkedIdArr={checkedIdArr}
+          checkAll={checkAll}
+          cardViewState={cardViewState}
         />
         {!cardViewState ? (
           <ListHeader onCheck={onCheck} checkAll={checkAll} />

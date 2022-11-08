@@ -12,6 +12,16 @@ body {
   padding: 0;
 }
 
+a:-webkit-any-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:-webkit-any-link:hover {
+  text-decoration: underline;
+}
+
+
 input,
 button {
   border: none;
