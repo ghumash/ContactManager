@@ -68,6 +68,7 @@ export default function List({ cardViewState }) {
             contacts.filter((contact) => !checkedIdArr.includes(contact.id))
           );
           setCheckedIdArr([]);
+          setCheckAll(false)
           Swal.fire({
             icon: "success",
             iconColor: "var(--color-4)",
