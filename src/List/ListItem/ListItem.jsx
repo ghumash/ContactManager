@@ -72,7 +72,7 @@ export default function ListItem({
             }}
           />
           <span></span>
-        </label>Ку
+        </label>
       </div>
       {inlineItem}
       <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
