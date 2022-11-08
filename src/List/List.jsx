@@ -146,7 +146,10 @@ export default function List({ cardViewState }) {
           onDeleteChecked={onDeleteChecked}
           checkedIdArr={checkedIdArr}
         />
-        <ListHeader onCheck={onCheck} checkAll={checkAll} />
+        {!cardViewState ? (
+          <ListHeader onCheck={onCheck} checkAll={checkAll} />
+        ) : null}
+
         <div
           className={cardViewState ? "ListItem-cardView" : "ListItem-rowView"}
         >

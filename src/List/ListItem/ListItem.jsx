@@ -28,7 +28,6 @@ export default function ListItem({
       }
     }
   };
-  console.log(cardViewState);
 
   return (
     <div className={ListItemStyleHandler()}>
@@ -50,12 +49,15 @@ export default function ListItem({
         {firstName} {lastName}
       </div>
       <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
+        {cardViewState ? <p>Email</p> : null}
         {email}
       </div>
       <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
+      {cardViewState ? <p>Phone</p> : null}
         {phone}
       </div>
       <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
+      {cardViewState ? <p>Profession</p> : null}
         {profession}
       </div>
       <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>

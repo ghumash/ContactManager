@@ -14,11 +14,19 @@
 
 .ListItem-card {
   width: 23%;
-  margin-bottom: 15px;
+  margin-top: 2.5%;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  color: var(--color-5);
 
   border-radius: 15px;
-  color: var(--color-5);
-  background-color: var(--color-8);
+  box-shadow: 0 10px 15px rgb(0 0 0), 0 0 0 rgb(255 255 255 / 1%),
+    0 0 0 rgb(255 255 255 / 3%), 0 0 0 rgb(255 255 255 / 2%),
+    0 0 0 rgb(255 255 255 / 3%), 0 0 0 rgb(255 255 255 / 2%),
+    0 0 0 transparent;
 }
 
 .itemRowInlineStyle {
@@ -81,6 +89,35 @@
 .ListItem-card-item {
   padding: 16px;
   word-break: break-all;
+}
+
+.ListItem-card-item:nth-child(1) {
+  position: absolute;
+  bottom: 1px;
+  width: 20px;
+  padding-right: 0;
+  order: 5;
+}
+.ListItem-card-item:nth-child(2) {
+  font-size: 20px;
+  color: var(--color-14);
+  order: 1;
+}
+.ListItem-card-item:nth-child(3) {
+  order: 3;
+}
+.ListItem-card-item:nth-child(4) {
+  order: 2;
+}
+.ListItem-card-item:nth-child(5) {
+  order: 4;
+}
+.ListItem-card-item:nth-child(6) {
+  padding-left: 0;
+  order: 6;
+}
+.ListItem-card-item:nth-child(1) > .checkbox {
+  display: flex;
 }
 
 .ListItem-icon-group {

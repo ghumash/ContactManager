@@ -9,7 +9,6 @@ export default function Settings({ cardViewState, setCardViewState }) {
       setCardViewState(false);
     }
   };
-  console.log(cardViewState);
 
   return (
     <>
