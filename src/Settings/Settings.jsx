@@ -1,12 +1,25 @@
 import Caption from "../Caption/Caption";
 import "./Settings.css";
 
-export default function Settings({ cardViewState, setCardViewState }) {
+export default function Settings({
+  cardViewState,
+  inlineEditState,
+  setCardViewState,
+  setInlineEditState,
+}) {
   const cardViewHandler = () => {
     if (!cardViewState) {
       setCardViewState(true);
     } else {
       setCardViewState(false);
+    }
+  };
+
+  const inlineEdithandler = () => {
+    if (!inlineEditState) {
+      setInlineEditState(true);
+    } else {
+      setInlineEditState(false);
     }
   };
 
@@ -26,11 +39,12 @@ export default function Settings({ cardViewState, setCardViewState }) {
           </div>
           <div className="Settings-item">
             <div>Inline Edit</div>
-            <input type="checkbox" className="switch" />
-          </div>
-          <div className="Settings-item">
-            <div>Inline Edit</div>
-            <input type="checkbox" className="switch" />
+            <input
+              type="checkbox"
+              className="switch"
+              checked={inlineEditState}
+              onChange={inlineEdithandler}
+            />
           </div>
         </div>
       </div>

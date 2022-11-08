@@ -12,6 +12,7 @@ export default function ListItem({
   phone,
   profession,
   cardViewState,
+  inlineEditState,
   checkedIdArr,
   onDelete,
   onEdit,
@@ -29,21 +30,8 @@ export default function ListItem({
     }
   };
 
-  return (
-    <div className={ListItemStyleHandler()}>
-      <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
-        <label className="checkbox">
-          <input
-            type="checkbox"
-            name="checkItem"
-            checked={checkedIdArr.includes(id)}
-            onChange={(e) => {
-              onCheck(e, id);
-            }}
-          />
-          <span></span>
-        </label>
-      </div>
+  const inlineItem = (
+    <>
       <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
         {avatar}
         {firstName} {lastName}
@@ -66,12 +54,37 @@ export default function ListItem({
         ) : null}
         {profession}
       </div>
+    </>
+  );
+
+  const inlineEditHandler = () => {};
+
+  return (
+    <div className={ListItemStyleHandler()}>
+      <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
+        <label className="checkbox">
+          <input
+            type="checkbox"
+            name="checkItem"
+            checked={checkedIdArr.includes(id)}
+            onChange={(e) => {
+              onCheck(e, id);
+            }}
+          />
+          <span></span>
+        </label>Ку
+      </div>
+      {inlineItem}
       <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
         <div className="ListItem-icon-group">
           <FontAwesomeIcon
             icon={faUserPen}
             onClick={() => {
-              onEdit(id, firstName, lastName, phone, email, profession);
+              if (!inlineEditState) {
+                onEdit(id, firstName, lastName, phone, email, profession);
+              } else {
+                inlineEditHandler();
+              }
             }}
           />
           <FontAwesomeIcon

@@ -5,12 +5,12 @@ import ListItem from "./ListItem/ListItem";
 import Popup from "./Popup/Popup";
 import ListBtnSection from "./ListBtnSection/ListBtnSection";
 
-import Swal from "sweetalert2";
-
 import { list } from "../js/const";
 import { useState } from "react";
 
-export default function List({ cardViewState }) {
+import Swal from "sweetalert2";
+
+export default function List({ cardViewState, inlineEditState }) {
   const [contacts, setContacts] = useState([...list]);
   const [popupStatus, setPopupStatus] = useState();
   const [checkAll, setCheckAll] = useState(false);
@@ -68,7 +68,7 @@ export default function List({ cardViewState }) {
             contacts.filter((contact) => !checkedIdArr.includes(contact.id))
           );
           setCheckedIdArr([]);
-          setCheckAll(false)
+          setCheckAll(false);
           Swal.fire({
             icon: "success",
             iconColor: "var(--color-4)",
@@ -169,6 +169,7 @@ export default function List({ cardViewState }) {
                 phone={contact.phone}
                 profession={contact.profession}
                 cardViewState={cardViewState}
+                inlineEditState={inlineEditState}
                 checkedIdArr={checkedIdArr}
                 onDelete={onDelete}
                 onEdit={onEdit}
