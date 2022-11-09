@@ -169,7 +169,9 @@ export default function ListItem({
               if (!inlineEditState) {
                 onEdit(id, firstName, lastName, phone, email, profession);
               } else {
-                inlineEditHandler();
+                if (!cardViewState) {
+                  inlineEditHandler();
+                }
               }
             }}
           />

@@ -1,6 +1,8 @@
 import Caption from "../Caption/Caption";
 import "./Settings.css";
 
+import Swal from "sweetalert2";
+
 export default function Settings({
   cardViewState,
   inlineEditState,
@@ -10,6 +12,15 @@ export default function Settings({
   const cardViewHandler = () => {
     if (!cardViewState) {
       setCardViewState(true);
+      if (inlineEditState) {
+        setCardViewState(false);
+        Swal.fire({
+          text: `During Inline Edit you can't enable the Card View option first disable Inline Edit`,
+          icon: "warning",
+          iconColor: "var(--color-4)",
+          confirmButtonColor: "var(--color-12)",
+        });
+      }
     } else {
       setCardViewState(false);
     }
@@ -18,6 +29,15 @@ export default function Settings({
   const inlineEdithandler = () => {
     if (!inlineEditState) {
       setInlineEditState(true);
+      if (cardViewState) {
+        setInlineEditState(false);
+        Swal.fire({
+          text: `During Card View you can't enable the Inline Edit option first disable Card View`,
+          icon: "warning",
+          iconColor: "var(--color-4)",
+          confirmButtonColor: "var(--color-12)",
+        });
+      }
     } else {
       setInlineEditState(false);
     }
