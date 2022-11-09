@@ -121,4 +121,9 @@
 .ListItem-edit {
   width: 100%;
   margin-right: 5px;
+  padding: 7px 15px;
+
+  background-color: var(--color-5);
+  color: var(--color-1);
+  border-radius: 15px;
 }

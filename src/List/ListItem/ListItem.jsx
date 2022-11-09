@@ -50,64 +50,46 @@ export default function ListItem({
 
   const inlineItemEdit = (
     <>
-      <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
-        {avatar}
-        <input
-          type="text"
-          className="ListItem-edit"
-          defaultValue={firstNameInput}
-          onChange={(e) => {
-            setFirstNameInput(e.target.value);
-          }}
-        />
-        <input
-          type="text"
-          className="ListItem-edit"
-          defaultValue={lastNameInput}
-          onChange={(e) => {
-            setLastNameInput(e.target.value);
-          }}
-        />
-      </div>
-      <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
-        {cardViewState ? (
-          <p className="ListItem-carView-subtitle">Email</p>
-        ) : null}
-        <input
-          type="text"
-          className="ListItem-edit"
-          defaultValue={emailInput}
-          onChange={(e) => {
-            setEmailInput(e.target.value);
-          }}
-        />
-      </div>
-      <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
-        {cardViewState ? (
-          <p className="ListItem-carView-subtitle">Phone</p>
-        ) : null}
-        <input
-          type="text"
-          className="ListItem-edit"
-          defaultValue={phoneInput}
-          onChange={(e) => {
-            setPhoneInput(e.target.value);
-          }}
-        />
-      </div>
-      <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
-        {cardViewState ? (
-          <p className="ListItem-carView-subtitle">Profession</p>
-        ) : null}
-        <input
-          type="text"
-          className="ListItem-edit"
-          defaultValue={professionInput}
-          onChange={(e) => {
-            setProfessionInput(e.target.value);
-          }}
-        />
-      </div>
+      <input
+        type="text"
+        className="ListItem-edit"
+        defaultValue={firstNameInput}
+        onChange={(e) => {
+          setFirstNameInput(e.target.value);
+        }}
+      />
+      <input
+        type="text"
+        className="ListItem-edit"
+        defaultValue={lastNameInput}
+        onChange={(e) => {
+          setLastNameInput(e.target.value);
+        }}
+      />
+      <input
+        type="text"
+        className="ListItem-edit"
+        defaultValue={emailInput}
+        onChange={(e) => {
+          setEmailInput(e.target.value);
+        }}
+      />
+      <input
+        type="text"
+        className="ListItem-edit"
+        defaultValue={phoneInput}
+        onChange={(e) => {
+          setPhoneInput(e.target.value);
+        }}
+      />
+      <input
+        type="text"
+        className="ListItem-edit"
+        defaultValue={professionInput}
+        onChange={(e) => {
+          setProfessionInput(e.target.value);
+        }}
+      />
     </>
   );
 
