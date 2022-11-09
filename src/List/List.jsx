@@ -162,6 +162,8 @@ export default function List({ cardViewState, inlineEditState }) {
               <ListItem
                 key={contact.id}
                 id={contact.id}
+                contacts={contacts}
+                setContacts={setContacts}
                 avatar={contact.avatar}
                 firstName={contact.firstName}
                 lastName={contact.lastName}

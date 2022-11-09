@@ -1,11 +1,14 @@
 import "./ListItem.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { v4 as uuidv4 } from "uuid";
 import { faUserPen, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { useState } from "react";
 
 export default function ListItem({
   id,
+  contacts,
+  setContacts,
   avatar,
   firstName,
   lastName,
@@ -28,37 +31,82 @@ export default function ListItem({
   const [emailInput, setEmailInput] = useState(email);
   const [professionInput, setProfessionInput] = useState(profession);
 
+  const newContact = {
+    id: uuidv4(),
+    firstName: firstNameInput,
+    lastName: lastNameInput,
+    email: emailInput,
+    phone: phoneInput,
+    profession: professionInput,
+  };
+
+  const changedContacts = contacts.map((contact) => {
+    if (contact.id !== id) {
+      return contact;
+    } else {
+      return newContact;
+    }
+  });
+
   const inlineItemEdit = (
     <>
       <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
         {avatar}
         <input
           type="text"
-          value={firstNameInput}
+          className="ListItem-edit"
+          defaultValue={firstNameInput}
           onChange={(e) => {
-            console.log(e.target.value)
             setFirstNameInput(e.target.value);
           }}
         />
-        {/* <input type="text" value={lastName} /> */}
+        <input
+          type="text"
+          className="ListItem-edit"
+          defaultValue={lastNameInput}
+          onChange={(e) => {
+            setLastNameInput(e.target.value);
+          }}
+        />
       </div>
       <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
         {cardViewState ? (
           <p className="ListItem-carView-subtitle">Email</p>
         ) : null}
-        <a href={`mailto:${{ email }}`}>{email}</a>
+        <input
+          type="text"
+          className="ListItem-edit"
+          defaultValue={emailInput}
+          onChange={(e) => {
+            setEmailInput(e.target.value);
+          }}
+        />
       </div>
       <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
         {cardViewState ? (
           <p className="ListItem-carView-subtitle">Phone</p>
         ) : null}
-        <a href={`tel:${{ phone }}`}>{phone}</a>
+        <input
+          type="text"
+          className="ListItem-edit"
+          defaultValue={phoneInput}
+          onChange={(e) => {
+            setPhoneInput(e.target.value);
+          }}
+        />
       </div>
       <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
         {cardViewState ? (
           <p className="ListItem-carView-subtitle">Profession</p>
         ) : null}
-        {profession}
+        <input
+          type="text"
+          className="ListItem-edit"
+          defaultValue={professionInput}
+          onChange={(e) => {
+            setProfessionInput(e.target.value);
+          }}
+        />
       </div>
     </>
   );
@@ -107,6 +155,7 @@ export default function ListItem({
       setInlineItemState(inlineItemEdit);
       setInlineItemEditState(false);
     } else {
+      setContacts([...changedContacts]);
       setInlineItemState(inlineItemView);
       setInlineItemEditState(true);
     }

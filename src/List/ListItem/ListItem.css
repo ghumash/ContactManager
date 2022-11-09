@@ -117,3 +117,8 @@
 .fa-minus:hover {
   color: var(--color-10);
 }
+
+.ListItem-edit {
+  width: 100%;
+  margin-right: 5px;
+}
