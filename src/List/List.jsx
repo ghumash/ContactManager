@@ -9,14 +9,34 @@ import { list } from "../js/const";
 import { useState } from "react";
 
 import Swal from "sweetalert2";
+import { v4 as uuidv4 } from "uuid";
 
-export default function List({ cardViewState, inlineEditState }) {
+export default function List({
+  cardViewState,
+  inlineEditState,
+  inlineAddState,
+}) {
   const [contacts, setContacts] = useState([...list]);
   const [popupStatus, setPopupStatus] = useState();
   const [checkAll, setCheckAll] = useState(false);
   const [checkedIdArr, setCheckedIdArr] = useState([]);
   const checkedIdCopy = [...checkedIdArr];
   const [itemRowInlineStyle, setTtemRowInlineStyle] = useState(false);
+
+  const [firstNameInput, setFirstNameInput] = useState("");
+  const [lastNameInput, setLastNameInput] = useState("");
+  const [phoneInput, setPhoneInput] = useState("");
+  const [emailInput, setEmailInput] = useState("");
+  const [professionInput, setProfessionInput] = useState("");
+
+  const newContact = {
+    id: uuidv4(),
+    firstName: firstNameInput,
+    lastName: lastNameInput,
+    email: emailInput,
+    phone: phoneInput,
+    profession: professionInput,
+  };
 
   const onCheck = (e, id) => {
     const { name } = e.target;
@@ -137,6 +157,95 @@ export default function List({ cardViewState, inlineEditState }) {
     );
   };
 
+  const isEmpty = () => {
+    switch ("") {
+      case firstNameInput:
+      case lastNameInput:
+      case phoneInput:
+      case emailInput:
+      case professionInput:
+        return false;
+      default:
+        return true;
+    }
+  };
+
+  const addButtonHandle = () => {
+    if (isEmpty()) {
+      setContacts([...contacts, newContact]);
+      Swal.fire({
+        text: `Contact Added!`,
+        icon: "success",
+        iconColor: "var(--color-4)",
+        confirmButtonColor: "var(--color-12)",
+      });
+    } else {
+      Swal.fire({
+        text: `Please fill in all fields`,
+        icon: "warning",
+        iconColor: "var(--color-4)",
+        confirmButtonColor: "var(--color-12)",
+      });
+    }
+  };
+
+  const inlineAdd = (
+    <div className="inlineAdd">
+      <input
+        type="text"
+        className="InlineAdd-item"
+        defaultValue={firstNameInput}
+        placeholder="First Name"
+        onChange={(e) => {
+          setFirstNameInput(e.target.value);
+        }}
+      />
+      <input
+        type="text"
+        className="InlineAdd-item"
+        defaultValue={lastNameInput}
+        placeholder="Last Name"
+        onChange={(e) => {
+          setLastNameInput(e.target.value);
+        }}
+      />
+      <input
+        type="text"
+        className="InlineAdd-item"
+        defaultValue={emailInput}
+        placeholder="Email"
+        onChange={(e) => {
+          setEmailInput(e.target.value);
+        }}
+      />
+      <input
+        type="text"
+        className="InlineAdd-item"
+        defaultValue={phoneInput}
+        placeholder="Phone"
+        onChange={(e) => {
+          setPhoneInput(e.target.value);
+        }}
+      />
+      <input
+        type="text"
+        className="InlineAdd-item"
+        defaultValue={professionInput}
+        placeholder="Profession"
+        onChange={(e) => {
+          setProfessionInput(e.target.value);
+        }}
+      />
+      <button
+        type="button"
+        className="InlineAdd-item"
+        onClick={addButtonHandle}
+      >
+        Add
+      </button>
+    </div>
+  );
+
   return (
     <>
       <Caption title={"Contacts"} />
@@ -153,7 +262,7 @@ export default function List({ cardViewState, inlineEditState }) {
         {!cardViewState ? (
           <ListHeader onCheck={onCheck} checkAll={checkAll} />
         ) : null}
-
+        {inlineAddState && inlineAdd}
         <div
           className={cardViewState ? "ListItem-cardView" : "ListItem-rowView"}
         >

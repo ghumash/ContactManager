@@ -3,8 +3,7 @@ import List from "../List/List";
 import Navbar from "../Navbar/Navbar";
 import About from "../About/About";
 import Settings from "../Settings/Settings";
-import { cardView } from "../js/config";
-import { inlineEdit } from "../js/config";
+import { cardView, inlineEdit, inlineAdd } from "../js/config";
 
 import { Routes, Route } from "react-router-dom";
 import { useState } from "react";
@@ -12,6 +11,7 @@ import { useState } from "react";
 export default function App() {
   const [cardViewState, setCardViewState] = useState(cardView);
   const [inlineEditState, setInlineEditState] = useState(inlineEdit);
+  const [inlineAddState, setInlineAddState] = useState(inlineAdd);
 
   return (
     <div className="App">
@@ -26,6 +26,7 @@ export default function App() {
               <List
                 cardViewState={cardViewState}
                 inlineEditState={inlineEditState}
+                inlineAddState={inlineAddState}
               />
             }
           />
@@ -36,8 +37,10 @@ export default function App() {
               <Settings
                 cardViewState={cardViewState}
                 inlineEditState={inlineEditState}
+                inlineAddState={inlineAddState}
                 setCardViewState={setCardViewState}
                 setInlineEditState={setInlineEditState}
+                setInlineAddState={setInlineAddState}
               />
             }
           />

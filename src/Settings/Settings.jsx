@@ -6,8 +6,10 @@ import Swal from "sweetalert2";
 export default function Settings({
   cardViewState,
   inlineEditState,
+  inlineAddState,
   setCardViewState,
   setInlineEditState,
+  setInlineAddState,
 }) {
   const cardViewHandler = () => {
     if (!cardViewState) {
@@ -43,6 +45,14 @@ export default function Settings({
     }
   };
 
+  const inlineAddhandler = () => {
+    if (!inlineAddState) {
+      setInlineAddState(true);
+    } else {
+      setInlineAddState(false);
+    }
+  };
+
   return (
     <>
       <Caption title={"Settings"} />
@@ -64,6 +74,15 @@ export default function Settings({
               className="switch"
               checked={inlineEditState}
               onChange={inlineEdithandler}
+            />
+          </div>
+          <div className="Settings-item">
+            <div>Inline Add</div>
+            <input
+              type="checkbox"
+              className="switch"
+              checked={inlineAddState}
+              onChange={inlineAddhandler}
             />
           </div>
         </div>
