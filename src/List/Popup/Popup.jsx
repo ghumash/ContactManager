@@ -1,23 +1,23 @@
 import "./Popup.css";
 
-import { v4 as uuidv4 } from "uuid";
+import {v4 as uuidv4} from "uuid";
 import Swal from "sweetalert2";
 
-import { useState } from "react";
+import {useState} from "react";
 
 export default function Popup({
-  title,
-  button,
-  id,
-  firstName,
-  lastName,
-  phone,
-  email,
-  profession,
-  contacts,
-  setContacts,
-  setPopupStatus,
-}) {
+                                title,
+                                button,
+                                id,
+                                firstName,
+                                lastName,
+                                phone,
+                                email,
+                                profession,
+                                contacts,
+                                setContacts,
+                                setPopupStatus,
+                              }) {
   const [firstNameInput, setFirstNameInput] = useState(firstName);
   const [lastNameInput, setLastNameInput] = useState(lastName);
   const [phoneInput, setPhoneInput] = useState(phone);
@@ -172,6 +172,8 @@ export default function Popup({
                 case "Add":
                   addButtonHandle();
                   break;
+                  default:
+                  break
               }
             }}
           >
