@@ -12,7 +12,7 @@ import {
 export default function Navbar() {
   return (
     <>
-      <ul className="Navbar-container">
+      <ul className="Navbar">
         <li>
           <Link to="/" className="Navbar-link">
             <FontAwesomeIcon icon={faHouse} />

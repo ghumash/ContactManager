@@ -1,6 +1,5 @@
-.Navbar-container {
+.Navbar {
   position: relative;
-  transform: rotate(20deg) skew(20deg, -20deg);
 }
 
 .Navbar-link {

@@ -1,5 +1,8 @@
+.ListCaption {
+    margin-bottom: 15px;
+}
+
 .ListItem-cardView {
-    padding: 0 100px;
     margin-bottom: 5%;
 
     display: flex;
@@ -16,7 +19,7 @@
 .InlineAdd-item {
     width: 100%;
     margin-right: 5px;
-    padding: 7px 15px;
+    padding: 7px 20px;
 
     background-color: var(--color-5);
     color: var(--color-1);

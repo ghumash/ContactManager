@@ -33,7 +33,7 @@
 }
 
 .ListItem-item {
-  padding: 16px;
+  padding: 16px 20px;
   word-break: break-all;
 }
 
@@ -54,7 +54,7 @@
 }
 
 .ListItem-card-item {
-  padding: 16px;
+  padding: 20px;
   word-break: break-all;
 }
 

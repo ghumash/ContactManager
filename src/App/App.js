@@ -15,7 +15,7 @@ export default function App() {
 
   return (
     <div className="App">
-      <div className="Navbar">
+      <div className="ListNavbar">
         <Navbar />
       </div>
       <div className="Content">

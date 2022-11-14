@@ -4,7 +4,9 @@ import "./About.css";
 export default function About() {
   return (
     <>
-      <Caption title={"About"} />
+      <div className="ListCaption">
+        <Caption title={"About"} />
+      </div>
       <div className="About">
         <div className="About-container">
           <p>

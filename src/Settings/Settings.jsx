@@ -55,7 +55,9 @@ export default function Settings({
 
   return (
     <>
-      <Caption title={"Settings"} />
+      <div className="ListCaption">
+        <Caption title={"Settings"} />
+      </div>
       <div className="Settings">
         <div className="Settings-container">
           <div className="Settings-item">

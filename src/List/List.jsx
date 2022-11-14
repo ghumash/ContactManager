@@ -5,17 +5,17 @@ import ListItem from "./ListItem/ListItem";
 import Popup from "./Popup/Popup";
 import ListBtnSection from "./ListBtnSection/ListBtnSection";
 
-import { list } from "../js/const";
-import { useState } from "react";
+import {list} from "../js/const";
+import {useState} from "react";
 
 import Swal from "sweetalert2";
-import { v4 as uuidv4 } from "uuid";
+import {v4 as uuidv4} from "uuid";
 
 export default function List({
-  cardViewState,
-  inlineEditState,
-  inlineAddState,
-}) {
+                               cardViewState,
+                               inlineEditState,
+                               inlineAddState,
+                             }) {
   const [contacts, setContacts] = useState([...list]);
   const [popupStatus, setPopupStatus] = useState();
   const [checkAll, setCheckAll] = useState(false);
@@ -39,7 +39,7 @@ export default function List({
   };
 
   const onCheck = (e, id) => {
-    const { name } = e.target;
+    const {name} = e.target;
 
     if (name === "checkAll") {
       if (e.target.checked) {
@@ -253,7 +253,9 @@ export default function List({
 
   return (
     <>
-      <Caption title={"Contacts"} />
+      <div className="ListCaption">
+        <Caption title={"Contacts"}/>
+      </div>
       <div className="List">
         {popupStatus ? popupStatus : null}
         <ListBtnSection
@@ -265,9 +267,8 @@ export default function List({
           cardViewState={cardViewState}
         />
         {!cardViewState ? (
-          <ListHeader onCheck={onCheck} checkAll={checkAll} />
+          <ListHeader onCheck={onCheck} checkAll={checkAll}/>
         ) : null}
-        {inlineAddState && inlineAdd}
         <div
           className={cardViewState ? "ListItem-cardView" : "ListItem-rowView"}
         >
