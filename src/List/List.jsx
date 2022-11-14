@@ -173,6 +173,11 @@ export default function List({
   const addButtonHandle = () => {
     if (isEmpty()) {
       setContacts([...contacts, newContact]);
+      setFirstNameInput("")
+      setLastNameInput("")
+      setPhoneInput("")
+      setEmailInput("")
+      setProfessionInput("")
       Swal.fire({
         text: `Contact Added!`,
         icon: "success",
@@ -194,7 +199,7 @@ export default function List({
       <input
         type="text"
         className="InlineAdd-item"
-        defaultValue={firstNameInput}
+        value={firstNameInput}
         placeholder="First Name"
         onChange={(e) => {
           setFirstNameInput(e.target.value);
@@ -203,7 +208,7 @@ export default function List({
       <input
         type="text"
         className="InlineAdd-item"
-        defaultValue={lastNameInput}
+        value={lastNameInput}
         placeholder="Last Name"
         onChange={(e) => {
           setLastNameInput(e.target.value);
@@ -212,7 +217,7 @@ export default function List({
       <input
         type="text"
         className="InlineAdd-item"
-        defaultValue={emailInput}
+        value={emailInput}
         placeholder="Email"
         onChange={(e) => {
           setEmailInput(e.target.value);
@@ -221,7 +226,7 @@ export default function List({
       <input
         type="text"
         className="InlineAdd-item"
-        defaultValue={phoneInput}
+        value={phoneInput}
         placeholder="Phone"
         onChange={(e) => {
           setPhoneInput(e.target.value);
@@ -230,7 +235,7 @@ export default function List({
       <input
         type="text"
         className="InlineAdd-item"
-        defaultValue={professionInput}
+        value={professionInput}
         placeholder="Profession"
         onChange={(e) => {
           setProfessionInput(e.target.value);

@@ -3,7 +3,6 @@
 }
 
 .ListBtnSection-container {
-  height: 30px;
   margin-bottom: 15px;
   display: flex;
   justify-content: space-between;
@@ -22,8 +21,8 @@
 .ListBtnSection-add-button,
 .ListBtnSection-delete-checked-button,
 .ListBtnSection-delete-checked-button-disable {
-  width: 15%;
   height: 100%;
+  padding: 7px 23px;
   border-radius: 15px;
 
   font-size: 13px;
@@ -58,7 +57,7 @@
 
 .ListBtnSection-delete-checked-button-disable {
   cursor: default;
-  background-color: var(--color-14);
+  background-color: var(--color-9);
 }
 
 .ListBtnSection-delete-checked-button:hover {

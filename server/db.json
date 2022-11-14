@@ -1,0 +1,22 @@
+{
+  "contacts": [
+    {
+      "id": 1,
+      "firstName": "Joe 1",
+      "lastName": "Smith 1",
+      "email": "joesmith1@gmail.com",
+      "phone": "+1954587768",
+      "profession": "PhD 1",
+      "avatar": ""
+    },
+    {
+      "id": 2,
+      "firstName": "Joe 2",
+      "lastName": "Smith 2",
+      "email": "joesmith2@gmail.com",
+      "phone": "+2954587768",
+      "profession": "PhD 2",
+      "avatar": ""
+    }
+  ]
+}
