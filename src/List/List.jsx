@@ -1,7 +1,8 @@
 import "./List.css";
-import Caption from "../Caption/Caption";
+import Caption from "../components/Caption/Caption";
 import ListHeader from "./ListHeader/ListHeader";
 import ListItem from "./ListItem/ListItem";
+import ListItem2 from "../components/ListItem2/ListItem2";
 import Popup from "./Popup/Popup";
 import ListBtnSection from "./ListBtnSection/ListBtnSection";
 
@@ -256,16 +257,19 @@ export default function List({
       <div className="ListCaption">
         <Caption title={"Contacts"}/>
       </div>
+      {inlineAddState && inlineAdd}
       <div className="List">
         {popupStatus ? popupStatus : null}
-        <ListBtnSection
-          onAdd={onAdd}
-          onCheck={onCheck}
-          onDeleteChecked={onDeleteChecked}
-          checkedIdArr={checkedIdArr}
-          checkAll={checkAll}
-          cardViewState={cardViewState}
-        />
+        <div className="ListBtnSection-container">
+          <ListBtnSection
+            onAdd={onAdd}
+            onCheck={onCheck}
+            onDeleteChecked={onDeleteChecked}
+            checkedIdArr={checkedIdArr}
+            checkAll={checkAll}
+            cardViewState={cardViewState}
+          />
+        </div>
         {!cardViewState ? (
           <ListHeader onCheck={onCheck} checkAll={checkAll}/>
         ) : null}
@@ -292,6 +296,30 @@ export default function List({
                 onEdit={onEdit}
                 onCheck={onCheck}
               />
+            );
+          })}
+          {contacts.map((contact) => {
+            return (
+              <div className="ListItem-static-row" key={contact.id}>
+                <ListItem2
+                  state={"staticState"}
+                  id={contact.id}
+                  avatar={contact.avatar}
+                  firstName={contact.firstName}
+                  lastName={contact.lastName}
+                  email={contact.email}
+                  phone={contact.phone}
+                  profession={contact.profession}
+                  contacts={contacts}
+                  setContacts={setContacts}
+                  cardViewState={cardViewState}
+                  inlineEditState={inlineEditState}
+                  checkedIdArr={checkedIdArr}
+                  onDelete={onDelete}
+                  onEdit={onEdit}
+                  onCheck={onCheck}
+                />
+              </div>
             );
           })}
         </div>

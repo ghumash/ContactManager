@@ -1,3 +1,4 @@
+/* delete */
 .ListItem-row {
   display: flex;
   align-items: center;
@@ -6,7 +7,7 @@
 
   border-radius: 15px;
 }
-
+/* delete */
 .ListItem-row:last-child {
   margin-bottom: 0;
 }
@@ -31,12 +32,12 @@
   background-color: var(--color-8);
   color: var(--color-7);
 }
-
+/* delete */
 .ListItem-item {
   padding: 16px 20px;
   word-break: break-all;
 }
-
+/* delete */
 .ListItem-item:nth-child(2) {
   width: 23%;
 }

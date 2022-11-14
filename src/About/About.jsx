@@ -1,4 +1,4 @@
-import Caption from "../Caption/Caption";
+import Caption from "../components/Caption/Caption";
 import "./About.css";
 
 export default function About() {

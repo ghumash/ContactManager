@@ -2,7 +2,7 @@ import "./ListItem.css";
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {v4 as uuidv4} from "uuid";
-import {faUserPen, faMinus} from "@fortawesome/free-solid-svg-icons";
+import {faMinus, faUserPen} from "@fortawesome/free-solid-svg-icons";
 import {useState} from "react";
 import Swal from "sweetalert2";
 
@@ -62,67 +62,71 @@ export default function ListItem({
     }
   });
 
-  const inlineItemEdit = (<>
-    <input
-      type="text"
-      className="ListItem-edit"
-      defaultValue={firstNameInput}
-      onChange={(e) => {
-        setFirstNameInput(e.target.value);
-      }}
-    />
-    <input
-      type="text"
-      className="ListItem-edit"
-      defaultValue={lastNameInput}
-      onChange={(e) => {
-        setLastNameInput(e.target.value);
-      }}
-    />
-    <input
-      type="text"
-      className="ListItem-edit"
-      defaultValue={emailInput}
-      onChange={(e) => {
-        setEmailInput(e.target.value);
-      }}
-    />
-    <input
-      type="text"
-      className="ListItem-edit"
-      defaultValue={phoneInput}
-      onChange={(e) => {
-        setPhoneInput(e.target.value);
-      }}
-    />
-    <input
-      type="text"
-      className="ListItem-edit"
-      defaultValue={professionInput}
-      onChange={(e) => {
-        setProfessionInput(e.target.value);
-      }}
-    />
-  </>);
+  const inlineItemEdit = (
+    <>
+      <input
+        type="text"
+        className="ListItem-edit"
+        defaultValue={firstNameInput}
+        onChange={(e) => {
+          setFirstNameInput(e.target.value);
+        }}
+      />
+      <input
+        type="text"
+        className="ListItem-edit"
+        defaultValue={lastNameInput}
+        onChange={(e) => {
+          setLastNameInput(e.target.value);
+        }}
+      />
+      <input
+        type="text"
+        className="ListItem-edit"
+        defaultValue={emailInput}
+        onChange={(e) => {
+          setEmailInput(e.target.value);
+        }}
+      />
+      <input
+        type="text"
+        className="ListItem-edit"
+        defaultValue={phoneInput}
+        onChange={(e) => {
+          setPhoneInput(e.target.value);
+        }}
+      />
+      <input
+        type="text"
+        className="ListItem-edit"
+        defaultValue={professionInput}
+        onChange={(e) => {
+          setProfessionInput(e.target.value);
+        }}
+      />
+    </>
+  );
 
-  const inlineItemView = (<>
-    <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
-      {avatar}
-      {firstName} {lastName}
-    </div>
-    <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
-      {cardViewState ? (<p className="ListItem-carView-subtitle">Email</p>) : null}
-      <a href={`mailto:${{email}}`}>{email}</a>
-    </div>
-    <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
-      {cardViewState ? (<p className="ListItem-carView-subtitle">Phone</p>) : null}
-      <a href={`tel:${{phone}}`}>{phone}</a>
-    </div>
-    <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
-      {cardViewState ? (<p className="ListItem-carView-subtitle">Profession</p>) : null}
-      {profession}
-    </div>
-  </>);
+  const inlineItemView = (
+    <>
+      <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
+        {avatar}
+        {firstName} {lastName}
+      </div>
+      <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
+        {cardViewState ? (<p className="ListItem-carView-subtitle">Email</p>) : null}
+        <a href={`mailto:${email}`}>{email}</a>
+      </div>
+      <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
+        {cardViewState ? (<p className="ListItem-carView-subtitle">Phone</p>) : null}
+        <a href={`tel:${phone}`}>{phone}</a>
+      </div>
+      <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
+        {cardViewState ? (<p className="ListItem-carView-subtitle">Profession</p>) : null}
+        {profession}
+      </div>
+    </>
+  );
 
   const ListItemStyleHandler = () => {
     if (cardViewState) {

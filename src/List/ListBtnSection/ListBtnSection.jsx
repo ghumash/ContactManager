@@ -10,7 +10,6 @@ export default function ListBtnSection({
 }) {
   return (
     <div className="ListBtnSection">
-      <div className="ListBtnSection-container">
         {cardViewState ? (
           <div className="ListBtnSection-cardView-btn-group">
             <label className="checkbox ListBtnSection-checkAll">
@@ -59,6 +58,5 @@ export default function ListBtnSection({
           Add
         </button>
       </div>
-    </div>
   );
 }

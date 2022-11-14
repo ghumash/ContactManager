@@ -1,5 +1,4 @@
-.ListBtnSection-container {
-  margin-bottom: 15px;
+.ListBtnSection {
   display: flex;
   justify-content: space-between;
   align-items: center;
