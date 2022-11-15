@@ -2,7 +2,7 @@ import "./List.css";
 import Caption from "../components/Caption/Caption";
 import ListHeader from "./ListHeader/ListHeader";
 import ListItem from "./ListItem/ListItem";
-import Popup from "./Popup/Popup";
+import PopupContact from "./PopupContact/PopupContact";
 import ListBtnSection from "./ListBtnSection/ListBtnSection";
 
 import {list} from "../js/const";
@@ -17,7 +17,7 @@ export default function List({
                                inlineAddState,
                              }) {
   const [contacts, setContacts] = useState([...list]);
-  const [popupStatus, setPopupStatus] = useState();
+  const [popupContactStatus, setPopupContactStatus] = useState();
   const [checkAll, setCheckAll] = useState(false);
   const [checkedIdArr, setCheckedIdArr] = useState([]);
   const checkedIdCopy = [...checkedIdArr];
@@ -123,8 +123,8 @@ export default function List({
   };
 
   const onEdit = (id, firstName, lastName, phone, email, profession) => {
-    setPopupStatus(
-      <Popup
+    setPopupContactStatus(
+      <PopupContact
         title={"Edit Contact"}
         button={"Save"}
         id={id}
@@ -135,14 +135,14 @@ export default function List({
         profession={profession}
         contacts={contacts}
         setContacts={setContacts}
-        setPopupStatus={setPopupStatus}
+        setPopupContactStatus={setPopupContactStatus}
       />
     );
   };
 
   const onAdd = () => {
-    setPopupStatus(
-      <Popup
+    setPopupContactStatus(
+      <PopupContact
         title={"Add Contact"}
         button={"Add"}
         firstName={""}
@@ -152,7 +152,7 @@ export default function List({
         profession={""}
         contacts={contacts}
         setContacts={setContacts}
-        setPopupStatus={setPopupStatus}
+        setPopupContactStatus={setPopupContactStatus}
       />
     );
   };
@@ -258,7 +258,7 @@ export default function List({
       </div>
       {inlineAddState && inlineAdd}
       <div className="List">
-        {popupStatus ? popupStatus : null}
+        {popupContactStatus ? popupContactStatus : null}
         <div className="ListBtnSection-container">
           <ListBtnSection
             onAdd={onAdd}

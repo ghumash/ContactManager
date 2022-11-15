@@ -1,11 +1,11 @@
-import "./Popup.css";
+import "./PopupContact.css";
 
 import {v4 as uuidv4} from "uuid";
 import Swal from "sweetalert2";
 
 import {useState} from "react";
 
-export default function Popup({
+export default function PopupContact({
                                 title,
                                 button,
                                 id,
@@ -16,7 +16,7 @@ export default function Popup({
                                 profession,
                                 contacts,
                                 setContacts,
-                                setPopupStatus,
+                                setPopupContactStatus,
                               }) {
   const [firstNameInput, setFirstNameInput] = useState(firstName);
   const [lastNameInput, setLastNameInput] = useState(lastName);
@@ -57,7 +57,7 @@ export default function Popup({
   const saveButtonHandle = () => {
     if (isEmpty()) {
       setContacts([...changedContacts]);
-      setPopupStatus(null);
+      setPopupContactStatus(null);
       Swal.fire({
         text: `Contact Saved!`,
         icon: "success",
@@ -77,7 +77,7 @@ export default function Popup({
   const addButtonHandle = () => {
     if (isEmpty()) {
       setContacts([...contacts, newContact]);
-      setPopupStatus(null);
+      setPopupContactStatus(null);
       Swal.fire({
         text: `Contact Added!`,
         icon: "success",
@@ -96,19 +96,19 @@ export default function Popup({
 
   return (
     <div
-      className="Popup-mask"
+      className="PopupContact-mask"
       onClick={(e) => {
-        if (e.target.className === "Popup-mask") {
-          setPopupStatus(null);
+        if (e.target.className === "PopupContact-mask") {
+          setPopupContactStatus(null);
         }
       }}
     >
-      <form className="Popup-container swal2-show">
-        <h1 className="Popup-title">{title}</h1>
-        <label className="Popup-item">
+      <form className="PopupContact-container swal2-show">
+        <h1 className="PopupContact-title">{title}</h1>
+        <label className="PopupContact-item">
           <h3>First Name</h3>
           <input
-            className="Popup-input"
+            className="PopupContact-input"
             type="text"
             value={firstNameInput}
             onChange={(e) => {
@@ -116,10 +116,10 @@ export default function Popup({
             }}
           />
         </label>
-        <label className="Popup-item">
+        <label className="PopupContact-item">
           <h3>Last Name</h3>
           <input
-            className="Popup-input"
+            className="PopupContact-input"
             type="text"
             value={lastNameInput}
             onChange={(e) => {
@@ -127,10 +127,10 @@ export default function Popup({
             }}
           />
         </label>
-        <label className="Popup-item">
+        <label className="PopupContact-item">
           <h3>Email</h3>
           <input
-            className="Popup-input"
+            className="PopupContact-input"
             type="text"
             value={emailInput}
             onChange={(e) => {
@@ -138,10 +138,10 @@ export default function Popup({
             }}
           />
         </label>
-        <label className="Popup-item">
+        <label className="PopupContact-item">
           <h3>Phone</h3>
           <input
-            className="Popup-input"
+            className="PopupContact-input"
             type="text"
             value={phoneInput}
             onChange={(e) => {
@@ -149,10 +149,10 @@ export default function Popup({
             }}
           />
         </label>
-        <label className="Popup-item">
+        <label className="PopupContact-item">
           <h3>Profession</h3>
           <input
-            className="Popup-input"
+            className="PopupContact-input"
             type="text"
             value={professionInput}
             onChange={(e) => {
@@ -160,9 +160,9 @@ export default function Popup({
             }}
           />
         </label>
-        <div className="Popup-btn-group">
+        <div className="PopupContact-btn-group">
           <button
-            className="Popup-btn"
+            className="PopupContact-btn"
             type="button"
             onClick={() => {
               switch (button) {
@@ -180,10 +180,10 @@ export default function Popup({
             {button}
           </button>
           <button
-            className="Popup-btn"
+            className="PopupContact-btn"
             type="button"
             onClick={() => {
-              setPopupStatus(null);
+              setPopupContactStatus(null);
             }}
           >
             Cancel
