@@ -1,7 +1,7 @@
 import "./ListBtnSection.css";
 
 export default function ListBtnSection({
-   onAdd, onCheck, onDeleteChecked, checkedIdArr, checkAll, cardViewState,
+   onPopupContactAdd, onCheck, onDeleteChecked, checkedIdArr, checkAll, cardViewState,
 }) {
   return (<div className="ListBtnSection">
     {cardViewState ? (<div className="ListBtnSection-cardView-btn-group">
@@ -10,9 +10,7 @@ export default function ListBtnSection({
           name="checkAll"
           type="checkbox"
           checked={checkAll}
-          onChange={(e) => {
-            onCheck(e);
-          }}
+          onChange={onCheck}
         />
         <span></span>
       </label>
@@ -28,7 +26,7 @@ export default function ListBtnSection({
       onClick={onDeleteChecked}>
       Delete Checked
     </button>)}
-    <button className="ListBtnSection-add-button" onClick={onAdd}>
+    <button className="ListBtnSection-add-button" onClick={onPopupContactAdd}>
       Add
     </button>
   </div>);

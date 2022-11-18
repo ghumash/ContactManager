@@ -104,7 +104,7 @@ export default function List({
     );
   };
 
-  const onAdd = () => {
+  const onPopupContactAdd = () => {
     setPopupContactStatus(
       <PopupContact
         title={"Add Contact"}
@@ -117,6 +117,20 @@ export default function List({
         contacts={contacts}
         setContacts={setContacts}
         setPopupContactStatus={setPopupContactStatus}
+      />
+    );
+  };
+
+  const onInlineContactEdit = (id, firstName, lastName, phone, email, profession) => {
+    setInlineContactStatus(
+      <InlineContact
+        title={"Edit Contact"}
+        button={"Save"}
+        firstName={firstName}
+        lastName={lastName}
+        phone={phone}
+        email={email}
+        profession={profession}
       />
     );
   };
@@ -138,7 +152,6 @@ export default function List({
             profession={""}
             contacts={contacts}
             setContacts={setContacts}
-            setNewContact={setNewContact}
             setInlineContactStatus={setInlineContactStatus}
           />
         </div>
@@ -148,7 +161,7 @@ export default function List({
         {popupContactStatus ? popupContactStatus : null}
         <div className="ListBtnSection-container">
           <ListBtnSection
-            onAdd={onAdd}
+            onPopupContactAdd={onPopupContactAdd}
             onCheck={onCheck}
             onDeleteChecked={onDeleteChecked}
             checkedIdArr={checkedIdArr}
@@ -167,19 +180,17 @@ export default function List({
             return inlineContactStatus && contact.id === newContact.id ?
               <div className="InlineEditItem">
                 <InlineContact
-                  title={"Edit Contact"}
                   button={"Save"}
+                  key={contact.id}
+                  id={contact.id}
+                  contact={contact}
                   firstName={contact.firstName}
                   lastName={contact.lastName}
                   phone={contact.phone}
                   email={contact.email}
                   profession={contact.profession}
-                  key={contact.id}
-                  id={contact.id}
                   contacts={contacts}
-                  contact={contact}
                   setContacts={setContacts}
-                  setNewContact={setNewContact}
                   setInlineContactStatus={setInlineContactStatus}
                 />
               </div>
@@ -189,14 +200,12 @@ export default function List({
                   id={contact.id}
                   contact={contact}
                   setNewContact={setNewContact}
-                  contacts={contacts}
-                  setContacts={setContacts}
                   cardViewState={cardViewState}
                   inlineEditState={inlineEditState}
                   checkedIdArr={checkedIdArr}
                   onDelete={onDelete}
                   onPopupContactEdit={onPopupContactEdit}
-                  setInlineContactStatus={setInlineContactStatus}
+                  onInlineContactEdit={onInlineContactEdit}
                   onCheck={onCheck}
                 />
               );

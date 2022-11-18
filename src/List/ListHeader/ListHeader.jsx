@@ -10,9 +10,7 @@ export default function ListHeader({ onCheck, checkAll }) {
               name="checkAll"
               type="checkbox"
               checked={checkAll}
-              onChange={(e) => {
-                onCheck(e);
-              }}
+              onChange={onCheck}
             />
             <span></span>
           </label>

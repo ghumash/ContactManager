@@ -13,7 +13,7 @@ export default function ListItem({
                                    checkedIdArr,
                                    onDelete,
                                    onPopupContactEdit,
-                                   setInlineContactStatus,
+                                   onInlineContactEdit,
                                    onCheck,
                                  }) {
 
@@ -42,17 +42,7 @@ export default function ListItem({
       onPopupContactEdit(id, contact.firstName, contact.lastName, contact.phone, contact.email, contact.profession);
     } else {
       if (!cardViewState) {
-        setInlineContactStatus(
-          <InlineContact
-            title={"Edit Contact"}
-            button={"Save"}
-            firstName={contact.firstName}
-            lastName={contact.lastName}
-            phone={contact.phone}
-            email={contact.email}
-            profession={contact.profession}
-          />
-        )
+        onInlineContactEdit(id, contact.firstName, contact.lastName, contact.phone, contact.email, contact.profession);
       }
     }
   }
