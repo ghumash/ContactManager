@@ -126,21 +126,24 @@ export default function List({
       <div className="ListCaption">
         <Caption title={"Contacts"}/>
       </div>
-      <div className="InlineAdd">
-        <InlineContact
-          title={"Add Contact"}
-          button={"Add"}
-          firstName={""}
-          lastName={""}
-          phone={""}
-          email={""}
-          profession={""}
-          contacts={contacts}
-          setContacts={setContacts}
-          setNewContact={setNewContact}
-          setInlineContactStatus={setInlineContactStatus}
-        />
-      </div>
+      {inlineAddState &&
+        <div className="InlineAdd">
+          <InlineContact
+            title={"Add Contact"}
+            button={"Add"}
+            firstName={""}
+            lastName={""}
+            phone={""}
+            email={""}
+            profession={""}
+            contacts={contacts}
+            setContacts={setContacts}
+            setNewContact={setNewContact}
+            setInlineContactStatus={setInlineContactStatus}
+          />
+        </div>
+      }
+
       <div className="List">
         {popupContactStatus ? popupContactStatus : null}
         <div className="ListBtnSection-container">
