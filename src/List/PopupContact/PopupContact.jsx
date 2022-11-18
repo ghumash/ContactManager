@@ -1,24 +1,23 @@
 import "./PopupContact.css";
 
 import {v4 as uuidv4} from "uuid";
-import Swal from "sweetalert2";
 
 import {useState} from "react";
-import {isEmpty} from "../../js/utils";
+import {isEmpty, popupInfo} from "../../js/utils";
 
 export default function PopupContact({
-                                title,
-                                button,
-                                id,
-                                firstName,
-                                lastName,
-                                phone,
-                                email,
-                                profession,
-                                contacts,
-                                setContacts,
-                                setPopupContactStatus,
-                              }) {
+                                       title,
+                                       button,
+                                       id,
+                                       firstName,
+                                       lastName,
+                                       phone,
+                                       email,
+                                       profession,
+                                       contacts,
+                                       setContacts,
+                                       setPopupContactStatus,
+                                     }) {
   const [firstNameInput, setFirstNameInput] = useState(firstName);
   const [lastNameInput, setLastNameInput] = useState(lastName);
   const [phoneInput, setPhoneInput] = useState(phone);
@@ -46,19 +45,9 @@ export default function PopupContact({
     if (isEmpty(newContact)) {
       setContacts([...changedContacts]);
       setPopupContactStatus(null);
-      Swal.fire({
-        text: `Contact Saved!`,
-        icon: "success",
-        iconColor: "var(--color-4)",
-        confirmButtonColor: "var(--color-12)",
-      });
+      popupInfo("success", "Contact Saved!")
     } else {
-      Swal.fire({
-        text: `Please fill in all fields`,
-        icon: "warning",
-        iconColor: "var(--color-4)",
-        confirmButtonColor: "var(--color-12)",
-      });
+      popupInfo("warning", "Please fill in all fields")
     }
   };
 
@@ -66,19 +55,9 @@ export default function PopupContact({
     if (isEmpty(newContact)) {
       setContacts([...contacts, newContact]);
       setPopupContactStatus(null);
-      Swal.fire({
-        text: `Contact Added!`,
-        icon: "success",
-        iconColor: "var(--color-4)",
-        confirmButtonColor: "var(--color-12)",
-      });
+      popupInfo("success", "Contact Added!")
     } else {
-      Swal.fire({
-        text: `Please fill in all fields`,
-        icon: "warning",
-        iconColor: "var(--color-4)",
-        confirmButtonColor: "var(--color-12)",
-      });
+      popupInfo("warning", "Please fill in all fields")
     }
   };
 
@@ -160,7 +139,7 @@ export default function PopupContact({
                 case "Add":
                   addButtonHandle();
                   break;
-                  default:
+                default:
                   break
               }
             }}

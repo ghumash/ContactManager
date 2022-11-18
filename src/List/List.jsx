@@ -7,9 +7,9 @@ import ListBtnSection from "./ListBtnSection/ListBtnSection";
 import InlineContact from "./InlineContact/InlineContact";
 
 import {list} from "../js/const";
-import {useState} from "react";
+import {popupConfirm, popupInfo} from "../js/utils";
 
-import Swal from "sweetalert2";
+import {useState} from "react";
 
 export default function List({
                                cardViewState,
@@ -62,52 +62,28 @@ export default function List({
 
   const onDeleteChecked = () => {
     if (checkedIdArr.length !== 0) {
-      Swal.fire({
-        text: `Do you want to delete these contacts?`,
-        icon: "warning",
-        iconColor: "var(--color-4)",
-        showCancelButton: true,
-        confirmButtonColor: "var(--color-12)",
-        cancelButtonColor: "var(--color-10)",
-        confirmButtonText: "Yes, delete these contacts!",
-      }).then((result) => {
-        if (result.isConfirmed) {
-          setContacts(
-            contacts.filter((contact) => !checkedIdArr.includes(contact.id))
-          );
-          setCheckedIdArr([]);
-          setCheckAll(false);
-          Swal.fire({
-            icon: "success",
-            iconColor: "var(--color-4)",
-            text: "Contacts has been deleted!",
-            confirmButtonColor: "var(--color-12)",
-          });
-        }
-      });
+      popupConfirm("Do you want to delete these contacts?", "Yes, delete these contacts!")
+        .then((result) => {
+          if (result.isConfirmed) {
+            setContacts(
+              contacts.filter((contact) => !checkedIdArr.includes(contact.id))
+            );
+            setCheckedIdArr([]);
+            setCheckAll(false);
+            popupInfo("success", "Contacts has been deleted!")
+          }
+        });
     }
   };
 
   const onDelete = (id, firstName, lastName) => {
-    Swal.fire({
-      text: `Do you want delete "${firstName} ${lastName}" Contact?`,
-      icon: "warning",
-      iconColor: "var(--color-4)",
-      showCancelButton: true,
-      confirmButtonColor: "var(--color-12)",
-      cancelButtonColor: "var(--color-10)",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        setContacts(contacts.filter((contact) => contact.id !== id));
-        Swal.fire({
-          icon: "success",
-          iconColor: "var(--color-4)",
-          confirmButtonColor: "var(--color-12)",
-          text: `Contact "${firstName} ${lastName}" has been deleted.`,
-        });
-      }
-    });
+    popupConfirm(`Do you want delete "${firstName} ${lastName}" Contact?`, "Yes, delete it!")
+      .then((result) => {
+        if (result.isConfirmed) {
+          setContacts(contacts.filter((contact) => contact.id !== id));
+          popupInfo("success", `Contact "${firstName} ${lastName}" has been deleted.`)
+        }
+      });
   };
 
   const onPopupContactEdit = (id, firstName, lastName, phone, email, profession) => {
@@ -150,6 +126,21 @@ export default function List({
       <div className="ListCaption">
         <Caption title={"Contacts"}/>
       </div>
+      <div className="InlineAdd">
+        <InlineContact
+          title={"Add Contact"}
+          button={"Add"}
+          firstName={""}
+          lastName={""}
+          phone={""}
+          email={""}
+          profession={""}
+          contacts={contacts}
+          setContacts={setContacts}
+          setNewContact={setNewContact}
+          setInlineContactStatus={setInlineContactStatus}
+        />
+      </div>
       <div className="List">
         {popupContactStatus ? popupContactStatus : null}
         <div className="ListBtnSection-container">
@@ -174,6 +165,11 @@ export default function List({
               <InlineContact
                 title={"Edit Contact"}
                 button={"Save"}
+                firstName={contact.firstName}
+                lastName={contact.lastName}
+                phone={contact.phone}
+                email={contact.email}
+                profession={contact.profession}
                 key={contact.id}
                 id={contact.id}
                 contacts={contacts}

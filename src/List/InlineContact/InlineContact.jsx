@@ -1,27 +1,30 @@
 import "./InlineContact.css";
 
-import {v4 as uuidv4} from "uuid";
-import Swal from "sweetalert2";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faMinus, faUserPen, faCheck, faXmark} from "@fortawesome/free-solid-svg-icons";
+import {isEmpty, popupInfo} from "../../js/utils";
 
 import {useState} from "react";
-import {isEmpty} from "../../js/utils";
+
+import {v4 as uuidv4} from "uuid";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCheck, faXmark} from "@fortawesome/free-solid-svg-icons";
 
 export default function InlineContact({
-  setNewContact,
-  contact,
-  button,
-  id,
-  contacts,
-  setContacts,
-  setInlineContactStatus,
-}) {
-  const [firstNameInput, setFirstNameInput] = useState(contact.firstName);
-  const [lastNameInput, setLastNameInput] = useState(contact.lastName);
-  const [phoneInput, setPhoneInput] = useState(contact.phone);
-  const [emailInput, setEmailInput] = useState(contact.email);
-  const [professionInput, setProfessionInput] = useState(contact.profession);
+                                        firstName,
+                                        lastName,
+                                        phone,
+                                        email,
+                                        profession,
+                                        button,
+                                        id,
+                                        contacts,
+                                        setContacts,
+                                        setInlineContactStatus,
+                                      }) {
+  const [firstNameInput, setFirstNameInput] = useState(firstName);
+  const [lastNameInput, setLastNameInput] = useState(lastName);
+  const [phoneInput, setPhoneInput] = useState(phone);
+  const [emailInput, setEmailInput] = useState(email);
+  const [professionInput, setProfessionInput] = useState(profession);
 
   const newContact = {
     id: uuidv4(),
@@ -45,19 +48,9 @@ export default function InlineContact({
     if (isEmpty(newContact)) {
       setContacts([...changeContacts]);
       setInlineContactStatus(null);
-      Swal.fire({
-        text: `Contact Saved!`,
-        icon: "success",
-        iconColor: "var(--color-4)",
-        confirmButtonColor: "var(--color-12)",
-      });
+      popupInfo("success", "Contact Saved!")
     } else {
-      Swal.fire({
-        text: `Please fill in all fields`,
-        icon: "warning",
-        iconColor: "var(--color-4)",
-        confirmButtonColor: "var(--color-12)",
-      });
+      popupInfo("warning", "Please fill in all fields")
     }
   };
 
@@ -65,26 +58,21 @@ export default function InlineContact({
     if (isEmpty(newContact)) {
       setContacts([...contacts, newContact]);
       setInlineContactStatus(null);
-      Swal.fire({
-        text: `Contact Added!`,
-        icon: "success",
-        iconColor: "var(--color-4)",
-        confirmButtonColor: "var(--color-12)",
-      });
+      setFirstNameInput("")
+      setLastNameInput("")
+      setPhoneInput("")
+      setEmailInput("")
+      setProfessionInput("")
+      popupInfo("success", "Contact Added!")
     } else {
-      Swal.fire({
-        text: `Please fill in all fields`,
-        icon: "warning",
-        iconColor: "var(--color-4)",
-        confirmButtonColor: "var(--color-12)",
-      });
+      popupInfo("warning", "Please fill in all fields")
     }
   };
 
   return (
-    <form className="inlineAdd">
+    <form className="inlineContact">
       <input
-        className="InlineAdd-item"
+        className="InlineContact-item"
         type="text"
         value={firstNameInput}
         onChange={(e) => {
@@ -92,7 +80,7 @@ export default function InlineContact({
         }}
       />
       <input
-        className="InlineAdd-item"
+        className="InlineContact-item"
         type="text"
         value={lastNameInput}
         onChange={(e) => {
@@ -100,7 +88,7 @@ export default function InlineContact({
         }}
       />
       <input
-        className="InlineAdd-item"
+        className="InlineContact-item"
         type="text"
         value={emailInput}
         onChange={(e) => {
@@ -108,7 +96,7 @@ export default function InlineContact({
         }}
       />
       <input
-        className="InlineAdd-item"
+        className="InlineContact-item"
         type="text"
         value={phoneInput}
         onChange={(e) => {
@@ -116,7 +104,7 @@ export default function InlineContact({
         }}
       />
       <input
-        className="InlineAdd-item"
+        className="InlineContact-item"
         type="text"
         value={professionInput}
         onChange={(e) => {
@@ -146,7 +134,20 @@ export default function InlineContact({
           className="InlineContact-btn"
           type="button"
           onClick={() => {
-            setInlineContactStatus(null);
+            switch (button) {
+              case "Save":
+                setInlineContactStatus(null);
+                break;
+              case "Add":
+                setFirstNameInput("")
+                setLastNameInput("")
+                setPhoneInput("")
+                setEmailInput("")
+                setProfessionInput("")
+                break;
+              default:
+                break
+            }
           }}
         />
       </div>

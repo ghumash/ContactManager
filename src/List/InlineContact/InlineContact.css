@@ -1,11 +1,11 @@
-.inlineAdd {
+.inlineContact {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2%;
 }
 
-.InlineAdd-item {
+.InlineContact-item {
   width: 100%;
   margin: 11px 5px;
   padding: 5px 15px;
