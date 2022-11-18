@@ -62,23 +62,23 @@ export default function ListItem({
           <span></span>
         </label>
       </div>
-      <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
+      <div className={!cardViewState ? "ListItem-item row-item-2 row-item" : "ListItem-card-item"}>
         {contact.avatar}
         {contact.firstName} {contact.lastName}
       </div>
-      <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
+      <div className={!cardViewState ? "ListItem-item row-item-3 row-item" : "ListItem-card-item"}>
         {cardViewState ? (<p className="ListItem-carView-subtitle">Email</p>) : null}
         <a href={`mailto:${contact.email}`}>{contact.email}</a>
       </div>
-      <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
+      <div className={!cardViewState ? "ListItem-item row-item-4 row-item" : "ListItem-card-item"}>
         {cardViewState ? (<p className="ListItem-carView-subtitle">Phone</p>) : null}
         <a href={`tel:${contact.phone}`}>{contact.phone}</a>
       </div>
-      <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
+      <div className={!cardViewState ? "ListItem-item row-item-5 row-item" : "ListItem-card-item"}>
         {cardViewState ? (<p className="ListItem-carView-subtitle">Profession</p>) : null}
         {contact.profession}
       </div>
-      <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
+      <div className={!cardViewState ? "ListItem-item row-item-6 row-item" : "ListItem-card-item"}>
         <div className="ListItem-icon-group">
           <FontAwesomeIcon
             icon={faUserPen}

@@ -35,3 +35,24 @@
 .InlineEditItem > .inlineContact > :first-child {
   margin-left: 20px;
 }
+
+.row-item {
+  word-break: break-all;
+  font-size: 14px;
+}
+
+.row-item-2 {
+    width: 23%;
+}
+.row-item-3 {
+    width: 30%;
+}
+.row-item-4 {
+    width: 17%;
+}
+.row-item-5 {
+    width: 15%;
+}
+.row-item-6 {
+    width: 15%;
+}

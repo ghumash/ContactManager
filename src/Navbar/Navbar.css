@@ -30,17 +30,20 @@
 .Navbar-link:hover:after {
   transition: all 0.25s linear;
 }
+
 .Navbar-link:hover:before {
   width: 1em;
   top: 0.5em;
   left: -1em;
 }
+
 .Navbar-link:hover:after {
   width: 1em;
   bottom: -2.5em;
   left: 1em;
-  height: 4em;
+  height: 4.1em;
 }
+
 .Navbar-link:before,
 .Navbar-link:after {
   content: "";
@@ -48,6 +51,7 @@
   transition: all 0.25s linear;
   width: 0.5em;
 }
+
 .Navbar-link:after {
   height: 3.9em;
   background: var(--color-4);
@@ -55,6 +59,7 @@
   left: 23px;
   transform: rotate(90deg) skew(0, 45deg);
 }
+
 .Navbar-link:before {
   height: 2.5em;
   background: white;

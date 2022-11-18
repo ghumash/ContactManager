@@ -34,23 +34,6 @@
 
 .ListItem-item {
   padding: 16px 20px;
-  word-break: break-all;
-}
-
-.ListItem-item:nth-child(2) {
-  width: 23%;
-}
-.ListItem-item:nth-child(3) {
-  width: 30%;
-}
-.ListItem-item:nth-child(4) {
-  width: 17%;
-}
-.ListItem-item:nth-child(5) {
-  width: 15%;
-}
-.ListItem-item:nth-child(6) {
-  width: 15%;
 }
 
 .ListItem-card-item {

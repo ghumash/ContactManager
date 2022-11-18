@@ -15,11 +15,11 @@ export default function ListHeader({ onCheck, checkAll }) {
             <span></span>
           </label>
         </div>
-        <div className="ListHeader-item">NAME</div>
-        <div className="ListHeader-item">EMAIL</div>
-        <div className="ListHeader-item">PHONE</div>
-        <div className="ListHeader-item">PROFESSION</div>
-        <div className="ListHeader-item"></div>
+        <div className="ListHeader-item row-item-2 row-item">NAME</div>
+        <div className="ListHeader-item row-item-3 row-item">EMAIL</div>
+        <div className="ListHeader-item row-item-4 row-item">PHONE</div>
+        <div className="ListHeader-item row-item-5 row-item">PROFESSION</div>
+        <div className="ListHeader-item row-item-6 row-item"></div>
       </div>
     </div>
   );

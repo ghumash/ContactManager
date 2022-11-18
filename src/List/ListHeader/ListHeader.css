@@ -16,21 +16,4 @@
 .ListHeader-item {
   padding: 0 20px;
   color: var(--color-6);
-  word-break: break-all;
-}
-
-.ListHeader-item:nth-child(2) {
-  width: 23%;
-}
-.ListHeader-item:nth-child(3) {
-  width: 30%;
-}
-.ListHeader-item:nth-child(4) {
-  width: 17%;
-}
-.ListHeader-item:nth-child(5) {
-  width: 15%;
-}
-.ListHeader-item:nth-child(6) {
-  width: 15%;
 }
