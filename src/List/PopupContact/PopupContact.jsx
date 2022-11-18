@@ -61,6 +61,19 @@ export default function PopupContact({
     }
   };
 
+  const popupConfirmButton = () => {
+    switch (button) {
+      case "Save":
+        saveButtonHandle();
+        break;
+      case "Add":
+        addButtonHandle();
+        break;
+      default:
+        break
+    }
+  }
+
   return (
     <div
       className="PopupContact-mask"
@@ -131,18 +144,7 @@ export default function PopupContact({
           <button
             className="PopupContact-btn"
             type="button"
-            onClick={() => {
-              switch (button) {
-                case "Save":
-                  saveButtonHandle();
-                  break;
-                case "Add":
-                  addButtonHandle();
-                  break;
-                default:
-                  break
-              }
-            }}
+            onClick={popupConfirmButton}
           >
             {button}
           </button>

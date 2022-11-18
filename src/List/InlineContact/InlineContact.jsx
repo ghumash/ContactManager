@@ -44,7 +44,6 @@ export default function InlineContact({
   });
 
   const saveButtonHandle = () => {
-
     if (isEmpty(newContact)) {
       setContacts([...changeContacts]);
       setInlineContactStatus(null);
@@ -58,16 +57,46 @@ export default function InlineContact({
     if (isEmpty(newContact)) {
       setContacts([...contacts, newContact]);
       setInlineContactStatus(null);
-      setFirstNameInput("")
-      setLastNameInput("")
-      setPhoneInput("")
-      setEmailInput("")
-      setProfessionInput("")
+      resetInputs()
       popupInfo("success", "Contact Added!")
     } else {
       popupInfo("warning", "Please fill in all fields")
     }
   };
+
+  const resetInputs = () => {
+    setFirstNameInput("")
+    setLastNameInput("")
+    setPhoneInput("")
+    setEmailInput("")
+    setProfessionInput("")
+  }
+
+  const checkButtonHandler = () => {
+    switch (button) {
+      case "Save":
+        saveButtonHandle();
+        break;
+      case "Add":
+        addButtonHandle();
+        break;
+      default:
+        break
+    }
+  }
+
+  const xButtonHandler = () => {
+    switch (button) {
+      case "Save":
+        setInlineContactStatus(null);
+        break;
+      case "Add":
+        resetInputs()
+        break;
+      default:
+        break
+    }
+  }
 
   return (
     <form className="inlineContact">
@@ -116,39 +145,13 @@ export default function InlineContact({
           icon={faCheck}
           className="InlineContact-btn"
           type="button"
-          onClick={() => {
-            switch (button) {
-              case "Save":
-                saveButtonHandle();
-                break;
-              case "Add":
-                addButtonHandle();
-                break;
-              default:
-                break
-            }
-          }}
+          onClick={checkButtonHandler}
         />
         <FontAwesomeIcon
           icon={faXmark}
           className="InlineContact-btn"
           type="button"
-          onClick={() => {
-            switch (button) {
-              case "Save":
-                setInlineContactStatus(null);
-                break;
-              case "Add":
-                setFirstNameInput("")
-                setLastNameInput("")
-                setPhoneInput("")
-                setEmailInput("")
-                setProfessionInput("")
-                break;
-              default:
-                break
-            }
-          }}
+          onClick={xButtonHandler}
         />
       </div>
     </form>

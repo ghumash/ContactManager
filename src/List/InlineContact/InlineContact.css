@@ -5,6 +5,10 @@
   margin-bottom: 2%;
 }
 
+.inlineContact > :first-child {
+  margin-left: 0;
+}
+
 .InlineContact-item {
   width: 100%;
   margin: 11px 5px;

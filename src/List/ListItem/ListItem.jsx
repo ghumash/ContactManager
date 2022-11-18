@@ -5,17 +5,17 @@ import {faMinus, faUserPen} from "@fortawesome/free-solid-svg-icons";
 import InlineContact from "../InlineContact/InlineContact";
 
 export default function ListItem({
-  id,
-  contact,
-  setNewContact,
-  cardViewState,
-  inlineEditState,
-  checkedIdArr,
-  onDelete,
-  onPopupContactEdit,
-  setInlineContactStatus,
-  onCheck,
-}) {
+                                   id,
+                                   contact,
+                                   setNewContact,
+                                   cardViewState,
+                                   inlineEditState,
+                                   checkedIdArr,
+                                   onDelete,
+                                   onPopupContactEdit,
+                                   setInlineContactStatus,
+                                   onCheck,
+                                 }) {
 
   const ListItemStyleHandler = () => {
     if (cardViewState) {
@@ -28,6 +28,34 @@ export default function ListItem({
       }
     }
   };
+
+  const editItemHandler = () => {
+    setNewContact({
+      id: contact.id,
+      firstName: contact.firstName,
+      lastName: contact.lastName,
+      phone: contact.phone,
+      email: contact.email,
+      profession: contact.profession,
+    })
+    if (!inlineEditState) {
+      onPopupContactEdit(id, contact.firstName, contact.lastName, contact.phone, contact.email, contact.profession);
+    } else {
+      if (!cardViewState) {
+        setInlineContactStatus(
+          <InlineContact
+            title={"Edit Contact"}
+            button={"Save"}
+            firstName={contact.firstName}
+            lastName={contact.lastName}
+            phone={contact.phone}
+            email={contact.email}
+            profession={contact.profession}
+          />
+        )
+      }
+    }
+  }
 
   return (
     <div className={ListItemStyleHandler()}>
@@ -44,57 +72,27 @@ export default function ListItem({
           <span></span>
         </label>
       </div>
-
-      <>
-        <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
-          {contact.avatar}
-          {contact.firstName} {contact.lastName}
-        </div>
-        <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
-          {cardViewState ? (<p className="ListItem-carView-subtitle">Email</p>) : null}
-          <a href={`mailto:${contact.email}`}>{contact.email}</a>
-        </div>
-        <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
-          {cardViewState ? (<p className="ListItem-carView-subtitle">Phone</p>) : null}
-          <a href={`tel:${contact.phone}`}>{contact.phone}</a>
-        </div>
-        <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
-          {cardViewState ? (<p className="ListItem-carView-subtitle">Profession</p>) : null}
-          {contact.profession}
-        </div>
-      </>
-
+      <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
+        {contact.avatar}
+        {contact.firstName} {contact.lastName}
+      </div>
+      <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
+        {cardViewState ? (<p className="ListItem-carView-subtitle">Email</p>) : null}
+        <a href={`mailto:${contact.email}`}>{contact.email}</a>
+      </div>
+      <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
+        {cardViewState ? (<p className="ListItem-carView-subtitle">Phone</p>) : null}
+        <a href={`tel:${contact.phone}`}>{contact.phone}</a>
+      </div>
+      <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
+        {cardViewState ? (<p className="ListItem-carView-subtitle">Profession</p>) : null}
+        {contact.profession}
+      </div>
       <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
         <div className="ListItem-icon-group">
           <FontAwesomeIcon
             icon={faUserPen}
-            onClick={() => {
-              setNewContact({
-                id: contact.id,
-                firstName: contact.firstName,
-                lastName: contact.lastName,
-                phone: contact.phone,
-                email: contact.email,
-                profession: contact.profession,
-              })
-              if (!inlineEditState) {
-                onPopupContactEdit(id, contact.firstName, contact.lastName, contact.phone, contact.email, contact.profession);
-              } else {
-                if (!cardViewState) {
-                  setInlineContactStatus(
-                    <InlineContact
-                      title={"Edit Contact"}
-                      button={"Save"}
-                      firstName={contact.firstName}
-                      lastName={contact.lastName}
-                      phone={contact.phone}
-                      email={contact.email}
-                      profession={contact.profession}
-                    />
-                  )
-                }
-              }
-            }}
+            onClick={editItemHandler}
           />
           <FontAwesomeIcon
             icon={faMinus}
