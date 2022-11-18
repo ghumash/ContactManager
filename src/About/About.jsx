@@ -8,7 +8,7 @@ export default function About() {
       <div className="ListCaption">
         <Caption title={"About"}/>
       </div>
-      <div className="About-TextContent">
+      <div className="About-container">
         <TextContent>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.
           Aliquam aperiam at dicta dolor ea eligendi et excepturi ipsa ipsam molestiae nihil

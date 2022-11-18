@@ -1,10 +1,10 @@
-.About-TextContent {
+.About-container {
   margin-top: 50px;
 }
 
-.About-TextContent > div {
+.About-container > div {
   margin-bottom: 15px;
 }
-.About-TextContent > :last-child {
+.About-container > :last-child {
   margin-bottom: 0;
 }

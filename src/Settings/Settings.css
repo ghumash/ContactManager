@@ -3,50 +3,10 @@
   color: var(--color-7);
 }
 
-.Settings-item {
+.Settings-container > div {
   margin-bottom: 20px;
-  padding: 10px 20px;
-  border-radius: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--color-2);
 }
 
-.Settings-item:last-child {
+.Settings-container > :last-child {
   margin-bottom: 0;
 }
-
-/* Switch */
-input[type="checkbox"].switch {
-  appearance: none;
-  width: 40px;
-  height: 20px;
-  background: var(--color-8);
-  border-radius: 15px;
-  position: relative;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-}
-
-input[type="checkbox"].switch:checked {
-  background: var(--color-4);
-}
-
-input[type="checkbox"].switch:after {
-  position: absolute;
-  left: 0;
-  content: "";
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--color-7);
-  box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
-  transform: scale(0.7);
-  transition: all 0.2s ease-in-out;
-}
-
-input[type="checkbox"].switch:checked:after {
-  left: calc(100% - 20px);
-}
-/* Switch */
