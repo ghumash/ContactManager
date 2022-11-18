@@ -162,22 +162,25 @@ export default function List({
 
           {contacts.map((contact) => {
             return inlineContactStatus && contact.id === newContact.id ?
-              <InlineContact
-                title={"Edit Contact"}
-                button={"Save"}
-                firstName={contact.firstName}
-                lastName={contact.lastName}
-                phone={contact.phone}
-                email={contact.email}
-                profession={contact.profession}
-                key={contact.id}
-                id={contact.id}
-                contacts={contacts}
-                contact={contact}
-                setContacts={setContacts}
-                setNewContact={setNewContact}
-                setInlineContactStatus={setInlineContactStatus}
-              /> : (
+              <div className="InlineEditItem">
+                <InlineContact
+                  title={"Edit Contact"}
+                  button={"Save"}
+                  firstName={contact.firstName}
+                  lastName={contact.lastName}
+                  phone={contact.phone}
+                  email={contact.email}
+                  profession={contact.profession}
+                  key={contact.id}
+                  id={contact.id}
+                  contacts={contacts}
+                  contact={contact}
+                  setContacts={setContacts}
+                  setNewContact={setNewContact}
+                  setInlineContactStatus={setInlineContactStatus}
+                />
+              </div>
+              : (
                 <ListItem
                   key={contact.id}
                   id={contact.id}

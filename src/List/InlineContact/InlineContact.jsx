@@ -102,6 +102,7 @@ export default function InlineContact({
     <form className="inlineContact">
       <input
         className="InlineContact-item"
+        placeholder="First Name"
         type="text"
         value={firstNameInput}
         onChange={(e) => {
@@ -110,6 +111,7 @@ export default function InlineContact({
       />
       <input
         className="InlineContact-item"
+        placeholder="Last Name"
         type="text"
         value={lastNameInput}
         onChange={(e) => {
@@ -118,6 +120,7 @@ export default function InlineContact({
       />
       <input
         className="InlineContact-item"
+        placeholder="Email"
         type="text"
         value={emailInput}
         onChange={(e) => {
@@ -126,6 +129,7 @@ export default function InlineContact({
       />
       <input
         className="InlineContact-item"
+        placeholder="Phone"
         type="text"
         value={phoneInput}
         onChange={(e) => {
@@ -134,6 +138,7 @@ export default function InlineContact({
       />
       <input
         className="InlineContact-item"
+        placeholder="Profession"
         type="text"
         value={professionInput}
         onChange={(e) => {

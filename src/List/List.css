@@ -1,15 +1,37 @@
 .ListCaption {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .ListBtnSection-container {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 .ListItem-cardView {
-    margin-bottom: 5%;
+  margin-bottom: 5%;
 
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.InlineAdd {
+  margin-bottom: 15px;
+  margin-left: 0;
+}
+
+.InlineAdd > .inlineContact > * {
+  margin-right: 10px;
+}
+
+.InlineAdd > .inlineContact > :last-child {
+  margin-right: 0;
+}
+
+.InlineEditItem > .inlineContact > * {
+  padding: 6px 10px;
+  margin: 10px 10px 10px 0;
+}
+
+.InlineEditItem > .inlineContact > :first-child {
+  margin-left: 20px;
 }

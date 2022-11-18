@@ -2,16 +2,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 2%;
-}
-
-.inlineContact > :first-child {
-  margin-left: 0;
 }
 
 .InlineContact-item {
   width: 100%;
-  margin: 11px 5px;
   padding: 5px 15px;
 
   background-color: var(--color-5);
@@ -20,8 +14,6 @@
 }
 
 .InlineContact-btn-group {
-  padding: 0 20px;
-
   display: flex;
   justify-content: flex-end;
   align-items: center;
