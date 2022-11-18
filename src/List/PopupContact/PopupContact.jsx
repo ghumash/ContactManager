@@ -4,6 +4,7 @@ import {v4 as uuidv4} from "uuid";
 import Swal from "sweetalert2";
 
 import {useState} from "react";
+import {isEmpty} from "../../js/utils";
 
 export default function PopupContact({
                                 title,
@@ -41,21 +42,8 @@ export default function PopupContact({
     }
   });
 
-  const isEmpty = () => {
-    switch ("") {
-      case firstNameInput:
-      case lastNameInput:
-      case phoneInput:
-      case emailInput:
-      case professionInput:
-        return false;
-      default:
-        return true;
-    }
-  };
-
   const saveButtonHandle = () => {
-    if (isEmpty()) {
+    if (isEmpty(newContact)) {
       setContacts([...changedContacts]);
       setPopupContactStatus(null);
       Swal.fire({
@@ -75,7 +63,7 @@ export default function PopupContact({
   };
 
   const addButtonHandle = () => {
-    if (isEmpty()) {
+    if (isEmpty(newContact)) {
       setContacts([...contacts, newContact]);
       setPopupContactStatus(null);
       Swal.fire({

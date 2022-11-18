@@ -4,12 +4,12 @@ import ListHeader from "./ListHeader/ListHeader";
 import ListItem from "./ListItem/ListItem";
 import PopupContact from "./PopupContact/PopupContact";
 import ListBtnSection from "./ListBtnSection/ListBtnSection";
+import InlineContact from "./InlineContact/InlineContact";
 
 import {list} from "../js/const";
 import {useState} from "react";
 
 import Swal from "sweetalert2";
-import {v4 as uuidv4} from "uuid";
 
 export default function List({
                                cardViewState,
@@ -17,30 +17,18 @@ export default function List({
                                inlineAddState,
                              }) {
   const [contacts, setContacts] = useState([...list]);
-  const [popupContactStatus, setPopupContactStatus] = useState();
+  const [popupContactStatus, setPopupContactStatus] = useState(null);
+  const [inlineContactStatus, setInlineContactStatus] = useState(null);
   const [checkAll, setCheckAll] = useState(false);
   const [checkedIdArr, setCheckedIdArr] = useState([]);
   const checkedIdCopy = [...checkedIdArr];
   const [itemRowInlineStyle, setTtemRowInlineStyle] = useState(false);
 
-  const [firstNameInput, setFirstNameInput] = useState("");
-  const [lastNameInput, setLastNameInput] = useState("");
-  const [phoneInput, setPhoneInput] = useState("");
-  const [emailInput, setEmailInput] = useState("");
-  const [professionInput, setProfessionInput] = useState("");
+  const [newContact, setNewContact] = useState({})
 
-  const newContact = {
-    id: uuidv4(),
-    firstName: firstNameInput,
-    lastName: lastNameInput,
-    email: emailInput,
-    phone: phoneInput,
-    profession: professionInput,
-  };
 
   const onCheck = (e, id) => {
     const {name} = e.target;
-
     if (name === "checkAll") {
       if (e.target.checked) {
         setCheckAll(true);
@@ -122,7 +110,7 @@ export default function List({
     });
   };
 
-  const onEdit = (id, firstName, lastName, phone, email, profession) => {
+  const onPopupContactEdit = (id, firstName, lastName, phone, email, profession) => {
     setPopupContactStatus(
       <PopupContact
         title={"Edit Contact"}
@@ -157,106 +145,11 @@ export default function List({
     );
   };
 
-  const isEmpty = () => {
-    switch ("") {
-      case firstNameInput:
-      case lastNameInput:
-      case phoneInput:
-      case emailInput:
-      case professionInput:
-        return false;
-      default:
-        return true;
-    }
-  };
-
-  const addButtonHandle = () => {
-    if (isEmpty()) {
-      setContacts([...contacts, newContact]);
-      setFirstNameInput("")
-      setLastNameInput("")
-      setPhoneInput("")
-      setEmailInput("")
-      setProfessionInput("")
-      Swal.fire({
-        text: `Contact Added!`,
-        icon: "success",
-        iconColor: "var(--color-4)",
-        confirmButtonColor: "var(--color-12)",
-      });
-    } else {
-      Swal.fire({
-        text: `Please fill in all fields`,
-        icon: "warning",
-        iconColor: "var(--color-4)",
-        confirmButtonColor: "var(--color-12)",
-      });
-    }
-  };
-
-  const inlineAdd = (
-    <div className="inlineAdd">
-      <input
-        type="text"
-        className="InlineAdd-item"
-        value={firstNameInput}
-        placeholder="First Name"
-        onChange={(e) => {
-          setFirstNameInput(e.target.value);
-        }}
-      />
-      <input
-        type="text"
-        className="InlineAdd-item"
-        value={lastNameInput}
-        placeholder="Last Name"
-        onChange={(e) => {
-          setLastNameInput(e.target.value);
-        }}
-      />
-      <input
-        type="text"
-        className="InlineAdd-item"
-        value={emailInput}
-        placeholder="Email"
-        onChange={(e) => {
-          setEmailInput(e.target.value);
-        }}
-      />
-      <input
-        type="text"
-        className="InlineAdd-item"
-        value={phoneInput}
-        placeholder="Phone"
-        onChange={(e) => {
-          setPhoneInput(e.target.value);
-        }}
-      />
-      <input
-        type="text"
-        className="InlineAdd-item"
-        value={professionInput}
-        placeholder="Profession"
-        onChange={(e) => {
-          setProfessionInput(e.target.value);
-        }}
-      />
-      <button
-        type="button"
-        className="InlineAdd-item"
-        onClick={addButtonHandle}
-      >
-        Add
-      </button>
-    </div>
-  );
-
   return (
     <>
       <div className="ListCaption">
         <Caption title={"Contacts"}/>
       </div>
-      {inlineAddState && inlineAdd}
       <div className="List">
         {popupContactStatus ? popupContactStatus : null}
         <div className="ListBtnSection-container">
@@ -275,27 +168,36 @@ export default function List({
         <div
           className={cardViewState ? "ListItem-cardView" : "ListItem-rowView"}
         >
+
           {contacts.map((contact) => {
-            return (
-              <ListItem
+            return inlineContactStatus && contact.id === newContact.id ?
+              <InlineContact
+                title={"Edit Contact"}
+                button={"Save"}
                 key={contact.id}
                 id={contact.id}
                 contacts={contacts}
+                contact={contact}
                 setContacts={setContacts}
-                avatar={contact.avatar}
-                firstName={contact.firstName}
-                lastName={contact.lastName}
-                email={contact.email}
-                phone={contact.phone}
-                profession={contact.profession}
-                cardViewState={cardViewState}
-                inlineEditState={inlineEditState}
-                checkedIdArr={checkedIdArr}
-                onDelete={onDelete}
-                onEdit={onEdit}
-                onCheck={onCheck}
-              />
-            );
+                setNewContact={setNewContact}
+                setInlineContactStatus={setInlineContactStatus}
+              /> : (
+                <ListItem
+                  key={contact.id}
+                  id={contact.id}
+                  contact={contact}
+                  setNewContact={setNewContact}
+                  contacts={contacts}
+                  setContacts={setContacts}
+                  cardViewState={cardViewState}
+                  inlineEditState={inlineEditState}
+                  checkedIdArr={checkedIdArr}
+                  onDelete={onDelete}
+                  onPopupContactEdit={onPopupContactEdit}
+                  setInlineContactStatus={setInlineContactStatus}
+                  onCheck={onCheck}
+                />
+              );
           })}
         </div>
       </div>

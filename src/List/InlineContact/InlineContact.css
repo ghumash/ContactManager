@@ -1,0 +1,46 @@
+.inlineAdd {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2%;
+}
+
+.InlineAdd-item {
+  width: 100%;
+  margin: 11px 5px;
+  padding: 5px 15px;
+
+  background-color: var(--color-5);
+  color: var(--color-1);
+  border-radius: 15px;
+}
+
+.InlineContact-btn-group {
+  padding: 0 20px;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.InlineContact-btn {
+  transition: 0.2s ease-in-out;
+  font-size: 19px;
+}
+
+.InlineContact-btn:first-child {
+  color: var(--color-4);
+  margin-right: 10px;
+}
+
+.InlineContact-btn:first-child:hover {
+  color: var(--color-12);
+}
+
+.InlineContact-btn:last-child {
+  color: var(--color-13);
+}
+
+.InlineContact-btn:last-child:hover {
+  color: var(--color-10);
+}
