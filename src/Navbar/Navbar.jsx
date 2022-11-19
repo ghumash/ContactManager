@@ -6,6 +6,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faExclamation, faGear, faHouse,} from "@fortawesome/free-solid-svg-icons";
 
 export default function Navbar() {
+
+
   return (
     <>
       <ul className="Navbar">
