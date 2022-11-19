@@ -2,7 +2,6 @@ import "./ListItem.css";
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMinus, faUserPen} from "@fortawesome/free-solid-svg-icons";
-import InlineContact from "../InlineContact/InlineContact";
 
 export default function ListItem({
                                    id,
@@ -47,6 +46,8 @@ export default function ListItem({
     }
   }
 
+  console.log(contact.phone)
+
   return (
     <div className={ListItemStyleHandler()}>
       <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>
@@ -62,6 +63,7 @@ export default function ListItem({
           <span></span>
         </label>
       </div>
+
       <div className={!cardViewState ? "ListItem-item row-item-2 row-item" : "ListItem-card-item"}>
         {contact.avatar}
         {contact.firstName} {contact.lastName}
@@ -72,7 +74,9 @@ export default function ListItem({
       </div>
       <div className={!cardViewState ? "ListItem-item row-item-4 row-item" : "ListItem-card-item"}>
         {cardViewState ? (<p className="ListItem-carView-subtitle">Phone</p>) : null}
-        <a href={`tel:${contact.phone}`}>{contact.phone}</a>
+        {contact.phone.map((phoneItem) => {
+          return <a href={`tel:${phoneItem}`} key={phoneItem}>{phoneItem} <br/></a>
+        })}
       </div>
       <div className={!cardViewState ? "ListItem-item row-item-5 row-item" : "ListItem-card-item"}>
         {cardViewState ? (<p className="ListItem-carView-subtitle">Profession</p>) : null}

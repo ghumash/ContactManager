@@ -7,6 +7,7 @@ import {useState} from "react";
 import {v4 as uuidv4} from "uuid";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheck, faXmark} from "@fortawesome/free-solid-svg-icons";
+import PhoneInput from "../ListItem/PhoneInput";
 
 export default function InlineContact({
                                         firstName,
@@ -22,7 +23,7 @@ export default function InlineContact({
                                       }) {
   const [firstNameInput, setFirstNameInput] = useState(firstName);
   const [lastNameInput, setLastNameInput] = useState(lastName);
-  const [phoneInput, setPhoneInput] = useState(phone);
+  const [phoneInput, setPhoneInputInput] = useState(phone);
   const [emailInput, setEmailInput] = useState(email);
   const [professionInput, setProfessionInput] = useState(profession);
 
@@ -30,8 +31,8 @@ export default function InlineContact({
     id: uuidv4(),
     firstName: firstNameInput,
     lastName: lastNameInput,
-    email: emailInput,
     phone: phoneInput,
+    email: emailInput,
     profession: professionInput,
   };
 
@@ -45,7 +46,13 @@ export default function InlineContact({
 
   const saveButtonHandle = () => {
     if (isEmpty(newContact)) {
-      setContacts([...changeContacts]);
+      setContacts([
+        ...changeContacts,
+        {
+          ...newContact,
+          phone: [...changePhone()]
+        }
+      ]);
       setInlineContactStatus(null);
       popupInfo("success", "Contact Saved!")
     } else {
@@ -67,7 +74,6 @@ export default function InlineContact({
   const resetInputs = () => {
     setFirstNameInput("")
     setLastNameInput("")
-    setPhoneInput("")
     setEmailInput("")
     setProfessionInput("")
   }
@@ -96,6 +102,10 @@ export default function InlineContact({
       default:
         break
     }
+  }
+
+  const changePhone = (phoneValue) => {
+    return phoneValue
   }
 
   return (
@@ -127,15 +137,9 @@ export default function InlineContact({
           setEmailInput(e.target.value);
         }}
       />
-      <input
-        className="InlineContact-item"
-        placeholder="Phone"
-        type="text"
-        value={phoneInput}
-        onChange={(e) => {
-          setPhoneInput(e.target.value);
-        }}
-      />
+      {phone && phone.map((phoneItem) => {
+        return <PhoneInput key={phoneItem} phoneItem={phoneItem} setContacts={setContacts} newContact={newContact} contacts={contacts} changePhone={changePhone}/>
+      })}
       <input
         className="InlineContact-item"
         placeholder="Profession"
