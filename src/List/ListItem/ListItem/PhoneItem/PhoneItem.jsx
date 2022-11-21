@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-export default function PhoneInput({phoneItem, newContact, setContacts, contacts, changePhone}) {
+export default function PhoneItem({phoneItem, changePhone}) {
   const [phoneInputValue, setPhoneInput] = useState(phoneItem);
 
   return (

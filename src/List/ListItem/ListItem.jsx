@@ -46,8 +46,6 @@ export default function ListItem({
     }
   }
 
-  console.log(contact.phone)
-
   return (
     <div className={ListItemStyleHandler()}>
       <div className={!cardViewState ? "ListItem-item" : "ListItem-card-item"}>

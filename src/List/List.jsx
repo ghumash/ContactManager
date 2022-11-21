@@ -178,10 +178,9 @@ export default function List({
 
           {contacts.map((contact) => {
             return inlineContactStatus && contact.id === newContact.id ?
-              <div className="InlineEditItem">
+              <div className="InlineEditItem" key={contact.id}>
                 <InlineContact
                   button={"Save"}
-                  key={contact.id}
                   id={contact.id}
                   contact={contact}
                   firstName={contact.firstName}

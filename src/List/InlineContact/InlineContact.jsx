@@ -7,7 +7,7 @@ import {useState} from "react";
 import {v4 as uuidv4} from "uuid";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheck, faXmark} from "@fortawesome/free-solid-svg-icons";
-import PhoneInput from "../ListItem/PhoneInput";
+import PhoneItem from "../ListItem/ListItem/PhoneItem/PhoneItem";
 
 export default function InlineContact({
                                         firstName,
@@ -36,23 +36,23 @@ export default function InlineContact({
     profession: professionInput,
   };
 
+  const changePhone = (value) => {
+    return value
+  }
+
   const changeContacts = contacts.map((contact) => {
     if (contact.id !== id) {
       return contact;
     } else {
-      return newContact;
+      return {
+        ...newContact,
+      };
     }
   });
 
   const saveButtonHandle = () => {
     if (isEmpty(newContact)) {
-      setContacts([
-        ...changeContacts,
-        {
-          ...newContact,
-          phone: [...changePhone()]
-        }
-      ]);
+      setContacts([...changeContacts]);
       setInlineContactStatus(null);
       popupInfo("success", "Contact Saved!")
     } else {
@@ -104,10 +104,6 @@ export default function InlineContact({
     }
   }
 
-  const changePhone = (phoneValue) => {
-    return phoneValue
-  }
-
   return (
     <form className="inlineContact">
       <input
@@ -138,7 +134,8 @@ export default function InlineContact({
         }}
       />
       {phone && phone.map((phoneItem) => {
-        return <PhoneInput key={phoneItem} phoneItem={phoneItem} setContacts={setContacts} newContact={newContact} contacts={contacts} changePhone={changePhone}/>
+        return <PhoneItem key={phoneItem} phoneItem={phoneItem} setContacts={setContacts} newContact={newContact}
+                          contacts={contacts} changePhone={changePhone}/>
       })}
       <input
         className="InlineContact-item"
