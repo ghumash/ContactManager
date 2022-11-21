@@ -36,17 +36,11 @@ export default function InlineContact({
     profession: professionInput,
   };
 
-  const changePhone = (value) => {
-    return value
-  }
-
   const changeContacts = contacts.map((contact) => {
     if (contact.id !== id) {
       return contact;
     } else {
-      return {
-        ...newContact,
-      };
+      return newContact
     }
   });
 

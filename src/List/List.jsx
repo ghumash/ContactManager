@@ -6,7 +6,7 @@ import PopupContact from "./PopupContact/PopupContact";
 import ListBtnSection from "./ListBtnSection/ListBtnSection";
 import InlineContact from "./InlineContact/InlineContact";
 
-import {list} from "../js/const";
+import {list} from "../js/local_data";
 import {popupConfirm, popupInfo} from "../js/utils";
 
 import {useState} from "react";

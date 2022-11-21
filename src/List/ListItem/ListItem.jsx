@@ -73,7 +73,7 @@ export default function ListItem({
       <div className={!cardViewState ? "ListItem-item row-item-4 row-item" : "ListItem-card-item"}>
         {cardViewState ? (<p className="ListItem-carView-subtitle">Phone</p>) : null}
         {contact.phone.map((phoneItem) => {
-          return <a href={`tel:${phoneItem}`} key={phoneItem}>{phoneItem} <br/></a>
+          return <a href={`tel:${phoneItem.value}`} key={phoneItem.id}>{phoneItem.value} <br/></a>
         })}
       </div>
       <div className={!cardViewState ? "ListItem-item row-item-5 row-item" : "ListItem-card-item"}>

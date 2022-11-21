@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-export default function PhoneItem({phoneItem, changePhone}) {
+export default function PhoneItem({phoneItem}) {
   const [phoneInputValue, setPhoneInput] = useState(phoneItem);
 
   return (
@@ -11,7 +11,6 @@ export default function PhoneItem({phoneItem, changePhone}) {
       value={phoneInputValue}
       onChange={(e) => {
         setPhoneInput(e.target.value)
-        changePhone(phoneInputValue)
       }}
     />
   );
