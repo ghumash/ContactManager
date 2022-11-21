@@ -27,7 +27,7 @@ export default function App() {
           <Route
             path="/"
             element={
-              <Suspense fallback={(<div>...Loading</div>)}>
+              <Suspense fallback={<div>...Loading</div>}>
                 <List
                   cardViewState={cardViewState}
                   inlineEditState={inlineEditState}
@@ -36,13 +36,18 @@ export default function App() {
               </Suspense>
             }
           />
-          <Suspense fallback={(<div>...Loading</div>)}>
-            <Route path="/about" element={<About/>}/>
-          </Suspense>
+          <Route
+            path='/about'
+            element={
+              <Suspense fallback={<div>Loading...</div>}>
+                <About />
+              </Suspense>
+            }
+          />
           <Route
             path="/settings"
             element={
-              <Suspense fallback={(<div>...Loading</div>)}>
+              <Suspense fallback={<div>...Loading</div>}>
                 <Settings
                   cardViewState={cardViewState}
                   inlineEditState={inlineEditState}
