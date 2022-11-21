@@ -23,9 +23,11 @@ export default function InlineContact({
                                       }) {
   const [firstNameInput, setFirstNameInput] = useState(firstName);
   const [lastNameInput, setLastNameInput] = useState(lastName);
-  const [phoneInput, setPhoneInputInput] = useState(phone);
+  const [phoneInput, setPhoneInput] = useState(phone);
   const [emailInput, setEmailInput] = useState(email);
   const [professionInput, setProfessionInput] = useState(profession);
+
+  const [changedPhone, setChangedPhone] = useState({})
 
   const newContact = {
     id: uuidv4(),
@@ -40,7 +42,16 @@ export default function InlineContact({
     if (contact.id !== id) {
       return contact;
     } else {
-      return newContact
+      const notChangedPhones = contact.phone.filter(phoneItem => phoneItem.id !== changedPhone.id)
+      if(changedPhone) {
+        return {
+          ...newContact,
+          phone: [notChangedPhones, changedPhone]
+        }
+      } else {
+        return newContact
+      }
+
     }
   });
 
@@ -127,10 +138,20 @@ export default function InlineContact({
           setEmailInput(e.target.value);
         }}
       />
-      {phone && phone.map((phoneItem) => {
-        return <PhoneItem key={phoneItem} phoneItem={phoneItem} setContacts={setContacts} newContact={newContact}
-                          contacts={contacts} changePhone={changePhone}/>
-      })}
+      {phone ? phone.map((phoneItem) => {
+          return <PhoneItem key={phoneItem.id} id={phoneItem.id} value={phoneItem.value}
+                            setChangedPhone={setChangedPhone}/>
+        }) :
+        <input
+          className="InlineContact-item"
+          placeholder="Phone"
+          type="text"
+          value={phoneInput}
+          onChange={(e) => {
+            setPhoneInput(e.target.value);
+          }}
+        />
+      }
       <input
         className="InlineContact-item"
         placeholder="Profession"
