@@ -6,16 +6,7 @@ export const list = [
     firstName: "Joe 1",
     lastName: "Smith 1",
     email: "joesmith1@gmail.com",
-    phone: [
-      {
-        id: uuidv4(),
-        value: "+19545877681"
-      },
-      {
-        id: uuidv4(),
-        value: "+785655456552"
-      }
-    ],
+    phone: "+19545877683",
     profession: "PhD 1",
     avatar: "",
   },
@@ -24,16 +15,7 @@ export const list = [
     firstName: "Joe 2",
     lastName: "Smith 2",
     email: "joesmith2@gmail.com",
-    phone: [
-      {
-        id: uuidv4(),
-        value: "+19545877683"
-      },
-      {
-        id: uuidv4(),
-        value: "+785655456554"
-      }
-    ],
+    phone: "+29545877683",
     profession: "PhD 2",
     avatar: "",
   },
@@ -42,16 +24,7 @@ export const list = [
     firstName: "Joe 3",
     lastName: "Smith 3",
     email: "joesmith3@gmail.com",
-    phone: [
-      {
-        id: uuidv4(),
-        value: "+19545877685"
-      },
-      {
-        id: uuidv4(),
-        value: "+785655456556"
-      }
-    ],
+    phone: "+39545877683",
     profession: "PhD 3",
     avatar: "",
   },

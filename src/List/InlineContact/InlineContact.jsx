@@ -7,7 +7,6 @@ import {useState} from "react";
 import {v4 as uuidv4} from "uuid";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheck, faXmark} from "@fortawesome/free-solid-svg-icons";
-import PhoneItem from "../ListItem/ListItem/PhoneItem/PhoneItem";
 
 export default function InlineContact({
                                         firstName,
@@ -27,8 +26,6 @@ export default function InlineContact({
   const [emailInput, setEmailInput] = useState(email);
   const [professionInput, setProfessionInput] = useState(profession);
 
-  const [changedPhone, setChangedPhone] = useState({})
-
   const newContact = {
     id: uuidv4(),
     firstName: firstNameInput,
@@ -42,16 +39,7 @@ export default function InlineContact({
     if (contact.id !== id) {
       return contact;
     } else {
-      const notChangedPhones = contact.phone.filter(phoneItem => phoneItem.id !== changedPhone.id)
-      if(changedPhone) {
-        return {
-          ...newContact,
-          phone: [notChangedPhones, changedPhone]
-        }
-      } else {
-        return newContact
-      }
-
+      return newContact
     }
   });
 
@@ -138,20 +126,15 @@ export default function InlineContact({
           setEmailInput(e.target.value);
         }}
       />
-      {phone ? phone.map((phoneItem) => {
-          return <PhoneItem key={phoneItem.id} id={phoneItem.id} value={phoneItem.value}
-                            setChangedPhone={setChangedPhone}/>
-        }) :
-        <input
-          className="InlineContact-item"
-          placeholder="Phone"
-          type="text"
-          value={phoneInput}
-          onChange={(e) => {
-            setPhoneInput(e.target.value);
-          }}
-        />
-      }
+      <input
+        className="InlineContact-item"
+        placeholder="Phone"
+        type="text"
+        value={phoneInput}
+        onChange={(e) => {
+          setPhoneInput(e.target.value);
+        }}
+      />
       <input
         className="InlineContact-item"
         placeholder="Profession"
