@@ -6,7 +6,7 @@ import PopupContact from "./PopupContact/PopupContact";
 import ListBtnSection from "./ListBtnSection/ListBtnSection";
 import InlineContact from "./InlineContact/InlineContact";
 
-import {list} from "../js/local_data";
+import {local_data} from "../js/local_data";
 import {popupConfirm, popupInfo} from "../js/utils";
 
 import {useState} from "react";
@@ -16,13 +16,12 @@ export default function List({
                                inlineEditState,
                                inlineAddState,
                              }) {
-  const [contacts, setContacts] = useState([...list]);
+  const [contacts, setContacts] = useState([...local_data]);
   const [popupContactStatus, setPopupContactStatus] = useState(null);
   const [inlineContactStatus, setInlineContactStatus] = useState(null);
   const [checkAll, setCheckAll] = useState(false);
   const [checkedIdArr, setCheckedIdArr] = useState([]);
   const checkedIdCopy = [...checkedIdArr];
-  const [itemRowInlineStyle, setTtemRowInlineStyle] = useState(false);
 
   const [newContact, setNewContact] = useState({})
 
@@ -32,28 +31,21 @@ export default function List({
     if (name === "checkAll") {
       if (e.target.checked) {
         setCheckAll(true);
-        setTtemRowInlineStyle(false);
-        contacts.map((contact) => {
-          if (!checkedIdCopy.includes(contact.id)) {
-            checkedIdCopy.push(contact.id);
-          }
-        });
+        const notCheckedContacts = contacts.filter(contact => !checkedIdCopy.includes(contact.id))
+        notCheckedContacts.map(contact => checkedIdCopy.push(contact.id))
         setCheckedIdArr(checkedIdCopy);
       } else {
         setCheckAll(false);
         setCheckedIdArr([]);
-        setTtemRowInlineStyle(false);
       }
     } else if (name === "checkItem") {
       if (e.target.checked) {
         checkedIdCopy.push(id);
         setCheckedIdArr(checkedIdCopy);
-        setTtemRowInlineStyle(true);
         if (checkedIdCopy.length === contacts.length) {
           setCheckAll(true);
         }
       } else {
-        setTtemRowInlineStyle(false);
         setCheckAll(false);
         setCheckedIdArr(checkedIdCopy.filter((checkedId) => checkedId !== id));
       }
@@ -65,6 +57,7 @@ export default function List({
       popupConfirm("Do you want to delete these contacts?", "Yes, delete these contacts!")
         .then((result) => {
           if (result.isConfirmed) {
+
             setContacts(
               contacts.filter((contact) => !checkedIdArr.includes(contact.id))
             );

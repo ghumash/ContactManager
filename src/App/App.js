@@ -1,12 +1,10 @@
 import "./App.css";
-import List from "../List/List";
 import Navbar from "../Navbar/Navbar";
-import About from "../About/About";
 import Settings from "../Settings/Settings";
-import {cardView, inlineEdit, inlineAdd} from "../js/config";
+import {cardView, inlineAdd, inlineEdit} from "../js/config";
 
-import {Routes, Route} from "react-router-dom";
-import {useState, lazy, Suspense} from "react";
+import {Route, Routes} from "react-router-dom";
+import {lazy, Suspense, useState} from "react";
 
 export default function App() {
   const [cardViewState, setCardViewState] = useState(cardView);
@@ -15,7 +13,6 @@ export default function App() {
 
   const List = lazy(() => import("../List/List"))
   const About = lazy(() => import("../About/About"))
-  const Settings = lazy(() => import("../Settings/Settings"))
 
   return (
     <div className="App">
@@ -40,23 +37,21 @@ export default function App() {
             path='/about'
             element={
               <Suspense fallback={<div>Loading...</div>}>
-                <About />
+                <About/>
               </Suspense>
             }
           />
           <Route
             path="/settings"
             element={
-              <Suspense fallback={<div>...Loading</div>}>
-                <Settings
-                  cardViewState={cardViewState}
-                  inlineEditState={inlineEditState}
-                  inlineAddState={inlineAddState}
-                  setCardViewState={setCardViewState}
-                  setInlineEditState={setInlineEditState}
-                  setInlineAddState={setInlineAddState}
-                />
-              </Suspense>
+              <Settings
+                cardViewState={cardViewState}
+                inlineEditState={inlineEditState}
+                inlineAddState={inlineAddState}
+                setCardViewState={setCardViewState}
+                setInlineEditState={setInlineEditState}
+                setInlineAddState={setInlineAddState}
+              />
             }
           />
           <Route path="*" element={

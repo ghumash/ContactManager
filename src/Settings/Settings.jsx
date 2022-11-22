@@ -1,7 +1,6 @@
 import Caption from "../components/Caption/Caption";
 import "./Settings.css";
 
-import Swal from "sweetalert2";
 import SettingItem from "../components/SettingItem/SettingItem";
 import {popupInfo} from "../js/utils";
 
