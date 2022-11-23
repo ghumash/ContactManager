@@ -24,7 +24,7 @@ export default function ListItem({
         return "ListItem-row itemRowInlineStyle";
       } else {
         return "ListItem-row";
-      }
+      } 
     }
   };
 

@@ -1,6 +1,6 @@
 import "./PopupContact.css";
 
-import {v4 as uuidv4} from "uuid";
+import {v4 as generateId} from "uuid";
 
 import {useState} from "react";
 import {isEmpty, popupInfo} from "../../../js/utils";
@@ -58,7 +58,7 @@ export default function PopupContact({
   };
 
   const addButtonHandle = async () => {
-    const post = {id: uuidv4(), ...newContact}
+    const post = {id: generateId(), ...newContact}
     if (isEmpty(newContact)) {
       await axios.post("contacts", post).then(() => {
         popupInfo("success", "Contact Added!")

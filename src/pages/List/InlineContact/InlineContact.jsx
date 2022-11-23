@@ -6,7 +6,7 @@ import {useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheck, faXmark} from "@fortawesome/free-solid-svg-icons";
 import axios from "../../../js/axiosInstance";
-import {v4 as uuidv4} from "uuid";
+import {v4 as generateId} from "uuid";
 
 export default function InlineContact({
                                         firstName,
@@ -64,7 +64,7 @@ export default function InlineContact({
   }
 
   const addButtonHandle = async () => {
-    const post = {id: uuidv4(), ...newContact}
+    const post = {id: generateId(), ...newContact}
     if (isEmpty(newContact)) {
       await axios.post("contacts", post).then(() => {
         popupInfo("success", "Contact Added!")
