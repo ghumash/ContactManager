@@ -68,7 +68,7 @@ export default function InlineContact({
     if (isEmpty(newContact)) {
       await axios.post("contacts", post).then(() => {
         popupInfo("success", "Contact Added!")
-        setContacts([...contacts, newContact]);
+        setContacts([...contacts, post]);
         setInlineContactStatus(null);
         resetInputs()
       }).catch((e) => {
