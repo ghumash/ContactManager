@@ -1,11 +1,11 @@
 import "./InlineContact.css";
 
-import {isEmpty, popupInfo} from "../../js/utils";
+import {isEmpty, popupInfo} from "../../../js/utils";
 
 import {useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheck, faXmark} from "@fortawesome/free-solid-svg-icons";
-import axios from "../../js/axiosInstance";
+import axios from "../../../js/axiosInstance";
 import {v4 as uuidv4} from "uuid";
 
 export default function InlineContact({

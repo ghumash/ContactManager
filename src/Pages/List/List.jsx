@@ -1,15 +1,15 @@
 import "./List.css";
-import Caption from "../components/Caption/Caption";
+import Caption from "../../components/Caption/Caption";
 import ListHeader from "./ListHeader/ListHeader";
 import ListItem from "./ListItem/ListItem";
 import PopupContact from "./PopupContact/PopupContact";
 import ListBtnSection from "./ListBtnSection/ListBtnSection";
 import InlineContact from "./InlineContact/InlineContact";
 
-import {popupConfirm, popupInfo} from "../js/utils";
+import {popupConfirm, popupInfo} from "../../js/utils";
 
 import {useState} from "react";
-import axios from "../js/axiosInstance";
+import axios from "../../js/axiosInstance";
 
 export default function List({
                                contacts,

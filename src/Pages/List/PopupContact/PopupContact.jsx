@@ -3,8 +3,8 @@ import "./PopupContact.css";
 import {v4 as uuidv4} from "uuid";
 
 import {useState} from "react";
-import {isEmpty, popupInfo} from "../../js/utils";
-import axios from "../../js/axiosInstance";
+import {isEmpty, popupInfo} from "../../../js/utils";
+import axios from "../../../js/axiosInstance";
 
 export default function PopupContact({
                                        title,

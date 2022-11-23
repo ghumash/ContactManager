@@ -1,6 +1,6 @@
-import Caption from "../components/Caption/Caption";
+import Caption from "../../components/Caption/Caption";
 import "./About.css";
-import TextContent from "../components/TextContent/TextContent";
+import TextContent from "../../components/TextContent/TextContent";
 
 export default function About() {
   return (

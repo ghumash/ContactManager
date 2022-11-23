@@ -1,8 +1,8 @@
-import Caption from "../components/Caption/Caption";
+import Caption from "../../components/Caption/Caption";
 import "./Settings.css";
 
-import SettingItem from "../components/SettingItem/SettingItem";
-import {popupInfo} from "../js/utils";
+import SettingItem from "../../components/SettingItem/SettingItem";
+import {popupInfo} from "../../js/utils";
 
 export default function Settings({
   cardViewState,

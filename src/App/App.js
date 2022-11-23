@@ -1,6 +1,6 @@
 import "./App.css";
-import Navbar from "../Navbar/Navbar";
-import Settings from "../Settings/Settings";
+import Navbar from "../pages/Navbar/Navbar";
+import Settings from "../pages/Settings/Settings";
 import {cardView, inlineAdd, inlineEdit} from "../js/config";
 import axios from "../js/axiosInstance";
 import {local_data} from "../js/local_data";
@@ -29,8 +29,8 @@ export default function App() {
   const [inlineEditState, setInlineEditState] = useState(inlineEdit);
   const [inlineAddState, setInlineAddState] = useState(inlineAdd);
 
-  const List = lazy(() => import("../List/List"))
-  const About = lazy(() => import("../About/About"))
+  const List = lazy(() => import("../pages/List/List"))
+  const About = lazy(() => import("../pages/About/About"))
 
   return (
     <div className="App">
