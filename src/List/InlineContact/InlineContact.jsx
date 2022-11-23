@@ -3,10 +3,10 @@ import "./InlineContact.css";
 import {isEmpty, popupInfo} from "../../js/utils";
 
 import {useState} from "react";
-
-import {v4 as uuidv4} from "uuid";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheck, faXmark} from "@fortawesome/free-solid-svg-icons";
+import axios from "../../js/axiosInstance";
+import {v4 as uuidv4} from "uuid";
 
 export default function InlineContact({
                                         firstName,
@@ -27,7 +27,6 @@ export default function InlineContact({
   const [professionInput, setProfessionInput] = useState(profession);
 
   const newContact = {
-    id: uuidv4(),
     firstName: firstNameInput,
     lastName: lastNameInput,
     phone: phoneInput,
@@ -39,26 +38,19 @@ export default function InlineContact({
     if (contact.id !== id) {
       return contact;
     } else {
-      return newContact
+      return {id: id, ...newContact}
     }
   });
 
-  const saveButtonHandle = () => {
+  const saveButtonHandle = async () => {
     if (isEmpty(newContact)) {
-      setContacts([...changeContacts]);
-      setInlineContactStatus(null);
-      popupInfo("success", "Contact Saved!")
-    } else {
-      popupInfo("warning", "Please fill in all fields")
-    }
-  };
-
-  const addButtonHandle = () => {
-    if (isEmpty(newContact)) {
-      setContacts([...contacts, newContact]);
-      setInlineContactStatus(null);
-      resetInputs()
-      popupInfo("success", "Contact Added!")
+      await axios.put(`contacts/${id}`, {id: id, ...newContact}).then(() => {
+        popupInfo("success", "Contact Saved!")
+        setContacts([...changeContacts]);
+        setInlineContactStatus(null);
+      }).catch((e) => {
+        popupInfo("error", `Something went wrong! "${e}"`)
+      })
     } else {
       popupInfo("warning", "Please fill in all fields")
     }
@@ -70,6 +62,22 @@ export default function InlineContact({
     setEmailInput("")
     setProfessionInput("")
   }
+
+  const addButtonHandle = async () => {
+    const post = {id: uuidv4(), ...newContact}
+    if (isEmpty(newContact)) {
+      await axios.post("contacts", post).then(() => {
+        popupInfo("success", "Contact Added!")
+        setContacts([...contacts, newContact]);
+        setInlineContactStatus(null);
+        resetInputs()
+      }).catch((e) => {
+        popupInfo("error", `Something went wrong! "${e}"`)
+      })
+    } else {
+      popupInfo("warning", "Please fill in all fields")
+    }
+  };
 
   const checkButtonHandler = () => {
     switch (button) {

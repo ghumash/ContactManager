@@ -4,6 +4,7 @@ import {v4 as uuidv4} from "uuid";
 
 import {useState} from "react";
 import {isEmpty, popupInfo} from "../../js/utils";
+import axios from "../../js/axiosInstance";
 
 export default function PopupContact({
                                        title,
@@ -25,7 +26,6 @@ export default function PopupContact({
   const [professionInput, setProfessionInput] = useState(profession);
 
   const newContact = {
-    id: uuidv4(),
     firstName: firstNameInput,
     lastName: lastNameInput,
     email: emailInput,
@@ -37,25 +37,36 @@ export default function PopupContact({
     if (contact.id !== id) {
       return contact;
     } else {
-      return newContact;
+      return {id: id, ...newContact};
     }
   });
 
-  const saveButtonHandle = () => {
+  const saveButtonHandle = async () => {
     if (isEmpty(newContact)) {
-      setContacts([...changedContacts]);
-      setPopupContactStatus(null);
-      popupInfo("success", "Contact Saved!")
+      await axios.put(`contacts/${id}`, {id: id, ...newContact})
+        .then(() => {
+          popupInfo("success", "Contact Saved!")
+          setContacts([...changedContacts]);
+          setPopupContactStatus(null);
+        })
+        .catch((e) => {
+          popupInfo("error", `Something went wrong! "${e}"`)
+        })
     } else {
       popupInfo("warning", "Please fill in all fields")
     }
   };
 
-  const addButtonHandle = () => {
+  const addButtonHandle = async () => {
+    const post = {id: uuidv4(), ...newContact}
     if (isEmpty(newContact)) {
-      setContacts([...contacts, newContact]);
-      setPopupContactStatus(null);
-      popupInfo("success", "Contact Added!")
+      await axios.post("contacts", post).then(() => {
+        popupInfo("success", "Contact Added!")
+        setContacts([...contacts, post]);
+        setPopupContactStatus(null);
+      }).catch((e) => {
+        popupInfo("error", `Something went wrong! "${e}"`)
+      })
     } else {
       popupInfo("warning", "Please fill in all fields")
     }

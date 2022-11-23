@@ -6,17 +6,18 @@ import PopupContact from "./PopupContact/PopupContact";
 import ListBtnSection from "./ListBtnSection/ListBtnSection";
 import InlineContact from "./InlineContact/InlineContact";
 
-import {local_data} from "../js/local_data";
 import {popupConfirm, popupInfo} from "../js/utils";
 
 import {useState} from "react";
+import axios from "../js/axiosInstance";
 
 export default function List({
+                               contacts,
+                               setContacts,
                                cardViewState,
                                inlineEditState,
                                inlineAddState,
                              }) {
-  const [contacts, setContacts] = useState([...local_data]);
   const [popupContactStatus, setPopupContactStatus] = useState(null);
   const [inlineContactStatus, setInlineContactStatus] = useState(null);
   const [checkAll, setCheckAll] = useState(false);
@@ -52,31 +53,41 @@ export default function List({
     }
   };
 
-  const onDeleteChecked = () => {
+  const onDeleteChecked = async () => {
     if (checkedIdArr.length !== 0) {
-      popupConfirm("Do you want to delete these contacts?", "Yes, delete these contacts!")
+      await popupConfirm("Do you want to delete these contacts?", "Yes, delete these contacts!")
         .then((result) => {
           if (result.isConfirmed) {
-
+            contacts.map(contact => {
+              if (checkedIdArr.includes(contact.id)) {
+                axios.delete(`contacts/${contact.id}`)
+              }
+            })
+            popupInfo("success", "Contacts has been deleted!")
             setContacts(
               contacts.filter((contact) => !checkedIdArr.includes(contact.id))
             );
             setCheckedIdArr([]);
             setCheckAll(false);
-            popupInfo("success", "Contacts has been deleted!")
           }
         });
     }
   };
 
-  const onDelete = (id, firstName, lastName) => {
-    popupConfirm(`Do you want delete "${firstName} ${lastName}" Contact?`, "Yes, delete it!")
+  const onDelete = async (id, firstName, lastName) => {
+    await popupConfirm(`Do you want delete "${firstName} ${lastName}" Contact?`, "Yes, delete it!")
       .then((result) => {
         if (result.isConfirmed) {
-          setContacts(contacts.filter((contact) => contact.id !== id));
-          popupInfo("success", `Contact "${firstName} ${lastName}" has been deleted.`)
+          axios.delete(`contacts/${id}`)
+            .then(() => {
+              popupInfo("success", `Contact "${firstName} ${lastName}" has been deleted.`)
+              setContacts(contacts.filter((contact) => contact.id !== id));
+            })
+            .catch((e) => {
+              popupInfo("error", `Something went wrong! "${e}"`)
+            })
         }
-      });
+      })
   };
 
   const onPopupContactEdit = (id, firstName, lastName, phone, email, profession) => {
