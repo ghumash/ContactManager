@@ -6,7 +6,6 @@ import {useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheck, faXmark} from "@fortawesome/free-solid-svg-icons";
 import axios from "../../../js/axiosInstance";
-import {v4 as generateId} from "uuid";
 
 export default function InlineContact({
                                         contact, button, contacts, setContacts, setInlineContactStatus,
@@ -31,13 +30,13 @@ export default function InlineContact({
     if (contact.id !== id) {
       return contact;
     } else {
-      return {id: id, ...newContact}
+      return newContact
     }
   });
 
   const saveButtonHandle = async () => {
     if (isEmpty(newContact)) {
-      await axios.put(`contacts/${id}`, {id: id, ...newContact}).then(() => {
+      await axios.put(`contacts/${id}`, newContact).then(() => {
         popupInfo("success", "Contact Saved!")
         setContacts([...changeContacts]);
         setInlineContactStatus(null);
@@ -57,11 +56,10 @@ export default function InlineContact({
   }
 
   const addButtonHandle = async () => {
-    const post = {id: generateId(), ...newContact}
     if (isEmpty(newContact)) {
-      await axios.post("contacts", post).then(() => {
+      await axios.post("contacts", newContact).then(() => {
         popupInfo("success", "Contact Added!")
-        setContacts([...contacts, post]);
+        setContacts([...contacts, newContact]);
         setInlineContactStatus(null);
         resetInputs()
       }).catch((e) => {

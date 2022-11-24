@@ -1,9 +1,7 @@
 import "./PopupContact.css";
-
-import {v4 as generateId} from "uuid";
+import {isEmpty, popupInfo} from "../../../js/utils";
 
 import {useState} from "react";
-import {isEmpty, popupInfo} from "../../../js/utils";
 import axios from "../../../js/axiosInstance";
 
 export default function PopupContact({
@@ -34,13 +32,13 @@ export default function PopupContact({
     if (contact.id !== id) {
       return contact;
     } else {
-      return {id: id, ...newContact};
+      return newContact;
     }
   });
 
   const saveButtonHandle = async () => {
     if (isEmpty(newContact)) {
-      await axios.put(`contacts/${id}`, {id: id, ...newContact})
+      await axios.put(`contacts/${id}`, newContact)
         .then(() => {
           popupInfo("success", "Contact Saved!")
           setContacts([...changedContacts]);
@@ -55,11 +53,10 @@ export default function PopupContact({
   };
 
   const addButtonHandle = async () => {
-    const post = {id: generateId(), ...newContact}
     if (isEmpty(newContact)) {
-      await axios.post("contacts", post).then(() => {
+      await axios.post("contacts", newContact).then(() => {
         popupInfo("success", "Contact Added!")
-        setContacts([...contacts, post]);
+        setContacts([...contacts, newContact]);
         setPopupContactStatus(null);
       }).catch((e) => {
         popupInfo("error", `Something went wrong! "${e}"`)

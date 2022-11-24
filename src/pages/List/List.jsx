@@ -58,9 +58,7 @@ export default function List({
       await popupConfirm("Do you want to delete these contacts?", "Yes, delete these contacts!")
         .then((result) => {
           if (result.isConfirmed) {
-            checkedIdArr.map(contact => {
-              axios.delete(`contacts/${contact.id}`)
-            })
+            checkedIdArr.map(id => axios.delete(`contacts/${id}`))
             popupInfo("success", "Contacts has been deleted!")
             setContacts(
               contacts.filter((contact) => !checkedIdArr.includes(contact.id))
@@ -74,6 +72,7 @@ export default function List({
 
   const onDelete = async (contact) => {
     const {id, firstName, lastName} = contact
+
     await popupConfirm(`Do you want delete "${firstName} ${lastName}" Contact?`, "Yes, delete it!")
       .then((result) => {
         if (result.isConfirmed) {
