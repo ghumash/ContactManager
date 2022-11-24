@@ -1,3 +1,3 @@
 export const cardView = false;
-export const inlineEdit = false;
+export const inlineEdit = true;
 export const inlineAdd = true;
