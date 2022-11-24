@@ -9,17 +9,10 @@ import axios from "../../../js/axiosInstance";
 import {v4 as generateId} from "uuid";
 
 export default function InlineContact({
-                                        firstName,
-                                        lastName,
-                                        phone,
-                                        email,
-                                        profession,
-                                        button,
-                                        id,
-                                        contacts,
-                                        setContacts,
-                                        setInlineContactStatus,
+                                        contact, button, contacts, setContacts, setInlineContactStatus,
                                       }) {
+  const {id, firstName, lastName, phone, email, profession} = contact
+
   const [firstNameInput, setFirstNameInput] = useState(firstName);
   const [lastNameInput, setLastNameInput] = useState(lastName);
   const [phoneInput, setPhoneInput] = useState(phone);
@@ -105,67 +98,65 @@ export default function InlineContact({
     }
   }
 
-  return (
-    <form className="inlineContact">
-      <input
-        className="InlineContact-item"
-        placeholder="First Name"
-        type="text"
-        value={firstNameInput}
-        onChange={(e) => {
-          setFirstNameInput(e.target.value);
-        }}
+  return (<form className="inlineContact">
+    <input
+      className="InlineContact-item"
+      placeholder="First Name"
+      type="text"
+      value={firstNameInput}
+      onChange={(e) => {
+        setFirstNameInput(e.target.value);
+      }}
+    />
+    <input
+      className="InlineContact-item"
+      placeholder="Last Name"
+      type="text"
+      value={lastNameInput}
+      onChange={(e) => {
+        setLastNameInput(e.target.value);
+      }}
+    />
+    <input
+      className="InlineContact-item"
+      placeholder="Email"
+      type="text"
+      value={emailInput}
+      onChange={(e) => {
+        setEmailInput(e.target.value);
+      }}
+    />
+    <input
+      className="InlineContact-item"
+      placeholder="Phone"
+      type="text"
+      value={phoneInput}
+      onChange={(e) => {
+        setPhoneInput(e.target.value);
+      }}
+    />
+    <input
+      className="InlineContact-item"
+      placeholder="Profession"
+      type="text"
+      value={professionInput}
+      onChange={(e) => {
+        setProfessionInput(e.target.value);
+      }}
+    />
+    <div className="InlineContact-btn-group">
+      <FontAwesomeIcon
+        icon={faCheck}
+        className="InlineContact-btn"
+        type="button"
+        onClick={checkButtonHandler}
       />
-      <input
-        className="InlineContact-item"
-        placeholder="Last Name"
-        type="text"
-        value={lastNameInput}
-        onChange={(e) => {
-          setLastNameInput(e.target.value);
-        }}
+      <FontAwesomeIcon
+        icon={faXmark}
+        className="InlineContact-btn"
+        type="button"
+        onClick={xButtonHandler}
       />
-      <input
-        className="InlineContact-item"
-        placeholder="Email"
-        type="text"
-        value={emailInput}
-        onChange={(e) => {
-          setEmailInput(e.target.value);
-        }}
-      />
-      <input
-        className="InlineContact-item"
-        placeholder="Phone"
-        type="text"
-        value={phoneInput}
-        onChange={(e) => {
-          setPhoneInput(e.target.value);
-        }}
-      />
-      <input
-        className="InlineContact-item"
-        placeholder="Profession"
-        type="text"
-        value={professionInput}
-        onChange={(e) => {
-          setProfessionInput(e.target.value);
-        }}
-      />
-      <div className="InlineContact-btn-group">
-        <FontAwesomeIcon
-          icon={faCheck}
-          className="InlineContact-btn"
-          type="button"
-          onClick={checkButtonHandler}
-        />
-        <FontAwesomeIcon
-          icon={faXmark}
-          className="InlineContact-btn"
-          type="button"
-          onClick={xButtonHandler}
-        />
-      </div>
-    </form>
-  )
+    </div>
+  </form>)
 }

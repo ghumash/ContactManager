@@ -9,16 +9,13 @@ import axios from "../../../js/axiosInstance";
 export default function PopupContact({
                                        title,
                                        button,
-                                       id,
-                                       firstName,
-                                       lastName,
-                                       phone,
-                                       email,
-                                       profession,
+                                       contact,
                                        contacts,
                                        setContacts,
                                        setPopupContactStatus,
                                      }) {
+  const {id, firstName, lastName, phone, email, profession} = contact
+
   const [firstNameInput, setFirstNameInput] = useState(firstName);
   const [lastNameInput, setLastNameInput] = useState(lastName);
   const [phoneInput, setPhoneInput] = useState(phone);

@@ -38,10 +38,10 @@ export default function ListItem({
       profession: contact.profession,
     })
     if (!inlineEditState) {
-      onPopupContactEdit(id, contact.firstName, contact.lastName, contact.phone, contact.email, contact.profession);
+      onPopupContactEdit(contact);
     } else {
       if (!cardViewState) {
-        onInlineContactEdit(id, contact.firstName, contact.lastName, contact.phone, contact.email, contact.profession);
+        onInlineContactEdit(contact);
       }
     }
   }
@@ -87,7 +87,7 @@ export default function ListItem({
           <FontAwesomeIcon
             icon={faMinus}
             onClick={() => {
-              onDelete(contact.id, contact.firstName, contact.lastName);
+              onDelete(contact);
             }}
           />
         </div>

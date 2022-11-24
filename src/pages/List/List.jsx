@@ -72,7 +72,8 @@ export default function List({
     }
   };
 
-  const onDelete = async (id, firstName, lastName) => {
+  const onDelete = async (contact) => {
+    const {id, firstName, lastName} = contact
     await popupConfirm(`Do you want delete "${firstName} ${lastName}" Contact?`, "Yes, delete it!")
       .then((result) => {
         if (result.isConfirmed) {
@@ -88,17 +89,12 @@ export default function List({
       })
   };
 
-  const onPopupContactEdit = (id, firstName, lastName, phone, email, profession) => {
+  const onPopupContactEdit = (contact) => {
     setPopupContactStatus(
       <PopupContact
         title={"Edit Contact"}
         button={"Save"}
-        id={id}
-        firstName={firstName}
-        lastName={lastName}
-        phone={phone}
-        email={email}
-        profession={profession}
+        contact={contact}
         contacts={contacts}
         setContacts={setContacts}
         setPopupContactStatus={setPopupContactStatus}
@@ -111,28 +107,26 @@ export default function List({
       <PopupContact
         title={"Add Contact"}
         button={"Add"}
-        firstName={""}
-        lastName={""}
-        phone={""}
-        email={""}
-        profession={""}
         contacts={contacts}
         setContacts={setContacts}
         setPopupContactStatus={setPopupContactStatus}
+        contact={{
+          firstName: "",
+          lastName: "",
+          phone: "",
+          email: "",
+          profession: "",
+        }}
       />
     );
   };
 
-  const onInlineContactEdit = (id, firstName, lastName, phone, email, profession) => {
+  const onInlineContactEdit = (contact) => {
     setInlineContactStatus(
       <InlineContact
         title={"Edit Contact"}
         button={"Save"}
-        firstName={firstName}
-        lastName={lastName}
-        phone={phone}
-        email={email}
-        profession={profession}
+        contact={contact}
       />
     );
   };
@@ -147,14 +141,16 @@ export default function List({
           <InlineContact
             title={"Add Contact"}
             button={"Add"}
-            firstName={""}
-            lastName={""}
-            phone={""}
-            email={""}
-            profession={""}
             contacts={contacts}
             setContacts={setContacts}
             setInlineContactStatus={setInlineContactStatus}
+            contact={{
+              firstName: "",
+              lastName: "",
+              phone: "",
+              email: "",
+              profession: "",
+            }}
           />
         </div>
       }
@@ -183,13 +179,7 @@ export default function List({
               <div className="InlineEditItem" key={contact.id}>
                 <InlineContact
                   button={"Save"}
-                  id={contact.id}
                   contact={contact}
-                  firstName={contact.firstName}
-                  lastName={contact.lastName}
-                  phone={contact.phone}
-                  email={contact.email}
-                  profession={contact.profession}
                   contacts={contacts}
                   setContacts={setContacts}
                   setInlineContactStatus={setInlineContactStatus}
