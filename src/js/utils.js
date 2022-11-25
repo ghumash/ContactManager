@@ -12,7 +12,7 @@ export function isEmpty(newContact) {
     default:
       return true;
   }
-};
+}
 
 export function popupInfo(icon, text) {
   return Swal.fire({
@@ -72,6 +72,23 @@ export async function addContactHandler(contacts, setContacts, newContact, conta
   } else {
     popupInfo("warning", "Please fill in all fields")
   }
+}
+
+export async function onDelete(contact, contacts, setContacts) {
+  const {id, firstName, lastName} = contact
+  await popupConfirm(`Do you want delete "${firstName} ${lastName}" Contact?`, "Yes, delete it!")
+    .then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`contacts/${id}`)
+          .then(() => {
+            popupInfo("success", `Contact "${firstName} ${lastName}" has been deleted.`)
+            setContacts(contacts.filter((contact) => contact.id !== id));
+          })
+          .catch((e) => {
+            popupInfo("error", `Something went wrong! "${e}"`)
+          })
+      }
+    })
 };
 
 export function resetInputsHandler(objState) {

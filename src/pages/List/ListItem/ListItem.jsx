@@ -6,11 +6,12 @@ import {faMinus, faUserPen} from "@fortawesome/free-solid-svg-icons";
 export default function ListItem({
                                    id,
                                    contact,
+                                   contacts,
+                                   setContacts,
                                    setNewContact,
                                    cardViewState,
                                    inlineEditState,
                                    checkedIdArr,
-                                   onDelete,
                                    onPopupContactEdit,
                                    onInlineContactEdit,
                                    onCheck,
@@ -24,7 +25,7 @@ export default function ListItem({
         return "ListItem-row itemRowInlineStyle";
       } else {
         return "ListItem-row";
-      } 
+      }
     }
   };
 
@@ -87,7 +88,7 @@ export default function ListItem({
           <FontAwesomeIcon
             icon={faMinus}
             onClick={() => {
-              onDelete(contact);
+              onDelete(contact, contacts, setContacts,);
             }}
           />
         </div>

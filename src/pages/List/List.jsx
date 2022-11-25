@@ -6,10 +6,10 @@ import PopupContact from "./PopupContact/PopupContact";
 import ListBtnSection from "./ListBtnSection/ListBtnSection";
 import InlineContact from "./InlineContact/InlineContact";
 
-import {popupConfirm, popupInfo} from "../../js/utils";
+import {onDelete, popupConfirm, popupInfo} from "../../js/utils";
+import axios from "../../js/axiosInstance";
 
 import {useState} from "react";
-import axios from "../../js/axiosInstance";
 
 export default function List({
                                contacts,
@@ -68,24 +68,6 @@ export default function List({
           }
         });
     }
-  };
-
-  const onDelete = async (contact) => {
-    const {id, firstName, lastName} = contact
-
-    await popupConfirm(`Do you want delete "${firstName} ${lastName}" Contact?`, "Yes, delete it!")
-      .then((result) => {
-        if (result.isConfirmed) {
-          axios.delete(`contacts/${id}`)
-            .then(() => {
-              popupInfo("success", `Contact "${firstName} ${lastName}" has been deleted.`)
-              setContacts(contacts.filter((contact) => contact.id !== id));
-            })
-            .catch((e) => {
-              popupInfo("error", `Something went wrong! "${e}"`)
-            })
-        }
-      })
   };
 
   const onPopupContactEdit = (contact) => {
@@ -189,11 +171,12 @@ export default function List({
                   key={contact.id}
                   id={contact.id}
                   contact={contact}
+                  contacts={contacts}
+                  setContacts={setContacts}
                   setNewContact={setNewContact}
                   cardViewState={cardViewState}
                   inlineEditState={inlineEditState}
                   checkedIdArr={checkedIdArr}
-                  onDelete={onDelete}
                   onPopupContactEdit={onPopupContactEdit}
                   onInlineContactEdit={onInlineContactEdit}
                   onCheck={onCheck}

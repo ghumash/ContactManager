@@ -24,7 +24,7 @@ export default function Settings({
     }
   };
 
-  const inlineEdithandler = () => {
+  const inlineEditHandler = () => {
     if (!inlineEditState) {
       setInlineEditState(true);
       if (cardViewState) {
@@ -36,7 +36,7 @@ export default function Settings({
     }
   };
 
-  const inlineAddhandler = () => {
+  const inlineAddHandler = () => {
     if (!inlineAddState) {
       setInlineAddState(true);
     } else {
@@ -52,8 +52,8 @@ export default function Settings({
       <div className="Settings">
         <div className="Settings-container">
           <SettingItem text="Card View" checked={cardViewState} onChange={cardViewHandler}/>
-          <SettingItem text="Inline Edit" checked={inlineEditState} onChange={inlineEdithandler}/>
-          <SettingItem text="Inline Add" checked={inlineAddState} onChange={inlineAddhandler}/>
+          <SettingItem text="Inline Edit" checked={inlineEditState} onChange={inlineEditHandler}/>
+          <SettingItem text="Inline Add" checked={inlineAddState} onChange={inlineAddHandler}/>
         </div>
       </div>
     </>
