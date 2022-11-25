@@ -35,8 +35,7 @@ export function popupConfirm(text, confirmButtonText) {
   })
 }
 
-export async function saveContact(contacts, setContacts, contact, editedContact, contactStatus) {
-  console.log(editedContact)
+export async function saveContactHandler(contacts, setContacts, contact, editedContact, contactStatus) {
   if (isEmpty(editedContact)) {
     await axios.put(`contacts/${contact.id}`, editedContact)
       .then(response => {
@@ -59,7 +58,7 @@ export async function saveContact(contacts, setContacts, contact, editedContact,
   }
 }
 
-export async function addContact(contacts, setContacts, newContact, contactStatus) {
+export async function addContactHandler(contacts, setContacts, newContact, contactStatus) {
   if (isEmpty(newContact)) {
     await axios.post("contacts", newContact)
       .then(response => {
@@ -75,7 +74,7 @@ export async function addContact(contacts, setContacts, newContact, contactStatu
   }
 };
 
-export function resetInputs(objState) {
+export function resetInputsHandler(objState) {
   objState({
     firstName: "",
     lastName: "",
@@ -92,10 +91,10 @@ export function listItemConfirmButtonHandler(
   contactStatus, objState
 ) {
   if (button === "Save") {
-    saveContact(contacts, setContacts, contact, editedContact, contactStatus)
+    saveContactHandler(contacts, setContacts, contact, editedContact, contactStatus)
   } else if (button === "Add") {
-    addContact(contacts, setContacts, newContact, contactStatus)
-    resetInputs(objState)
+    addContactHandler(contacts, setContacts, newContact, contactStatus)
+    resetInputsHandler(objState)
   }
 }
 

@@ -1,5 +1,5 @@
 import "./InlineContact.css";
-import {listItemConfirmButtonHandler, resetInputs} from "../../../js/utils";
+import {listItemConfirmButtonHandler, resetInputsHandler} from "../../../js/utils";
 
 import {useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -99,7 +99,7 @@ export default function InlineContact({
             if (button === "Save") {
               setInlineContactStatus(null);
             } else if (button === "Add") {
-              resetInputs(setNewContact)
+              resetInputsHandler(setNewContact)
             }
           }}
         />
