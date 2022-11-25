@@ -8,7 +8,11 @@ import {faCheck, faXmark} from "@fortawesome/free-solid-svg-icons";
 import axios from "../../../js/axiosInstance";
 
 export default function InlineContact({
-                                        contact, button, contacts, setContacts, setInlineContactStatus,
+                                        contact,
+                                        button,
+                                        contacts,
+                                        setContacts,
+                                        setInlineContactStatus
                                       }) {
   const [editedContact, setEditedContact] = useState(contact)
   const [newContact, setNewContact] = useState(contact)

@@ -12,40 +12,26 @@ export default function PopupContact({
                                        setContacts,
                                        setPopupContactStatus,
                                      }) {
-  const {id, firstName, lastName, phone, email, profession} = contact
-
-  const [firstNameInput, setFirstNameInput] = useState(firstName);
-  const [lastNameInput, setLastNameInput] = useState(lastName);
-  const [phoneInput, setPhoneInput] = useState(phone);
-  const [emailInput, setEmailInput] = useState(email);
-  const [professionInput, setProfessionInput] = useState(profession);
-
-  const newContact = {
-    firstName: firstNameInput,
-    lastName: lastNameInput,
-    email: emailInput,
-    phone: phoneInput,
-    profession: professionInput,
-  };
-
-  const changedContacts = contacts.map((contact) => {
-    if (contact.id !== id) {
-      return contact;
-    } else {
-      return newContact;
-    }
-  });
+  const [editedContact, setEditedContact] = useState(contact)
+  const [newContact, setNewContact] = useState(contact)
 
   const saveButtonHandle = async () => {
-    if (isEmpty(newContact)) {
-      await axios.put(`contacts/${id}`, newContact)
-        .then(() => {
+    if (isEmpty(editedContact)) {
+      await axios.put(`contacts/${contact.id}`, editedContact)
+        .then(response => {
           popupInfo("success", "Contact Saved!")
-          setContacts([...changedContacts]);
+          const changeContacts = contacts.map((contactItem) => {
+            if (contactItem.id !== contact.id) {
+              return contactItem;
+            } else {
+              return response.data
+            }
+          });
+          setContacts([...changeContacts]);
           setPopupContactStatus(null);
         })
-        .catch((e) => {
-          popupInfo("error", `Something went wrong! "${e}"`)
+        .catch((error) => {
+          popupInfo("error", `Something went wrong! "${error}"`)
         })
     } else {
       popupInfo("warning", "Please fill in all fields")
@@ -54,13 +40,15 @@ export default function PopupContact({
 
   const addButtonHandle = async () => {
     if (isEmpty(newContact)) {
-      await axios.post("contacts", newContact).then(() => {
-        popupInfo("success", "Contact Added!")
-        setContacts([...contacts, newContact]);
-        setPopupContactStatus(null);
-      }).catch((e) => {
-        popupInfo("error", `Something went wrong! "${e}"`)
-      })
+      await axios.post("contacts", newContact)
+        .then(response => {
+          popupInfo("success", "Contact Added!")
+          setContacts([...contacts, response.data]);
+          setPopupContactStatus(null);
+        })
+        .catch((error) => {
+          popupInfo("error", `Something went wrong! "${error}"`)
+        })
     } else {
       popupInfo("warning", "Please fill in all fields")
     }
@@ -95,9 +83,13 @@ export default function PopupContact({
           <input
             className="PopupContact-input"
             type="text"
-            value={firstNameInput}
+            value={button === "Add" ? newContact.firstName : editedContact.firstName}
             onChange={(e) => {
-              setFirstNameInput(e.target.value);
+              if (button === "Add") {
+                setNewContact({...newContact, firstName: e.target.value});
+              } else {
+                setEditedContact({...editedContact, firstName: e.target.value});
+              }
             }}
           />
         </label>
@@ -106,9 +98,13 @@ export default function PopupContact({
           <input
             className="PopupContact-input"
             type="text"
-            value={lastNameInput}
+            value={button === "Add" ? newContact.lastName : editedContact.lastName}
             onChange={(e) => {
-              setLastNameInput(e.target.value);
+              if (button === "Add") {
+                setNewContact({...newContact, lastName: e.target.value});
+              } else {
+                setEditedContact({...editedContact, lastName: e.target.value});
+              }
             }}
           />
         </label>
@@ -117,9 +113,13 @@ export default function PopupContact({
           <input
             className="PopupContact-input"
             type="text"
-            value={emailInput}
+            value={button === "Add" ? newContact.email : editedContact.email}
             onChange={(e) => {
-              setEmailInput(e.target.value);
+              if (button === "Add") {
+                setNewContact({...newContact, email: e.target.value});
+              } else {
+                setEditedContact({...editedContact, email: e.target.value});
+              }
             }}
           />
         </label>
@@ -128,9 +128,13 @@ export default function PopupContact({
           <input
             className="PopupContact-input"
             type="text"
-            value={phoneInput}
+            value={button === "Add" ? newContact.phone : editedContact.phone}
             onChange={(e) => {
-              setPhoneInput(e.target.value);
+              if (button === "Add") {
+                setNewContact({...newContact, phone: e.target.value});
+              } else {
+                setEditedContact({...editedContact, phone: e.target.value});
+              }
             }}
           />
         </label>
@@ -139,9 +143,13 @@ export default function PopupContact({
           <input
             className="PopupContact-input"
             type="text"
-            value={professionInput}
+            value={button === "Add" ? newContact.profession : editedContact.profession}
             onChange={(e) => {
-              setProfessionInput(e.target.value);
+              if (button === "Add") {
+                setNewContact({...newContact, profession: e.target.value});
+              } else {
+                setEditedContact({...editedContact, profession: e.target.value});
+              }
             }}
           />
         </label>
