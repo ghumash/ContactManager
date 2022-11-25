@@ -1,8 +1,7 @@
 import "./PopupContact.css";
-import {isEmpty, popupInfo} from "../../../js/utils";
+import {listItemConfirmButtonHandler} from "../../../js/utils";
 
 import {useState} from "react";
-import axios from "../../../js/axiosInstance";
 
 export default function PopupContact({
                                        title,
@@ -14,58 +13,6 @@ export default function PopupContact({
                                      }) {
   const [editedContact, setEditedContact] = useState(contact)
   const [newContact, setNewContact] = useState(contact)
-
-  const saveButtonHandle = async () => {
-    if (isEmpty(editedContact)) {
-      await axios.put(`contacts/${contact.id}`, editedContact)
-        .then(response => {
-          popupInfo("success", "Contact Saved!")
-          const changeContacts = contacts.map((contactItem) => {
-            if (contactItem.id !== contact.id) {
-              return contactItem;
-            } else {
-              return response.data
-            }
-          });
-          setContacts([...changeContacts]);
-          setPopupContactStatus(null);
-        })
-        .catch((error) => {
-          popupInfo("error", `Something went wrong! "${error}"`)
-        })
-    } else {
-      popupInfo("warning", "Please fill in all fields")
-    }
-  };
-
-  const addButtonHandle = async () => {
-    if (isEmpty(newContact)) {
-      await axios.post("contacts", newContact)
-        .then(response => {
-          popupInfo("success", "Contact Added!")
-          setContacts([...contacts, response.data]);
-          setPopupContactStatus(null);
-        })
-        .catch((error) => {
-          popupInfo("error", `Something went wrong! "${error}"`)
-        })
-    } else {
-      popupInfo("warning", "Please fill in all fields")
-    }
-  };
-
-  const popupConfirmButton = () => {
-    switch (button) {
-      case "Save":
-        saveButtonHandle();
-        break;
-      case "Add":
-        addButtonHandle();
-        break;
-      default:
-        break
-    }
-  }
 
   return (
     <div
@@ -157,7 +104,14 @@ export default function PopupContact({
           <button
             className="PopupContact-btn"
             type="button"
-            onClick={popupConfirmButton}
+            onClick={() => {
+              listItemConfirmButtonHandler(
+                button, contacts,
+                setContacts, contact,
+                editedContact, newContact,
+                setPopupContactStatus, setNewContact
+              )
+            }}
           >
             {button}
           </button>

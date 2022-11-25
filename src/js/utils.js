@@ -1,4 +1,5 @@
 import Swal from "sweetalert2";
+import axios from "./axiosInstance";
 
 export function isEmpty(newContact) {
   switch ("") {
@@ -33,3 +34,77 @@ export function popupConfirm(text, confirmButtonText) {
     confirmButtonText: confirmButtonText,
   })
 }
+
+export async function saveContact(contacts, setContacts, contact, editedContact, contactStatus) {
+  console.log(editedContact)
+  if (isEmpty(editedContact)) {
+    await axios.put(`contacts/${contact.id}`, editedContact)
+      .then(response => {
+        popupInfo("success", "Contact Saved!")
+        const changeContacts = contacts.map((contactItem) => {
+          if (contactItem.id !== contact.id) {
+            return contactItem;
+          } else {
+            return response.data
+          }
+        });
+        setContacts([...changeContacts]);
+        contactStatus(null);
+      })
+      .catch((error) => {
+        popupInfo("error", `Something went wrong! "${error}"`)
+      })
+  } else {
+    popupInfo("warning", "Please fill in all fields")
+  }
+}
+
+export async function addContact(contacts, setContacts, newContact, contactStatus) {
+  if (isEmpty(newContact)) {
+    await axios.post("contacts", newContact)
+      .then(response => {
+        popupInfo("success", "Contact Added!")
+        setContacts([...contacts, response.data]);
+        contactStatus(null);
+      })
+      .catch((error) => {
+        popupInfo("error", `Something went wrong! "${error}"`)
+      })
+  } else {
+    popupInfo("warning", "Please fill in all fields")
+  }
+};
+
+export function resetInputs(objState) {
+  objState({
+    firstName: "",
+    lastName: "",
+    phone: "",
+    email: "",
+    profession: ""
+  })
+}
+
+export function listItemConfirmButtonHandler(
+  button, contacts,
+  setContacts, contact,
+  editedContact, newContact,
+  contactStatus, objState
+) {
+  if (button === "Save") {
+    saveContact(contacts, setContacts, contact, editedContact, contactStatus)
+  } else if (button === "Add") {
+    addContact(contacts, setContacts, newContact, contactStatus)
+    resetInputs(objState)
+  }
+}
+
+
+
+
+
+
+
+
+
+
