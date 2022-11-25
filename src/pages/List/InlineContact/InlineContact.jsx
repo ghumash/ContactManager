@@ -12,59 +12,72 @@ export default function InlineContact({
                                       }) {
   const {id, firstName, lastName, phone, email, profession} = contact
 
-  const [firstNameInput, setFirstNameInput] = useState(firstName);
-  const [lastNameInput, setLastNameInput] = useState(lastName);
-  const [phoneInput, setPhoneInput] = useState(phone);
-  const [emailInput, setEmailInput] = useState(email);
-  const [professionInput, setProfessionInput] = useState(profession);
+  const [editedContact, setEditedContact] = useState({
+    firstName,
+    lastName,
+    phone,
+    email,
+    profession
+  })
 
-  const newContact = {
-    firstName: firstNameInput,
-    lastName: lastNameInput,
-    phone: phoneInput,
-    email: emailInput,
-    profession: professionInput,
-  };
-
-  const changeContacts = contacts.map((contact) => {
-    if (contact.id !== id) {
-      return contact;
-    } else {
-      return newContact
-    }
-  });
+  const [newContact, setNewContact] = useState({
+    firstName: "",
+    lastName: "",
+    phone: "",
+    email: "",
+    profession: "",
+  })
 
   const saveButtonHandle = async () => {
-    if (isEmpty(newContact)) {
-      await axios.put(`contacts/${id}`, newContact).then(() => {
+    if (isEmpty(editedContact)) {
+      try {
+        const response = await axios.put(`contacts/${id}`, editedContact)
         popupInfo("success", "Contact Saved!")
+        const changeContacts = contacts.map((contact) => {
+          if (contact.id !== id) {
+            return contact;
+          } else {
+            return response.data
+          }
+        });
         setContacts([...changeContacts]);
         setInlineContactStatus(null);
-      }).catch((e) => {
+      } catch (e) {
         popupInfo("error", `Something went wrong! "${e}"`)
-      })
+      }
     } else {
       popupInfo("warning", "Please fill in all fields")
     }
   };
 
   const resetInputs = () => {
-    setFirstNameInput("")
-    setLastNameInput("")
-    setEmailInput("")
-    setProfessionInput("")
+    setEditedContact({
+      firstName: "",
+      lastName: "",
+      phone: "",
+      email: "",
+      profession: ""
+    })
+    setNewContact({
+      firstName: "",
+      lastName: "",
+      phone: "",
+      email: "",
+      profession: ""
+    })
   }
 
   const addButtonHandle = async () => {
     if (isEmpty(newContact)) {
-      await axios.post("contacts", newContact).then(() => {
+      try {
+        const response = await axios.post("contacts", newContact)
         popupInfo("success", "Contact Added!")
-        setContacts([...contacts, newContact]);
+        setContacts([...contacts, response.data]);
         setInlineContactStatus(null);
         resetInputs()
-      }).catch((e) => {
+      } catch (e) {
         popupInfo("error", `Something went wrong! "${e}"`)
-      })
+      }
     } else {
       popupInfo("warning", "Please fill in all fields")
     }
@@ -101,45 +114,65 @@ export default function InlineContact({
       className="InlineContact-item"
       placeholder="First Name"
       type="text"
-      value={firstNameInput}
+      value={button === "Add" ? newContact.firstName : editedContact.firstName}
       onChange={(e) => {
-        setFirstNameInput(e.target.value);
+        if (button === "Add") {
+          setNewContact({...newContact, firstName: e.target.value});
+        } else {
+          setEditedContact({...editedContact, firstName: e.target.value});
+        }
       }}
     />
     <input
       className="InlineContact-item"
       placeholder="Last Name"
       type="text"
-      value={lastNameInput}
+      value={button === "Add" ? newContact.lastName : editedContact.lastName}
       onChange={(e) => {
-        setLastNameInput(e.target.value);
+        if (button === "Add") {
+          setNewContact({...newContact, lastName: e.target.value});
+        } else {
+          setEditedContact({...editedContact, lastName: e.target.value});
+        }
       }}
     />
     <input
       className="InlineContact-item"
       placeholder="Email"
       type="text"
-      value={emailInput}
+      value={button === "Add" ? newContact.email : editedContact.email}
       onChange={(e) => {
-        setEmailInput(e.target.value);
+        if (button === "Add") {
+          setNewContact({...newContact, email: e.target.value});
+        } else {
+          setEditedContact({...editedContact, email: e.target.value});
+        }
       }}
     />
     <input
       className="InlineContact-item"
       placeholder="Phone"
       type="text"
-      value={phoneInput}
+      value={button === "Add" ? newContact.phone : editedContact.phone}
       onChange={(e) => {
-        setPhoneInput(e.target.value);
+        if (button === "Add") {
+          setNewContact({...newContact, phone: e.target.value});
+        } else {
+          setEditedContact({...editedContact, phone: e.target.value});
+        }
       }}
     />
     <input
       className="InlineContact-item"
       placeholder="Profession"
       type="text"
-      value={professionInput}
+      value={button === "Add" ? newContact.profession : editedContact.profession}
       onChange={(e) => {
-        setProfessionInput(e.target.value);
+        if (button === "Add") {
+          setNewContact({...newContact, profession: e.target.value});
+        } else {
+          setEditedContact({...editedContact, profession: e.target.value});
+        }
       }}
     />
     <div className="InlineContact-btn-group">
