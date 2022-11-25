@@ -2,13 +2,8 @@
   display: flex;
   align-items: center;
   color: var(--color-5);
-  margin: 15px 0;
 
   border-radius: 15px;
-}
-
-.ListItem-row:last-child {
-  margin-bottom: 0;
 }
 
 .ListItem-card {
@@ -33,7 +28,10 @@
 }
 
 .ListItem-item {
-  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  height: 60px;
+  padding: 0 20px;
 }
 
 .ListItem-card-item {

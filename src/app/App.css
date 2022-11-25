@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 @import url("../css/nulled.css");
+@import url("../css/media.css");
 
 :root {
   --color-1: #050d21;
@@ -44,7 +45,6 @@ body {
   background-color: var(--color-1);
 
   font-family: "Montserrat", sans-serif;
-  font-size: 15px;
 }
 
 .App {

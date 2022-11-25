@@ -3,7 +3,7 @@ import Navbar from "../pages/Navbar/Navbar";
 import Settings from "../pages/Settings/Settings";
 import {cardView, inlineAdd, inlineEdit} from "../js/config";
 import axios from "../js/axiosInstance";
-import {local_data} from "../js/local_data";
+import {localData} from "../js/localData";
 
 import {lazy, Suspense, useEffect, useState} from "react";
 import {Route, Routes} from "react-router-dom";
@@ -17,7 +17,7 @@ export default function App() {
       .then(res => setContacts(res.data))
       .catch(() => {
         popupInfo("error", "Data from server not received!")
-        setContacts([...local_data])
+        setContacts([...localData])
       })
   }
 

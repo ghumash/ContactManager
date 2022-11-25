@@ -55,8 +55,8 @@
 .Navbar-link:after {
   height: 3.9em;
   background: var(--color-4);
-  bottom: -33px;
-  left: 23px;
+  bottom: -2.2em;
+  left: 1.5em;
   transform: rotate(90deg) skew(0, 45deg);
 }
 
