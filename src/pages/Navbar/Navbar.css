@@ -1,12 +1,13 @@
 .Navbar {
   position: relative;
+  z-index: 1;
 }
 
 .Navbar-link {
   margin-bottom: -0.2em;
   background: var(--color-15);
   text-align: center;
-  height: 2.5em;
+  height: 2.6em;
   width: 4em;
   line-height: 2.5em;
   position: relative;
@@ -53,7 +54,7 @@
 }
 
 .Navbar-link:after {
-  height: 3.9em;
+  height: 4em;
   background: var(--color-4);
   bottom: -2.2em;
   left: 1.5em;
@@ -73,4 +74,39 @@
 .fa-gear {
   color: var(--color-1);
   transition: 0.2s ease-in-out;
+}
+
+.fa-bars, .fa-xmark {
+  transition: all 0.25s linear;
+  font-size: 1em;
+}
+
+@media (max-width: 767px) {
+  .Navbar-link {
+    color: white;
+    background: none;
+  }
+  .Navbar-link:before,
+  .Navbar-link:after,
+  .Navbar-link:hover:after,
+  .Navbar-link:hover:before {
+    display: none;
+  }
+  .Navbar-link:hover {
+    transition: none;
+    transform: none;
+    background: none;
+  }
+  .Navbar-link:first-child {
+    padding-top: 2em;
+  }
+  .Navbar-link:last-child {
+    padding-bottom: 2em;
+  }
+  .Navbar-link-small {
+    background: var(--color-3);
+  }
+  .Navbar-link-small:hover {
+    background: var(--color-3);
+  }
 }

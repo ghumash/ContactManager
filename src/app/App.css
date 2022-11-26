@@ -1,6 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat&display=swap");
 @import url("../css/nulled.css");
-@import url("../css/media.css");
 
 :root {
   --color-1: #050d21;
@@ -56,8 +55,13 @@ body {
 }
 
 .ListNavbar {
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   position: absolute;
-  left: -0.1em;
+  left: -1px;
   top: 3em;
 }
 
@@ -83,17 +87,16 @@ body {
   border: 1px solid var(--color-5);
   background-color: transparent;
 
-
   cursor: pointer;
 }
 
 [type="checkbox"]:checked + span:before {
   content: " ";
-  width: 0.9em;
-  height: 0.9em;
+  width: 0.8em;
+  height: 0.8em;
   position: absolute;
-  left: -0.1em;
-  top: -0.1em;
+  left: 0;
+  top: 0;
 
   background-color: var(--color-5);
   font-size: 1.5em;
@@ -123,5 +126,17 @@ body {
 @media (max-width: 767px) {
   body {
     font-size: 7px;
+  }
+  .App {
+    padding-top: 0;
+  }
+  .ListNavbar {
+    width: 4em;
+    top: 0;
+    justify-content: flex-start;
+    z-index: 1000;
+  }
+  .Content {
+    width: 100%;
   }
 }

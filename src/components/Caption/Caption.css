@@ -10,3 +10,9 @@
 .Caption-container {
   color: var(--color-4);
 }
+
+@media (max-width: 767px) {
+  .Caption {
+    padding: 1em 2em;
+  }
+}
