@@ -1,9 +1,10 @@
 .ListItem-row {
   display: flex;
   align-items: center;
-  color: var(--color-5);
 
-  border-radius: 15px;
+  margin-bottom: .5em;
+
+  color: var(--color-5);
 }
 
 .ListItem-card {
@@ -15,8 +16,7 @@
 
   color: var(--color-5);
 
-  border-radius: 15px;
-  box-shadow: 0 10px 15px rgb(0 0 0), 0 0 0 rgb(255 255 255 / 1%),
+  box-shadow: .8em 1em rgb(0 0 0), 0 0 0 rgb(255 255 255 / 1%),
     0 0 0 rgb(255 255 255 / 3%), 0 0 0 rgb(255 255 255 / 2%),
     0 0 0 rgb(255 255 255 / 3%), 0 0 0 rgb(255 255 255 / 2%),
     0 0 0 transparent;
@@ -30,24 +30,24 @@
 .ListItem-item {
   display: flex;
   align-items: center;
-  height: 60px;
-  padding: 0 20px;
+  height: 4em;
+  padding: 0 1.5em;
 }
 
 .ListItem-card-item {
-  padding: 20px;
+  padding: 1.2em;
   word-break: break-all;
 }
 
 .ListItem-card-item:nth-child(1) {
   position: absolute;
-  bottom: 1px;
-  width: 20px;
+  bottom: .1em;
+  width: 1.2em;
   padding-right: 0;
   order: 5;
 }
 .ListItem-card-item:nth-child(2) {
-  font-size: 20px;
+  font-size: 1em;
   color: var(--color-14);
   order: 1;
 }
@@ -76,7 +76,7 @@
 }
 
 .fa-user-pen {
-  margin-right: 10px;
+  margin-right: .8em;
   color: var(--color-9);
 
   cursor: pointer;
@@ -99,10 +99,9 @@
 
 .ListItem-edit {
   width: 100%;
-  margin-right: 5px;
-  padding: 7px 15px;
+  margin-right: .3em;
+  padding: .5em 1em;
 
   background-color: var(--color-5);
   color: var(--color-1);
-  border-radius: 15px;
 }

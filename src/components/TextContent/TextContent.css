@@ -1,10 +1,8 @@
 .TextContent {
-  padding: 30px 20px;
+  padding: 1.5em;
 
   background-color: var(--color-3);
-  border-radius: 15px;
 
   text-align: left;
-  font-size: 16px;
   color: var(--color-7);
 }

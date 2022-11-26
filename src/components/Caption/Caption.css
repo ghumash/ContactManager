@@ -1,11 +1,10 @@
 .Caption {
-  padding: 30px 20px;
+  padding: 1em 1em;
 
   background-color: var(--color-3);
-  border-radius: 15px;
 
   text-align: left;
-  font-size: 30px;
+  font-size: 2em;
 }
 
 .Caption-container {

@@ -3,7 +3,7 @@
 }
 
 .Navbar-link {
-  margin-bottom: -2px;
+  margin-bottom: -0.2em;
   background: var(--color-15);
   text-align: center;
   height: 2.5em;

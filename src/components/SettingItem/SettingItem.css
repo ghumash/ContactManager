@@ -1,43 +1,67 @@
 .Settings-item {
-  padding: 10px 20px;
-  border-radius: 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: var(--color-2);
+    padding: 0.8em 1.2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-2);
+}
+
+.Settings-item > div {
+    font-size: 1em;
 }
 
 
 /* Switch */
 input[type="checkbox"].switch {
-  appearance: none;
-  width: 40px;
-  height: 20px;
-  background: var(--color-8);
-  border-radius: 15px;
-  position: relative;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
+    appearance: none;
+    width: 3em;
+    height: 1.5em;
+    background: var(--color-8);
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    transform: scale(.8);
 }
 
 input[type="checkbox"].switch:checked {
-  background: var(--color-4);
+    background: var(--color-4);
 }
 
 input[type="checkbox"].switch:after {
-  position: absolute;
-  left: 0;
-  content: "";
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: var(--color-7);
-  box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
-  transform: scale(0.7);
-  transition: all 0.2s ease-in-out;
+    position: absolute;
+    left: 0;
+    content: "";
+    width: 1.5em;
+    height: 1.5em;
+    background: var(--color-7);
+    box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.3);
+    transform: scale(0.7);
+    transition: all 0.2s ease-in-out;
 }
 
 input[type="checkbox"].switch:checked:after {
-  left: calc(100% - 20px);
+    left: calc(100% - 1.5em);
 }
 /* Switch */
+
+/* Media Requests */
+
+
+@media (max-width: 1200px) {
+    input[type="checkbox"].switch {
+        transform: scale(.7);
+    }
+}
+
+@media (max-width: 991px) {
+    input[type="checkbox"].switch {
+        transform: scale(.5);
+    }
+}
+
+@media (max-width: 767px) {
+    input[type="checkbox"].switch {
+        transform: scale(.4);
+    }
+}
+

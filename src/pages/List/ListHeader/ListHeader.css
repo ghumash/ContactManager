@@ -3,17 +3,16 @@
 }
 
 .ListHeader-row {
-  margin-bottom: 15px;
+  margin-bottom: 1em;
 
-  height: 40px;
+  height: 3em;
   display: flex;
   align-items: center;
 
   background-color: var(--color-2);
-  border-radius: 15px;
 }
 
 .ListHeader-item {
-  padding: 0 20px;
+  padding: 0 1.5em;
   color: var(--color-6);
 }

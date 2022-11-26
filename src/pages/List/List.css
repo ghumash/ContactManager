@@ -1,9 +1,9 @@
 .ListCaption {
-  margin-bottom: 15px;
+  margin-bottom: 1em;
 }
 
 .ListBtnSection-container {
-  margin-bottom: 15px;
+  margin-bottom: 1em;
 }
 
 .ListItem-cardView {
@@ -15,12 +15,12 @@
 }
 
 .InlineAdd {
-  margin-bottom: 15px;
+  margin-bottom: 1em;
   margin-left: 0;
 }
 
 .InlineAdd > .inlineContact > * {
-  margin-right: 10px;
+  margin-right: .8em;
 }
 
 .InlineAdd > .inlineContact > :last-child {
@@ -28,17 +28,16 @@
 }
 
 .InlineEditItem > .inlineContact > * {
-  padding: 6px 10px;
-  margin: 10px 10px 10px 0;
+  padding: .6em .8em;
+  margin: .8em .8em .8em 0;
 }
 
 .InlineEditItem > .inlineContact > :first-child {
-  margin-left: 20px;
+  margin-left: 1.5em;
 }
 
 .row-item {
   word-break: break-all;
-  font-size: 14px;
 }
 
 .row-item-2 {
@@ -54,5 +53,6 @@
     width: 15%;
 }
 .row-item-6 {
+    justify-content: flex-end;
     width: 15%;
 }

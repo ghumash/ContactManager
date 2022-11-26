@@ -1,4 +1,5 @@
 import "./ListItem.css";
+import {onDelete} from "../../../js/utils";
 
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faMinus, faUserPen} from "@fortawesome/free-solid-svg-icons";

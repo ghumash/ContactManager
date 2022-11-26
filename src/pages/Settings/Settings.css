@@ -1,10 +1,10 @@
 .Settings-container {
-  margin-top: 50px;
+  margin-top: 3em;
   color: var(--color-7);
 }
 
 .Settings-container > div {
-  margin-bottom: 20px;
+  margin-bottom: 1em;
 }
 
 .Settings-container > :last-child {
