@@ -45,8 +45,6 @@ input[type="checkbox"].switch:checked:after {
 /* Switch */
 
 /* Media Requests */
-
-
 @media (max-width: 1200px) {
     input[type="checkbox"].switch {
         transform: scale(.7);

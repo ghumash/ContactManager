@@ -17,9 +17,9 @@
   color: var(--color-5);
 
   box-shadow: .8em 1em rgb(0 0 0), 0 0 0 rgb(255 255 255 / 1%),
-    0 0 0 rgb(255 255 255 / 3%), 0 0 0 rgb(255 255 255 / 2%),
-    0 0 0 rgb(255 255 255 / 3%), 0 0 0 rgb(255 255 255 / 2%),
-    0 0 0 transparent;
+  0 0 0 rgb(255 255 255 / 3%), 0 0 0 rgb(255 255 255 / 2%),
+  0 0 0 rgb(255 255 255 / 3%), 0 0 0 rgb(255 255 255 / 2%),
+  0 0 0 transparent;
 }
 
 .itemRowInlineStyle {
@@ -46,20 +46,25 @@
   padding-right: 0;
   order: 5;
 }
+
 .ListItem-card-item:nth-child(2) {
   font-size: 1em;
   color: var(--color-14);
   order: 1;
 }
+
 .ListItem-card-item:nth-child(3) {
   order: 3;
 }
+
 .ListItem-card-item:nth-child(4) {
   order: 2;
 }
+
 .ListItem-card-item:nth-child(5) {
   order: 4;
 }
+
 .ListItem-card-item:nth-child(6) {
   padding-left: 0;
   order: 6;
@@ -105,3 +110,16 @@
   background-color: var(--color-5);
   color: var(--color-1);
 }
+
+@media (max-width: 767px) {
+  .ListItem-item:nth-child(3),
+  .ListItem-item:nth-child(4),
+  .ListItem-item:nth-child(5) {
+    display: none;
+  }
+
+  .ListItem-item:nth-child(6) {
+    margin-left: auto;
+  }
+}
+

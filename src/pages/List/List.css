@@ -41,18 +41,22 @@
 }
 
 .row-item-2 {
-    width: 23%;
+  width: 23%;
 }
+
 .row-item-3 {
-    width: 30%;
+  width: 30%;
 }
+
 .row-item-4 {
-    width: 17%;
+  width: 17%;
 }
+
 .row-item-5 {
-    width: 15%;
+  width: 15%;
 }
+
 .row-item-6 {
-    justify-content: flex-end;
-    width: 15%;
+  justify-content: flex-end;
+  width: 15%;
 }
