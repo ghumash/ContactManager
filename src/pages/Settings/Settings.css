@@ -10,3 +10,10 @@
 .Settings-container > :last-child {
   margin-bottom: 0;
 }
+
+@media (max-width: 767px) {
+  .Settings-container > :nth-child(2), .Settings-container > :nth-child(3) {
+    display: none;
+  }
+}
+

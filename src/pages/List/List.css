@@ -60,3 +60,12 @@
   justify-content: flex-end;
   width: 15%;
 }
+
+
+@media (max-width: 767px) {
+  .row-item-2 {
+    width: 60%;
+  }
+}
+
+

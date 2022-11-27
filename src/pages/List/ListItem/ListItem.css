@@ -8,7 +8,10 @@
 }
 
 .ListItem-card {
-  margin-top: 4%;
+  width: 15em;
+  height: 28em;
+  margin: 1em;
+  padding: 1em;
 
   position: relative;
   display: flex;
@@ -16,10 +19,10 @@
 
   color: var(--color-5);
 
-  box-shadow: .8em 1em rgb(0 0 0), 0 0 0 rgb(255 255 255 / 1%),
-  0 0 0 rgb(255 255 255 / 3%), 0 0 0 rgb(255 255 255 / 2%),
-  0 0 0 rgb(255 255 255 / 3%), 0 0 0 rgb(255 255 255 / 2%),
-  0 0 0 transparent;
+  border-radius: 2em;
+  box-shadow: inset -0.6em -0.6em 1em #00000099,
+  inset 0.4em 0.4em 0.5em #00000029,
+  0.8em 0.8em 2em #000000
 }
 
 .itemRowInlineStyle {
@@ -40,15 +43,13 @@
 }
 
 .ListItem-card-item:nth-child(1) {
+  padding-bottom: 2.2em;
   position: absolute;
-  bottom: .1em;
-  width: 1.2em;
-  padding-right: 0;
+  bottom: 0;
   order: 5;
 }
 
 .ListItem-card-item:nth-child(2) {
-  font-size: 1em;
   color: var(--color-14);
   order: 1;
 }
@@ -66,7 +67,11 @@
 }
 
 .ListItem-card-item:nth-child(6) {
-  padding-left: 0;
+  padding-right: 2.2em;
+  padding-bottom: 2.2em;
+  position: absolute;
+  bottom: 0;
+  right: 0;
   order: 6;
 }
 
@@ -120,6 +125,10 @@
 
   .ListItem-item:nth-child(6) {
     margin-left: auto;
+  }
+
+  .ListItem-card {
+    width: 25em;
   }
 }
 
