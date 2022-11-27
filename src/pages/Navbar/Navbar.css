@@ -78,35 +78,34 @@
 
 .fa-bars, .fa-xmark {
   transition: all 0.25s linear;
-  font-size: 1em;
 }
 
 @media (max-width: 767px) {
+  .Navbar {
+  }
   .Navbar-link {
-    color: white;
+    background: var(--color-3);
+  }
+  .Navbar-link:first-child {
+    margin-left: -1em;
+    font-size: 2em;
+    color: var(--color-7);
     background: none;
   }
-  .Navbar-link:before,
-  .Navbar-link:after,
-  .Navbar-link:hover:after,
-  .Navbar-link:hover:before {
+
+  .Navbar-link:first-child:before,
+  .Navbar-link:first-child:after,
+  .Navbar-link:first-child:hover:after,
+  .Navbar-link:first-child:hover:before {
     display: none;
   }
-  .Navbar-link:hover {
+
+  .Navbar-link:first-child:hover {
     transition: none;
     transform: none;
     background: none;
   }
-  .Navbar-link:first-child {
-    padding-top: 2em;
-  }
-  .Navbar-link:last-child {
-    padding-bottom: 2em;
-  }
-  .Navbar-link-small {
-    background: var(--color-3);
-  }
-  .Navbar-link-small:hover {
-    background: var(--color-3);
-  }
+
+
+
 }

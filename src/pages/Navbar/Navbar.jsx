@@ -10,22 +10,24 @@ export default function Navbar() {
 
   return (
     <>
-      <div onClick={navbarToggleFunction} className={navbarToggle ? "Navbar-link Navbar-link-small" : "Navbar-link"}>
-        <FontAwesomeIcon icon={navbarToggle ? faXmark : faBars}/>
-      </div>
-      {navbarToggle && <>
-        <div className="Navbar">
-          <Link to="/" className={navbarToggle ? "Navbar-link Navbar-link-small" : "Navbar-link"}>
-            <FontAwesomeIcon icon={faHouse}/>
-          </Link>
-          <Link to="/about" className={navbarToggle ? "Navbar-link Navbar-link-small" : "Navbar-link"}>
-            <FontAwesomeIcon icon={faExclamation}/>
-          </Link>
-          <Link to="/settings" className={navbarToggle ? "Navbar-link Navbar-link-small" : "Navbar-link"}>
-            <FontAwesomeIcon icon={faGear}/>
-          </Link>
+      <div className="Navbar swal2-show">
+        <div className="Navbar-link" onClick={navbarToggleFunction}>
+          <FontAwesomeIcon icon={navbarToggle ? faXmark : faBars}/>
         </div>
-      </>}
+        {navbarToggle &&
+          <>
+            <Link to="/" className="Navbar-link">
+              <FontAwesomeIcon icon={faHouse}/>
+            </Link>
+            <Link to="/about" className="Navbar-link">
+              <FontAwesomeIcon icon={faExclamation}/>
+            </Link>
+            <Link to="/settings" className="Navbar-link">
+              <FontAwesomeIcon icon={faGear}/>
+            </Link>
+          </>
+        }
+      </div>
     </>
   );
 }

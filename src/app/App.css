@@ -119,23 +119,27 @@ body {
 
 @media (max-width: 991px) {
   body {
-    font-size: 9px;
+    font-size: 12px;
   }
 }
 
 @media (max-width: 767px) {
   body {
-    font-size: 7px;
+    font-size: 14px;
   }
+
   .App {
     padding-top: 0;
   }
+
   .ListNavbar {
+    margin-left: 1em;
+    font-size: 18px;
     width: 4em;
     top: 0;
-    justify-content: flex-start;
     z-index: 1000;
   }
+
   .Content {
     width: 100%;
   }
