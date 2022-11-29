@@ -1,12 +1,16 @@
 import "./Navbar.css";
 
-import {Link} from "react-router-dom";
+import {NavLink} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faBars, faExclamation, faGear, faHouse, faXmark} from "@fortawesome/free-solid-svg-icons";
 import {useToggle} from "../../hooks/useToggle";
 
 export default function Navbar() {
   const {status: navbarToggle, toggleStatus: navbarToggleFunction} = useToggle()
+
+  const activeStyle = {
+    color: "green"
+  };
 
   return (
     <>
@@ -16,15 +20,17 @@ export default function Navbar() {
         </div>
         {navbarToggle &&
           <>
-            <Link to="/" className="Navbar-link">
+            <NavLink to="/" className="Navbar-link"
+                     style={({ isActive }) => (isActive ? activeStyle : undefined)}
+                     onClick={navbarToggleFunction}>
               <FontAwesomeIcon icon={faHouse}/>
-            </Link>
-            <Link to="/about" className="Navbar-link">
+            </NavLink>
+            <NavLink to="/about" className="Navbar-link" onClick={navbarToggleFunction}>
               <FontAwesomeIcon icon={faExclamation}/>
-            </Link>
-            <Link to="/settings" className="Navbar-link">
+            </NavLink>
+            <NavLink to="/settings" className="Navbar-link" onClick={navbarToggleFunction}>
               <FontAwesomeIcon icon={faGear}/>
-            </Link>
+            </NavLink>
           </>
         }
       </div>
