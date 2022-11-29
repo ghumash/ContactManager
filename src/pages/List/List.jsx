@@ -23,9 +23,7 @@ export default function List({
   const [checkAll, setCheckAll] = useState(false);
   const [checkedIdArr, setCheckedIdArr] = useState([]);
   const checkedIdCopy = [...checkedIdArr];
-
   const [newContact, setNewContact] = useState({})
-
 
   const onCheck = (e, id) => {
     const {name} = e.target;

@@ -81,8 +81,6 @@
 }
 
 @media (max-width: 767px) {
-  .Navbar {
-  }
   .Navbar-link {
     background: var(--color-3);
   }
