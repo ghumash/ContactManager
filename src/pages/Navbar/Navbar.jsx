@@ -1,38 +1,54 @@
 import "./Navbar.css";
 
-import {NavLink} from "react-router-dom";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faBars, faExclamation, faGear, faHouse, faXmark} from "@fortawesome/free-solid-svg-icons";
-import {useToggle} from "../../hooks/useToggle";
+import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faBars,
+  faExclamation,
+  faGear,
+  faHouse,
+  faXmark,
+} from "@fortawesome/free-solid-svg-icons";
+import { useToggle } from "../../hooks/useToggle";
 
 export default function Navbar() {
-  const {status: navbarToggle, toggleStatus: navbarToggleFunction} = useToggle()
-
-  const activeStyle = {
-    color: "green"
-  };
+  const { status: navbarToggle, toggleStatus: navbarToggleFunction } =
+    useToggle();
 
   return (
     <>
       <div className="Navbar swal2-show">
         <div className="Navbar-link" onClick={navbarToggleFunction}>
-          <FontAwesomeIcon icon={navbarToggle ? faXmark : faBars}/>
+          <FontAwesomeIcon icon={navbarToggle ? faXmark : faBars} />
         </div>
-        {navbarToggle &&
+        {navbarToggle && (
           <>
-            <NavLink to="/" className="Navbar-link"
-                     style={({ isActive }) => (isActive ? activeStyle : undefined)}
-                     onClick={navbarToggleFunction}>
-              <FontAwesomeIcon icon={faHouse}/>
+            <NavLink
+              title="Home"
+              to="/"
+              className="Navbar-link"
+              onClick={navbarToggleFunction}
+            >
+              <FontAwesomeIcon icon={faHouse} />
             </NavLink>
-            <NavLink to="/about" className="Navbar-link" onClick={navbarToggleFunction}>
-              <FontAwesomeIcon icon={faExclamation}/>
+            <NavLink
+              title="About"
+              to="/about"
+              className="Navbar-link"
+              onClick={navbarToggleFunction}
+            >
+              <FontAwesomeIcon icon={faExclamation} />
             </NavLink>
-            <NavLink to="/settings" className="Navbar-link" onClick={navbarToggleFunction}>
-              <FontAwesomeIcon icon={faGear}/>
+            <NavLink
+              title="Settings"
+              to="/settings"
+              className="Navbar-link"
+              onClick={navbarToggleFunction}
+            >
+              <FontAwesomeIcon icon={faGear} />
             </NavLink>
           </>
-        }
+        )}
       </div>
     </>
   );
