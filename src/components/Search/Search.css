@@ -1,3 +1,37 @@
-.Search {
-    height: 100%;
+.search-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-5);
+}
+
+.search-box > input {
+  border: none;
+  outline: none;
+  padding: 0 1em;
+  background: none;
+  transition: 0.5s ease;
+  color: var(--color-1);
+}
+
+.select {
+  position: absolute;
+  right: 0;
+  border-radius: none;
+  background: none;
+  border: none;
+}
+
+.select:focus {
+  outline: none;
+}
+
+.selectOption {
+  background-color: var(--color-5);
+}
+
+@media (max-width: 767px) {
+  .search-box {
+    width: 10em;
+  }
 }

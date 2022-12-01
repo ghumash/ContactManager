@@ -13,6 +13,10 @@
   height: 100%;
 }
 
+.ListBtnSection-group {
+  display: flex;
+}
+
 .ListBtnSection-add-button,
 .ListBtnSection-delete-checked-button,
 .ListBtnSection-delete-checked-button-disable {
