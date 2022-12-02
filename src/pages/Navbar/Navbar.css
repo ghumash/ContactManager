@@ -76,7 +76,8 @@
   transition: 0.2s ease-in-out;
 }
 
-.fa-bars, .fa-xmark {
+.fa-bars,
+.fa-xmark {
   transition: all 0.25s linear;
 }
 
@@ -103,7 +104,4 @@
     transform: none;
     background: none;
   }
-
-
-
 }

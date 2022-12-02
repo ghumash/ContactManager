@@ -6,32 +6,34 @@ import PopupContact from "./PopupContact/PopupContact";
 import ListBtnSection from "./ListBtnSection/ListBtnSection";
 import InlineContact from "./InlineContact/InlineContact";
 
-import {onDelete, popupConfirm, popupInfo} from "../../js/utils";
+import { onDelete, popupConfirm, popupInfo } from "../../js/utils";
 import axios from "../../js/axiosInstance";
 
-import {useState} from "react";
+import { useState } from "react";
 
 export default function List({
-                               contacts,
-                               setContacts,
-                               cardViewState,
-                               inlineEditState,
-                               inlineAddState,
-                             }) {
+  contacts,
+  setContacts,
+  cardViewState,
+  inlineEditState,
+  inlineAddState,
+}) {
   const [popupContactStatus, setPopupContactStatus] = useState(null);
   const [inlineContactStatus, setInlineContactStatus] = useState(null);
   const [checkAll, setCheckAll] = useState(false);
   const [checkedIdArr, setCheckedIdArr] = useState([]);
   const checkedIdCopy = [...checkedIdArr];
-  const [newContact, setNewContact] = useState({})
+  const [newContact, setNewContact] = useState({});
 
   const onCheck = (e, id) => {
-    const {name} = e.target;
+    const { name } = e.target;
     if (name === "checkAll") {
       if (e.target.checked) {
         setCheckAll(true);
-        const notCheckedContacts = contacts.filter(contact => !checkedIdCopy.includes(contact.id))
-        notCheckedContacts.map(contact => checkedIdCopy.push(contact.id))
+        const notCheckedContacts = contacts.filter(
+          (contact) => !checkedIdCopy.includes(contact.id)
+        );
+        notCheckedContacts.map((contact) => checkedIdCopy.push(contact.id));
         setCheckedIdArr(checkedIdCopy);
       } else {
         setCheckAll(false);
@@ -53,18 +55,20 @@ export default function List({
 
   const onDeleteChecked = async () => {
     if (checkedIdArr.length !== 0) {
-      await popupConfirm("Do you want to delete these contacts?", "Yes, delete these contacts!")
-        .then((result) => {
-          if (result.isConfirmed) {
-            checkedIdArr.map(id => axios.delete(`contacts/${id}`))
-            popupInfo("success", "Contacts has been deleted!")
-            setContacts(
-              contacts.filter((contact) => !checkedIdArr.includes(contact.id))
-            );
-            setCheckedIdArr([]);
-            setCheckAll(false);
-          }
-        });
+      await popupConfirm(
+        "Do you want to delete these contacts?",
+        "Yes, delete these contacts!"
+      ).then((result) => {
+        if (result.isConfirmed) {
+          checkedIdArr.map((id) => axios.delete(`contacts/${id}`));
+          popupInfo("success", "Contacts has been deleted!");
+          setContacts(
+            contacts.filter((contact) => !checkedIdArr.includes(contact.id))
+          );
+          setCheckedIdArr([]);
+          setCheckAll(false);
+        }
+      });
     }
   };
 
@@ -102,20 +106,16 @@ export default function List({
 
   const onInlineContactEdit = (contact) => {
     setInlineContactStatus(
-      <InlineContact
-        title={"Edit Contact"}
-        button={"Save"}
-        contact={contact}
-      />
+      <InlineContact title={"Edit Contact"} button={"Save"} contact={contact} />
     );
   };
 
   return (
     <>
       <div className="ListCaption">
-        <Caption title={"Contacts"}/>
+        <Caption title={"Contacts"} />
       </div>
-      {inlineAddState &&
+      {inlineAddState && (
         <div className="InlineAdd">
           <InlineContact
             title={"Add Contact"}
@@ -132,7 +132,7 @@ export default function List({
             }}
           />
         </div>
-      }
+      )}
 
       <div className="List">
         {popupContactStatus ? popupContactStatus : null}
@@ -147,14 +147,13 @@ export default function List({
           />
         </div>
         {!cardViewState ? (
-          <ListHeader onCheck={onCheck} checkAll={checkAll}/>
+          <ListHeader onCheck={onCheck} checkAll={checkAll} />
         ) : null}
         <div
           className={cardViewState ? "ListItem-cardView" : "ListItem-rowView"}
         >
-
           {contacts.map((contact) => {
-            return inlineContactStatus && contact.id === newContact.id ?
+            return inlineContactStatus && contact.id === newContact.id ? (
               <div className="InlineEditItem" key={contact.id}>
                 <InlineContact
                   button={"Save"}
@@ -164,22 +163,22 @@ export default function List({
                   setInlineContactStatus={setInlineContactStatus}
                 />
               </div>
-              : (
-                <ListItem
-                  key={contact.id}
-                  id={contact.id}
-                  contact={contact}
-                  contacts={contacts}
-                  setContacts={setContacts}
-                  setNewContact={setNewContact}
-                  cardViewState={cardViewState}
-                  inlineEditState={inlineEditState}
-                  checkedIdArr={checkedIdArr}
-                  onPopupContactEdit={onPopupContactEdit}
-                  onInlineContactEdit={onInlineContactEdit}
-                  onCheck={onCheck}
-                />
-              );
+            ) : (
+              <ListItem
+                key={contact.id}
+                id={contact.id}
+                contact={contact}
+                contacts={contacts}
+                setContacts={setContacts}
+                setNewContact={setNewContact}
+                cardViewState={cardViewState}
+                inlineEditState={inlineEditState}
+                checkedIdArr={checkedIdArr}
+                onPopupContactEdit={onPopupContactEdit}
+                onInlineContactEdit={onInlineContactEdit}
+                onCheck={onCheck}
+              />
+            );
           })}
         </div>
       </div>

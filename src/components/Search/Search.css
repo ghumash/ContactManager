@@ -6,6 +6,7 @@
 }
 
 .search-box > input {
+  width: 40%;
   border: none;
   outline: none;
   padding: 0 1em;
@@ -17,7 +18,6 @@
 .select {
   position: absolute;
   right: 0;
-  border-radius: none;
   background: none;
   border: none;
 }
@@ -27,7 +27,13 @@
 }
 
 .selectOption {
+  cursor: pointer;
   background-color: var(--color-5);
+}
+
+.selectOption:hover {
+  color: red;
+  background-color: red;
 }
 
 @media (max-width: 767px) {

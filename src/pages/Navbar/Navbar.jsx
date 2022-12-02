@@ -22,7 +22,7 @@ export default function Navbar() {
           <FontAwesomeIcon icon={navbarToggle ? faXmark : faBars} />
         </div>
         {navbarToggle && (
-          <>
+          <div className="swal2-show">
             <NavLink
               title="Home"
               to="/"
@@ -47,7 +47,7 @@ export default function Navbar() {
             >
               <FontAwesomeIcon icon={faGear} />
             </NavLink>
-          </>
+          </div>
         )}
       </div>
     </>
