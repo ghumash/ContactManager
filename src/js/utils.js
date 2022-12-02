@@ -157,8 +157,16 @@ export const options = [
     label: "Last Name",
     value: "lastName",
   },
+  {
+    label: "Phone",
+    value: "phone",
+  },
+  {
+    label: "Email",
+    value: "email",
+  },
+  {
+    label: "Profession",
+    value: "profession",
+  },
 ];
-
-
-
-

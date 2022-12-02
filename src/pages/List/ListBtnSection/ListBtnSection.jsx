@@ -2,6 +2,8 @@ import Search from "../../../components/Search/Search";
 import "./ListBtnSection.css";
 
 export default function ListBtnSection({
+  setSelect,
+  setSearchText,
   onPopupContactAdd,
   onCheck,
   onDeleteChecked,
@@ -48,7 +50,7 @@ export default function ListBtnSection({
         </button>
       )}
       <div className="ListBtnSection-group">
-        <Search />
+        <Search setSearchText={setSearchText} setSelect={setSelect} />
         <button
           className="ListBtnSection-add-button"
           onClick={onPopupContactAdd}

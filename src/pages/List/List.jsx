@@ -6,7 +6,7 @@ import PopupContact from "./PopupContact/PopupContact";
 import ListBtnSection from "./ListBtnSection/ListBtnSection";
 import InlineContact from "./InlineContact/InlineContact";
 
-import { onDelete, popupConfirm, popupInfo } from "../../js/utils";
+import { popupConfirm, popupInfo } from "../../js/utils";
 import axios from "../../js/axiosInstance";
 
 import { useState } from "react";
@@ -24,6 +24,9 @@ export default function List({
   const [checkedIdArr, setCheckedIdArr] = useState([]);
   const checkedIdCopy = [...checkedIdArr];
   const [newContact, setNewContact] = useState({});
+
+  const [searchText, setSearchText] = useState("");
+  const [select, setSelect] = useState("");
 
   const onCheck = (e, id) => {
     const { name } = e.target;
@@ -110,6 +113,42 @@ export default function List({
     );
   };
 
+  const handleSearch = (contact) => {
+    if (
+      select === "" &&
+      Object.keys(contact).some((key) =>
+        contact[key].toLowerCase().includes(searchText)
+      )
+    ) {
+      return contact;
+    } else if (
+      select === "First Name" &&
+      contact.firstName.toLowerCase().includes(searchText)
+    ) {
+      return contact;
+    } else if (
+      select === "Last Name" &&
+      contact.lastName.toLowerCase().includes(searchText)
+    ) {
+      return contact;
+    } else if (
+      select === "Phone" &&
+      contact.phone.toLowerCase().includes(searchText)
+    ) {
+      return contact;
+    } else if (
+      select === "Email" &&
+      contact.email.toLowerCase().includes(searchText)
+    ) {
+      return contact;
+    } else if (
+      select === "Profession" &&
+      contact.profession.toLowerCase().includes(searchText)
+    ) {
+      return contact;
+    }
+  };
+
   return (
     <>
       <div className="ListCaption">
@@ -138,6 +177,8 @@ export default function List({
         {popupContactStatus ? popupContactStatus : null}
         <div className="ListBtnSection-container">
           <ListBtnSection
+            setSelect={setSelect}
+            setSearchText={setSearchText}
             onPopupContactAdd={onPopupContactAdd}
             onCheck={onCheck}
             onDeleteChecked={onDeleteChecked}
@@ -153,32 +194,34 @@ export default function List({
           className={cardViewState ? "ListItem-cardView" : "ListItem-rowView"}
         >
           {contacts.map((contact) => {
-            return inlineContactStatus && contact.id === newContact.id ? (
-              <div className="InlineEditItem" key={contact.id}>
-                <InlineContact
-                  button={"Save"}
+            if (handleSearch(contact)) {
+              return inlineContactStatus && contact.id === newContact.id ? (
+                <div className="InlineEditItem" key={contact.id}>
+                  <InlineContact
+                    button={"Save"}
+                    contact={contact}
+                    contacts={contacts}
+                    setContacts={setContacts}
+                    setInlineContactStatus={setInlineContactStatus}
+                  />
+                </div>
+              ) : (
+                <ListItem
+                  key={contact.id}
+                  id={contact.id}
                   contact={contact}
                   contacts={contacts}
                   setContacts={setContacts}
-                  setInlineContactStatus={setInlineContactStatus}
+                  setNewContact={setNewContact}
+                  cardViewState={cardViewState}
+                  inlineEditState={inlineEditState}
+                  checkedIdArr={checkedIdArr}
+                  onPopupContactEdit={onPopupContactEdit}
+                  onInlineContactEdit={onInlineContactEdit}
+                  onCheck={onCheck}
                 />
-              </div>
-            ) : (
-              <ListItem
-                key={contact.id}
-                id={contact.id}
-                contact={contact}
-                contacts={contacts}
-                setContacts={setContacts}
-                setNewContact={setNewContact}
-                cardViewState={cardViewState}
-                inlineEditState={inlineEditState}
-                checkedIdArr={checkedIdArr}
-                onPopupContactEdit={onPopupContactEdit}
-                onInlineContactEdit={onInlineContactEdit}
-                onCheck={onCheck}
-              />
-            );
+              );
+            }
           })}
         </div>
       </div>
