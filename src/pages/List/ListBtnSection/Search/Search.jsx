@@ -1,5 +1,5 @@
 import "./Search.css";
-import { options } from "../../js/utils";
+import { options } from "../../../../js/utils";
 
 export default function Search({ setSearchText, setSelect }) {
   const handlSearchInput = (e) => {

@@ -27,17 +27,25 @@
 }
 
 .selectOption {
-  cursor: pointer;
   background-color: var(--color-5);
 }
 
-.selectOption:hover {
-  color: red;
-  background-color: red;
-}
-
 @media (max-width: 767px) {
+  .select {
+    font-size: 1.5em;
+  }
+
   .search-box {
-    width: 10em;
+    width: 100%;
+    height: 3em;
+
+    position: absolute;
+    right: 0;
+    top: -4em;
+  }
+
+  .search-box > input {
+    width: 50%;
+    font-size: 1.3em;
   }
 }

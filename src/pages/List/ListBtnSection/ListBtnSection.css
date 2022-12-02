@@ -63,3 +63,9 @@
 .ListBtnSection-add-button:hover {
   background-color: var(--color-12);
 }
+
+@media (max-width: 767px) {
+  .ListBtnSection {
+    margin-top: 4em;
+  }
+}

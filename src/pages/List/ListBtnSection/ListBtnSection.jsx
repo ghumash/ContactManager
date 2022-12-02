@@ -1,4 +1,4 @@
-import Search from "../../../components/Search/Search";
+import Search from "./Search/Search";
 import "./ListBtnSection.css";
 
 export default function ListBtnSection({
