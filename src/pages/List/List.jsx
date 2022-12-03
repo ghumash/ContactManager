@@ -115,45 +115,19 @@ export default function List({
   };
 
   const handleSearch = (contact) => {
-    console.log(contact[contactLabel[select]]);
-    
-    if (contact[contactLabel[select]].includes(searchText)) {
-      return contact;
+    if (select !== "") {
+      if (contact[contactLabel[select]].toLowerCase().includes(searchText)) {
+        return contact;
+      }
+    } else {
+      if (
+        Object.keys(contact).some((key) =>
+          contact[key].toLowerCase().includes(searchText)
+        )
+      ) {
+        return contact;
+      }
     }
-
-    // if (
-    //   select === "" &&
-    //   Object.keys(contact).some((key) =>
-    //     contact[key].toLowerCase().includes(searchText)
-    //   )
-    // ) {
-    //   return contact;
-    // } else if (
-    //   select === "First Name" &&
-    //   contact.firstName.toLowerCase().includes(searchText)
-    // ) {
-    //   return contact;
-    // } else if (
-    //   select === "Last Name" &&
-    //   contact.lastName.toLowerCase().includes(searchText)
-    // ) {
-    //   return contact;
-    // } else if (
-    //   select === "Phone" &&
-    //   contact.phone.toLowerCase().includes(searchText)
-    // ) {
-    //   return contact;
-    // } else if (
-    //   select === "Email" &&
-    //   contact.email.toLowerCase().includes(searchText)
-    // ) {
-    //   return contact;
-    // } else if (
-    //   select === "Profession" &&
-    //   contact.profession.toLowerCase().includes(searchText)
-    // ) {
-    //   return contact;
-    // }
   };
 
   return (
