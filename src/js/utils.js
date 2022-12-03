@@ -143,30 +143,3 @@ export function listItemConfirmButtonHandler(
     resetInputsHandler(objState);
   }
 }
-
-export const options = [
-  {
-    label: "",
-    value: "",
-  },
-  {
-    label: "First Name",
-    value: "firstName",
-  },
-  {
-    label: "Last Name",
-    value: "lastName",
-  },
-  {
-    label: "Phone",
-    value: "phone",
-  },
-  {
-    label: "Email",
-    value: "email",
-  },
-  {
-    label: "Profession",
-    value: "profession",
-  },
-];
