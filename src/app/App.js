@@ -11,8 +11,8 @@ import { popupInfo } from "../js/utils";
 
 export default function App() {
   const localCardView = JSON.parse(localStorage.getItem("localView")) || cardView;
-  const localEdit = JSON.parse(localStorage.getItem("localEdit")) || cardView;
-  const localAdd = JSON.parse(localStorage.getItem("localAdd")) || cardView;
+  const localEdit = JSON.parse(localStorage.getItem("localEdit")) || inlineAdd;
+  const localAdd = JSON.parse(localStorage.getItem("localAdd")) || inlineEdit;
 
   const [contacts, setContacts] = useState([]);
   const [cardViewState, setCardViewState] = useState(localCardView);
