@@ -1,5 +1,5 @@
 import "./List.css";
-import Caption from "../../components/Caption/Caption";
+import Caption from "../../shared/Caption/Caption";
 import ListHeader from "./ListHeader/ListHeader";
 import ListItem from "./ListItem/ListItem";
 import PopupContact from "./PopupContact/PopupContact";

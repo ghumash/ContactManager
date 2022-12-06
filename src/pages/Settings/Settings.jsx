@@ -1,7 +1,7 @@
-import Caption from "../../components/Caption/Caption";
+import Caption from "../../shared/Caption/Caption";
 import "./Settings.css";
 
-import SettingItem from "../../components/SettingItem/SettingItem";
+import SettingItem from "../../shared/SettingItem/SettingItem";
 import {popupInfo} from "../../js/utils";
 
 export default function Settings({
