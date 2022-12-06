@@ -10,7 +10,24 @@ import { Route, Routes } from "react-router-dom";
 import { popupInfo } from "../js/utils";
 
 export default function App() {
+  const localCardView = JSON.parse(localStorage.getItem("localView")) || cardView;
+  const localEdit = JSON.parse(localStorage.getItem("localEdit")) || cardView;
+  const localAdd = JSON.parse(localStorage.getItem("localAdd")) || cardView;
+
   const [contacts, setContacts] = useState([]);
+  const [cardViewState, setCardViewState] = useState(localCardView);
+  const [inlineEditState, setInlineEditState] = useState(localEdit);
+  const [inlineAddState, setInlineAddState] = useState(localAdd);
+
+  useEffect(() => {
+    localStorage.setItem("localView", cardViewState);
+    localStorage.setItem("localEdit", inlineEditState);
+    localStorage.setItem("localAdd", inlineAddState);
+  }, [cardViewState, inlineEditState, inlineAddState]);
+
+  useEffect(() => {
+    getContacts();
+  }, []);
 
   const getContacts = () => {
     axios
@@ -21,14 +38,6 @@ export default function App() {
         setContacts([...localData]);
       });
   };
-
-  useEffect(() => {
-    getContacts();
-  }, []);
-
-  const [cardViewState, setCardViewState] = useState(cardView);
-  const [inlineEditState, setInlineEditState] = useState(inlineEdit);
-  const [inlineAddState, setInlineAddState] = useState(inlineAdd);
 
   const List = lazy(() => import("../pages/List/List"));
   const About = lazy(() => import("../pages/About/About"));
