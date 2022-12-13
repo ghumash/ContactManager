@@ -1,23 +1,22 @@
 import "./ListItem.css";
-import {onDelete} from "../../../js/utils";
+import { onDelete } from "../../../js/utils";
 
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faMinus, faUserPen} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMinus, faUserPen } from "@fortawesome/free-solid-svg-icons";
 
 export default function ListItem({
-                                   id,
-                                   contact,
-                                   contacts,
-                                   setContacts,
-                                   setNewContact,
-                                   cardViewState,
-                                   inlineEditState,
-                                   checkedIdArr,
-                                   onPopupContactEdit,
-                                   onInlineContactEdit,
-                                   onCheck,
-                                 }) {
-
+  id,
+  contact,
+  contacts,
+  setContacts,
+  setNewContact,
+  cardViewState,
+  inlineEditState,
+  checkedIdArr,
+  onPopupContactEdit,
+  onInlineContactEdit,
+  onCheck,
+}) {
   const ListItemStyleHandler = () => {
     if (cardViewState) {
       return "ListItem-card";
@@ -38,7 +37,7 @@ export default function ListItem({
       phone: contact.phone,
       email: contact.email,
       profession: contact.profession,
-    })
+    });
     if (!inlineEditState) {
       onPopupContactEdit(contact);
     } else {
@@ -46,7 +45,7 @@ export default function ListItem({
         onInlineContactEdit(contact);
       }
     }
-  }
+  };
 
   return (
     <div className={ListItemStyleHandler()}>
@@ -64,35 +63,69 @@ export default function ListItem({
         </label>
       </div>
 
-      <div className={!cardViewState ? "ListItem-item row-item-2 row-item" : "ListItem-card-item"}>
+      <div
+        className={
+          !cardViewState
+            ? "ListItem-item row-item-2 row-item"
+            : "ListItem-card-item"
+        }
+      >
         {contact.avatar}
         {contact.firstName} {contact.lastName}
       </div>
-      <div className={!cardViewState ? "ListItem-item row-item-3 row-item" : "ListItem-card-item"}>
-        {cardViewState ? (<p className="ListItem-carView-subtitle">Email</p>) : null}
+      <div
+        className={
+          !cardViewState
+            ? "ListItem-item row-item-3 row-item"
+            : "ListItem-card-item"
+        }
+      >
+        {cardViewState ? (
+          <p className="ListItem-carView-subtitle">Email</p>
+        ) : null}
         <a href={`mailto:${contact.email}`}>{contact.email}</a>
       </div>
-      <div className={!cardViewState ? "ListItem-item row-item-4 row-item" : "ListItem-card-item"}>
-        {cardViewState ? (<p className="ListItem-carView-subtitle">Phone</p>) : null}
+      <div
+        className={
+          !cardViewState
+            ? "ListItem-item row-item-4 row-item"
+            : "ListItem-card-item"
+        }
+      >
+        {cardViewState ? (
+          <p className="ListItem-carView-subtitle">Phone</p>
+        ) : null}
         <a href={`tel:${contact.phone}`}>{contact.phone} </a>
       </div>
-      <div className={!cardViewState ? "ListItem-item row-item-5 row-item" : "ListItem-card-item"}>
-        {cardViewState ? (<p className="ListItem-carView-subtitle">Profession</p>) : null}
+      <div
+        className={
+          !cardViewState
+            ? "ListItem-item row-item-5 row-item"
+            : "ListItem-card-item"
+        }
+      >
+        {cardViewState ? (
+          <p className="ListItem-carView-subtitle">Profession</p>
+        ) : null}
         {contact.profession}
       </div>
-      <div className={!cardViewState ? "ListItem-item row-item-6 row-item" : "ListItem-card-item"}>
+      <div
+        className={
+          !cardViewState
+            ? "ListItem-item row-item-6 row-item"
+            : "ListItem-card-item"
+        }
+      >
         <div className="ListItem-icon-group">
-          <FontAwesomeIcon
-            icon={faUserPen}
-            onClick={editItemHandler}
-          />
+          <FontAwesomeIcon icon={faUserPen} onClick={editItemHandler} />
           <FontAwesomeIcon
             icon={faMinus}
             onClick={() => {
-              onDelete(contact, contacts, setContacts,);
+              onDelete(contact, contacts, setContacts);
             }}
           />
         </div>
       </div>
-    </div>);
+    </div>
+  );
 }

@@ -8,9 +8,11 @@ import { localData } from "../js/localData";
 import { lazy, Suspense, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { popupInfo } from "../js/utils";
+import Loader from "../shared/Loader/Loader";
 
 export default function App() {
-  const localCardView = JSON.parse(localStorage.getItem("localView")) || cardView;
+  const localCardView =
+    JSON.parse(localStorage.getItem("localView")) || cardView;
   const localEdit = JSON.parse(localStorage.getItem("localEdit")) || inlineAdd;
   const localAdd = JSON.parse(localStorage.getItem("localAdd")) || inlineEdit;
 
@@ -18,6 +20,7 @@ export default function App() {
   const [cardViewState, setCardViewState] = useState(localCardView);
   const [inlineEditState, setInlineEditState] = useState(localEdit);
   const [inlineAddState, setInlineAddState] = useState(localAdd);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     localStorage.setItem("localView", cardViewState);
@@ -30,13 +33,15 @@ export default function App() {
   }, []);
 
   const getContacts = () => {
+    setIsLoading(true);
     axios
       .get("contacts")
       .then((res) => setContacts(res.data))
       .catch(() => {
         popupInfo("error", "Data from server not received!");
         setContacts([...localData]);
-      });
+      })
+      .finally(() => setIsLoading(false));
   };
 
   const List = lazy(() => import("../pages/List/List"));
@@ -52,8 +57,9 @@ export default function App() {
           <Route
             path="/"
             element={
-              <Suspense fallback={<div>...Loading</div>}>
+              <Suspense fallback={<Loader />}>
                 <List
+                  isLoading={isLoading}
                   cardViewState={cardViewState}
                   inlineEditState={inlineEditState}
                   inlineAddState={inlineAddState}
@@ -66,7 +72,7 @@ export default function App() {
           <Route
             path="/about"
             element={
-              <Suspense fallback={<div>Loading...</div>}>
+              <Suspense fallback={<Loader />}>
                 <About />
               </Suspense>
             }
@@ -87,7 +93,7 @@ export default function App() {
           <Route
             path="*"
             element={
-              <Suspense fallback={<div>...Loading</div>}>
+              <Suspense fallback={<Loader />}>
                 <List />
               </Suspense>
             }
