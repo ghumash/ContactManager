@@ -12,24 +12,19 @@ import axios from "../../js/axiosInstance";
 
 import { useState } from "react";
 import { contactLabel } from "../../js/const";
+import { useContext } from "react";
+import { SettingsContext } from "../../context/context";
 
-export default function List({
-  isLoading,
-  contacts,
-  setContacts,
-  cardViewState,
-  inlineEditState,
-  inlineAddState,
-}) {
+export default function List({ isLoading, contacts, setContacts }) {
   const [popupContactStatus, setPopupContactStatus] = useState(null);
   const [inlineContactStatus, setInlineContactStatus] = useState(null);
   const [checkAll, setCheckAll] = useState(false);
   const [checkedIdArr, setCheckedIdArr] = useState([]);
   const checkedIdCopy = [...checkedIdArr];
   const [newContact, setNewContact] = useState({});
-
   const [searchText, setSearchText] = useState("");
   const [select, setSelect] = useState("");
+  const { cardViewState, inlineAddState } = useContext(SettingsContext);
 
   const onCheck = (e, id) => {
     const { name } = e.target;
@@ -169,7 +164,6 @@ export default function List({
               onDeleteChecked={onDeleteChecked}
               checkedIdArr={checkedIdArr}
               checkAll={checkAll}
-              cardViewState={cardViewState}
             />
           </div>
           {!cardViewState ? (
@@ -198,8 +192,6 @@ export default function List({
                     contacts={contacts}
                     setContacts={setContacts}
                     setNewContact={setNewContact}
-                    cardViewState={cardViewState}
-                    inlineEditState={inlineEditState}
                     checkedIdArr={checkedIdArr}
                     onPopupContactEdit={onPopupContactEdit}
                     onInlineContactEdit={onInlineContactEdit}

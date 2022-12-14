@@ -1,14 +1,15 @@
 import "./App.css";
 import Navbar from "../pages/Navbar/Navbar";
+import Loader from "../shared/Loader/Loader";
 import Settings from "../pages/Settings/Settings";
 import { cardView, inlineAdd, inlineEdit } from "../js/config";
 import axios from "../js/axiosInstance";
 import { localData } from "../js/localData";
+import { SettingsContext } from "../context/context";
 
 import { lazy, Suspense, useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import { popupInfo } from "../js/utils";
-import Loader from "../shared/Loader/Loader";
 
 export default function App() {
   const localCardView =
@@ -21,6 +22,15 @@ export default function App() {
   const [inlineEditState, setInlineEditState] = useState(localEdit);
   const [inlineAddState, setInlineAddState] = useState(localAdd);
   const [isLoading, setIsLoading] = useState(false);
+
+  const states = {
+    cardViewState,
+    setCardViewState,
+    inlineEditState,
+    setInlineEditState,
+    inlineAddState,
+    setInlineAddState,
+  };
 
   useEffect(() => {
     localStorage.setItem("localView", cardViewState);
@@ -53,52 +63,39 @@ export default function App() {
         <Navbar />
       </div>
       <div className="Content">
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Suspense fallback={<Loader />}>
-                <List
-                  isLoading={isLoading}
-                  cardViewState={cardViewState}
-                  inlineEditState={inlineEditState}
-                  inlineAddState={inlineAddState}
-                  contacts={contacts}
-                  setContacts={setContacts}
-                />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/about"
-            element={
-              <Suspense fallback={<Loader />}>
-                <About />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/settings"
-            element={
-              <Settings
-                cardViewState={cardViewState}
-                inlineEditState={inlineEditState}
-                inlineAddState={inlineAddState}
-                setCardViewState={setCardViewState}
-                setInlineEditState={setInlineEditState}
-                setInlineAddState={setInlineAddState}
-              />
-            }
-          />
-          <Route
-            path="*"
-            element={
-              <Suspense fallback={<Loader />}>
-                <List />
-              </Suspense>
-            }
-          />
-        </Routes>
+        <SettingsContext.Provider value={states}>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Suspense fallback={<Loader />}>
+                  <List
+                    isLoading={isLoading}
+                    contacts={contacts}
+                    setContacts={setContacts}
+                  />
+                </Suspense>
+              }
+            />
+            <Route
+              path="/about"
+              element={
+                <Suspense fallback={<Loader />}>
+                  <About />
+                </Suspense>
+              }
+            />
+            <Route path="/settings" element={<Settings />} />
+            <Route
+              path="*"
+              element={
+                <Suspense fallback={<Loader />}>
+                  <List />
+                </Suspense>
+              }
+            />
+          </Routes>
+        </SettingsContext.Provider>
       </div>
     </div>
   );

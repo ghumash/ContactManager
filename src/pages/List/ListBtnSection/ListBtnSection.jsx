@@ -1,5 +1,7 @@
 import Search from "./Search/Search";
 import "./ListBtnSection.css";
+import { useContext } from "react";
+import { SettingsContext } from "../../../context/context";
 
 export default function ListBtnSection({
   setSelect,
@@ -9,8 +11,9 @@ export default function ListBtnSection({
   onDeleteChecked,
   checkedIdArr,
   checkAll,
-  cardViewState,
 }) {
+  const { cardViewState } = useContext(SettingsContext);
+
   return (
     <div className="ListBtnSection">
       {cardViewState ? (

@@ -2,8 +2,8 @@ import "./Loader.css";
 
 export default function Loader() {
   return (
-    <div class="loadingio-spinner-pulse-6zkyibamlpx">
-      <div class="ldio-4tswzvxa8tn">
+    <div className="loadingio-spinner-pulse-oi6yd2wq2w">
+      <div className="ldio-1jud6wbayd0h">
         <div></div>
         <div></div>
         <div></div>

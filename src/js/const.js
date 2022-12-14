@@ -26,9 +26,9 @@ export const options = [
 ];
 
 export const contactLabel = {
-  "First Name" : "firstName",
-  "Last Name" : "lastName",
-  "Phone" : "phone",
-  "Email" : "email",
-  "Profession" : "profession",
-}
+  "First Name": "firstName",
+  "Last Name": "lastName",
+  Phone: "phone",
+  Email: "email",
+  Profession: "profession",
+};

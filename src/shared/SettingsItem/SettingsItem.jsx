@@ -1,6 +1,6 @@
-import "./SettingItem.css"
+import "./SettingsItem.css";
 
-export default function SettingItem({text, checked, onChange}) {
+export default function SettingsItem({ text, checked, onChange }) {
   return (
     <div className="Settings-item">
       <div>{text}</div>
@@ -11,6 +11,5 @@ export default function SettingItem({text, checked, onChange}) {
         onChange={onChange}
       />
     </div>
-  )
+  );
 }
-

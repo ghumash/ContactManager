@@ -1,23 +1,30 @@
 import Caption from "../../shared/Caption/Caption";
 import "./Settings.css";
 
-import SettingItem from "../../shared/SettingItem/SettingItem";
-import {popupInfo} from "../../js/utils";
+import SettingsItem from "../../shared/SettingsItem/SettingsItem";
+import { popupInfo } from "../../js/utils";
+import { useContext } from "react";
+import { SettingsContext } from "../../context/context";
 
-export default function Settings({
-  cardViewState,
-  inlineEditState,
-  inlineAddState,
-  setCardViewState,
-  setInlineEditState,
-  setInlineAddState,
-}) {
+export default function Settings({}) {
+  const {
+    cardViewState,
+    inlineEditState,
+    inlineAddState,
+    setCardViewState,
+    setInlineEditState,
+    setInlineAddState,
+  } = useContext(SettingsContext);
+
   const cardViewHandler = () => {
     if (!cardViewState) {
       setCardViewState(true);
       if (inlineEditState) {
         setCardViewState(false);
-        popupInfo("warning", "During Inline Edit you can't enable the Card View option first disable Inline Edit")
+        popupInfo(
+          "warning",
+          "During Inline Edit you can't enable the Card View option first disable Inline Edit"
+        );
       }
     } else {
       setCardViewState(false);
@@ -29,7 +36,10 @@ export default function Settings({
       setInlineEditState(true);
       if (cardViewState) {
         setInlineEditState(false);
-        popupInfo("warning", "During Card View you can't enable the Inline Edit option first disable Card View")
+        popupInfo(
+          "warning",
+          "During Card View you can't enable the Inline Edit option first disable Card View"
+        );
       }
     } else {
       setInlineEditState(false);
@@ -51,9 +61,21 @@ export default function Settings({
       </div>
       <div className="Settings">
         <div className="Settings-container">
-          <SettingItem text="Card View" checked={cardViewState} onChange={cardViewHandler}/>
-          <SettingItem text="Inline Edit" checked={inlineEditState} onChange={inlineEditHandler}/>
-          <SettingItem text="Inline Add" checked={inlineAddState} onChange={inlineAddHandler}/>
+          <SettingsItem
+            text="Card View"
+            checked={cardViewState}
+            onChange={cardViewHandler}
+          />
+          <SettingsItem
+            text="Inline Edit"
+            checked={inlineEditState}
+            onChange={inlineEditHandler}
+          />
+          <SettingsItem
+            text="Inline Add"
+            checked={inlineAddState}
+            onChange={inlineAddHandler}
+          />
         </div>
       </div>
     </>

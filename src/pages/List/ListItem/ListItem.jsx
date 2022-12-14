@@ -3,6 +3,8 @@ import { onDelete } from "../../../js/utils";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMinus, faUserPen } from "@fortawesome/free-solid-svg-icons";
+import { useContext } from "react";
+import { SettingsContext } from "../../../context/context";
 
 export default function ListItem({
   id,
@@ -10,13 +12,13 @@ export default function ListItem({
   contacts,
   setContacts,
   setNewContact,
-  cardViewState,
-  inlineEditState,
   checkedIdArr,
   onPopupContactEdit,
   onInlineContactEdit,
   onCheck,
 }) {
+  const { cardViewState, inlineEditState } = useContext(SettingsContext);
+
   const ListItemStyleHandler = () => {
     if (cardViewState) {
       return "ListItem-card";
