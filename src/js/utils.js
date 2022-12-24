@@ -44,7 +44,7 @@ export async function saveContactHandler(
 ) {
   if (isEmpty(editedContact)) {
     await axios
-      .put(`contacts/${contact.id}`, editedContact)
+      .put(`contacts/${contact.id}.json`, editedContact)
       .then((response) => {
         popupInfo("success", "Contact Saved!");
         const changeContacts = contacts.map((contactItem) => {
@@ -73,7 +73,7 @@ export async function addContactHandler(
 ) {
   if (isEmpty(newContact)) {
     await axios
-      .post("contacts", newContact)
+      .post("contacts.json", newContact)
       .then((response) => {
         popupInfo("success", "Contact Added!");
         setContacts([...contacts, response.data]);
@@ -95,7 +95,7 @@ export async function onDelete(contact, contacts, setContacts) {
   ).then((result) => {
     if (result.isConfirmed) {
       axios
-        .delete(`contacts/${id}`)
+        .delete(`contacts/${id}.json`)
         .then(() => {
           popupInfo(
             "success",

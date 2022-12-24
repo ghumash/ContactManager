@@ -45,8 +45,18 @@ export default function App() {
   const getContacts = () => {
     setIsLoading(true);
     axios
-      .get("contacts")
-      .then((res) => setContacts(res.data))
+      .get("contacts.json")
+      .then((res) => {
+        console.log(res.data);
+
+        const contacts = res.data
+          ? Object.keys(res.data).map((key) => ({
+              ...res.data[key],
+              id: key,
+            }))
+          : [];
+        setContacts(contacts);
+      })
       .catch(() => {
         popupInfo("error", "Data from server not received!");
         setContacts([...localData]);

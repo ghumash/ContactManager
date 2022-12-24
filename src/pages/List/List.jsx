@@ -172,34 +172,35 @@ export default function List({ isLoading, contacts, setContacts }) {
           <div
             className={cardViewState ? "ListItem-cardView" : "ListItem-rowView"}
           >
-            {contacts.map((contact) => {
-              if (handleSearch(contact)) {
-                return inlineContactStatus && contact.id === newContact.id ? (
-                  <div className="InlineEditItem" key={contact.id}>
-                    <InlineContact
-                      button={"Save"}
+            {contacts &&
+              contacts.map((contact) => {
+                if (handleSearch(contact)) {
+                  return inlineContactStatus && contact.id === newContact.id ? (
+                    <div className="InlineEditItem" key={contact.id}>
+                      <InlineContact
+                        button={"Save"}
+                        contact={contact}
+                        contacts={contacts}
+                        setContacts={setContacts}
+                        setInlineContactStatus={setInlineContactStatus}
+                      />
+                    </div>
+                  ) : (
+                    <ListItem
+                      key={contact.id}
+                      id={contact.id}
                       contact={contact}
                       contacts={contacts}
                       setContacts={setContacts}
-                      setInlineContactStatus={setInlineContactStatus}
+                      setNewContact={setNewContact}
+                      checkedIdArr={checkedIdArr}
+                      onPopupContactEdit={onPopupContactEdit}
+                      onInlineContactEdit={onInlineContactEdit}
+                      onCheck={onCheck}
                     />
-                  </div>
-                ) : (
-                  <ListItem
-                    key={contact.id}
-                    id={contact.id}
-                    contact={contact}
-                    contacts={contacts}
-                    setContacts={setContacts}
-                    setNewContact={setNewContact}
-                    checkedIdArr={checkedIdArr}
-                    onPopupContactEdit={onPopupContactEdit}
-                    onInlineContactEdit={onInlineContactEdit}
-                    onCheck={onCheck}
-                  />
-                );
-              }
-            })}
+                  );
+                }
+              })}
           </div>
         </div>
       )}
